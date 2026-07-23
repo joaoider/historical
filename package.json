@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "vis-data": "^8.0.4",
+    "vis-timeline": "^8.5.2"
+  }
+}
