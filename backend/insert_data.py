@@ -89,15 +89,13 @@ def insert_data():
         rel1 = Relationship(
             source_entity_id=leonardo.id,
             target_entity_id=renascimento.id,
-            relationship_type="participante",
-            description="Participou ativamente do Renascimento"
+            relationship_type="participante"
         )
         
         rel2 = Relationship(
             source_entity_id=michelangelo.id,
             target_entity_id=renascimento.id,
-            relationship_type="participante",
-            description="Participou ativamente do Renascimento"
+            relationship_type="participante"
         )
         
         db.add(rel1)
