@@ -11,6 +11,7 @@ function TimelineComponent({ entities }) {
 
 
     const containerRef = useRef(null);
+    const timelineRef = useRef(null);
 
 
 
@@ -56,6 +57,17 @@ function TimelineComponent({ entities }) {
             trackToGroupId[track || "undefined"] = index;
         });
 
+        // Calcular intervalo de dados para zoom automático
+        let minYear = Infinity;
+        let maxYear = -Infinity;
+        
+        entities.forEach(entity => {
+            if (entity.start_year) {
+                minYear = Math.min(minYear, entity.start_year);
+                maxYear = Math.max(maxYear, entity.end_year || entity.start_year);
+            }
+        });
+
         // Criar itens da timeline
         const items = new DataSet(
             entities.map((entity, index) => {
@@ -64,12 +76,12 @@ function TimelineComponent({ entities }) {
                 return {
                     id: entity.id || index,
                     group: groupId,
-                    content: `<div style="font-weight: bold;">${entity.name}</div><div style="font-size: 0.9em; color: #666;">${formatYear(entity.start_year)}</div>`,
+                    content: entity.name, // Apenas o nome
                     start: entity.start_year ? new Date(entity.start_year, 0, 1) : new Date(),
                     end: entity.end_year && entity.end_year !== entity.start_year 
                         ? new Date(entity.end_year, 11, 31) 
                         : null,
-                    title: `${entity.name}\n${entity.description || ""}\n(${formatYear(entity.start_year)} - ${formatYear(entity.end_year || entity.start_year)})`,
+                    title: `<div style="font-weight: bold; margin-bottom: 8px;">${entity.name}</div><div>${entity.description || "Sem descrição"}</div><div style="margin-top: 8px; font-size: 0.9em; color: #666;">${formatYear(entity.start_year)} - ${formatYear(entity.end_year || entity.start_year)}</div>`,
                     type: entity.end_year && entity.end_year !== entity.start_year ? "range" : "point"
                 };
             })
@@ -103,6 +115,21 @@ function TimelineComponent({ entities }) {
             groups,
             options
         );
+
+        timelineRef.current = timeline;
+
+        // Fazer zoom automático para mostrar todos os dados
+        if (minYear !== Infinity && maxYear !== -Infinity) {
+            // Adicionar margem de 10% para visualização melhor
+            const margin = Math.max(100, (maxYear - minYear) * 0.1);
+            const startDate = new Date(minYear - Math.ceil(margin), 0, 1);
+            const endDate = new Date(maxYear + Math.ceil(margin), 11, 31);
+            
+            // Usar setTimeout para permitir que a timeline seja renderizada primeiro
+            setTimeout(() => {
+                timeline.setWindow(startDate, endDate);
+            }, 100);
+        }
 
         // Tooltip personalizado
         timeline.on("click", (event) => {
