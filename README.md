@@ -104,28 +104,78 @@ npm install
 
 ## 📖 Como Usar
 
-### Iniciar o Backend
+### Inicialização Rápida (Recomendado)
+
+#### No Windows (CMD):
 ```bash
-cd backend
-# Com a venv ativada:
-uvicorn app.main:app --reload
+start.bat
 ```
 
-O backend estará disponível em `http://localhost:8000`
+#### No Windows/Mac/Linux (PowerShell/Terminal):
+```bash
+python -m uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000
+# Em outro terminal:
+cd frontend && npm run dev
+```
 
-### Iniciar o Frontend
+### Inicialização Manual
+
+#### 1. Iniciar o Backend
+```bash
+cd backend
+
+# Ativar ambiente virtual
+python -m venv venv
+venv\Scripts\activate  # Windows
+# ou
+source venv/bin/activate  # macOS/Linux
+
+# Instalar dependências
+pip install -r requirements.txt
+
+# Iniciar servidor
+python -m uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Backend estará disponível em: **http://localhost:8000**
+- API: http://localhost:8000/api
+- Documentação Interativa: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+#### 2. Iniciar o Frontend
+
+Em outro terminal:
+
 ```bash
 cd frontend
+
+# Instalar dependências (se não instalado)
+npm install
+
+# Iniciar dev server
 npm run dev
 ```
 
-O frontend estará disponível em `http://localhost:5173`
+Frontend estará disponível em: **http://localhost:5173**
 
 ### Acessar a Aplicação
-1. Abra o navegador e acesse `http://localhost:5173`
-2. Explore a timeline interativa
-3. Use os filtros para refinar sua busca
-4. Clique nos eventos para ver mais detalhes
+1. Abra o navegador em http://localhost:5173
+2. A timeline será carregada automaticamente
+3. Use os filtros para explorar eventos por:
+   - **Track/Categoria**: Agrupa eventos em diferentes faixas
+   - **Tipo de Evento**: Filtra por tipo (Política, Tecnologia, etc.)
+   - **Período**: Selecione intervalo de anos
+
+### Solução de Problemas
+
+**Erro: "Falha ao carregar eventos"**
+- Certifique-se de que o backend está rodando em http://localhost:8000
+- Verifique se PostgreSQL está ativo
+- Confira as credenciais em `backend/.env`
+
+**Erro de conexão com banco de dados**
+- Execute o script de inicialização: `psql -d historical -f sql/init_database.sql`
+- Ou teste a conexão: `python backend/test_db_connection.py`
 
 ## 📚 API Endpoints
 
@@ -168,10 +218,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 **João Ider**
 
-## 📞 Suporte
-
-Para suporte, abra uma issue no GitHub ou entre em contato através das discussões do projeto.
-
----
-
-**Última atualização**: 2026-07-23
+## � Licença

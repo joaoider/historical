@@ -4,8 +4,11 @@ from dotenv import load_dotenv
 from sqlalchemy.orm import declarative_base
 
 import os
+from pathlib import Path
 
-load_dotenv()
+# Carregar arquivo .env do diretório backend
+env_path = Path(__file__).parent.parent / ".env"
+load_dotenv(env_path)
 
 DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
