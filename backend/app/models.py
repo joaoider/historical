@@ -5,7 +5,6 @@ from app.database import Base
 
 
 class Entity(Base):
-
     __tablename__ = "entity"
 
     __table_args__ = {
@@ -15,76 +14,58 @@ class Entity(Base):
     id = Column(
         Integer,
         primary_key=True,
-        index=True
-    )
+        index=True)
 
     name = Column(
         String(200),
-        nullable=False
-    )
+        nullable=False)
 
     entity_type = Column(
         String(50),
-        nullable=False
-    )
+        nullable=False)
+
+    track = Column(String, nullable=True)
 
     description = Column(
-        Text
-    )
+        Text)
 
     start_year = Column(
-        Integer
-    )
+        Integer)
 
     end_year = Column(
-        Integer
-    )
+        Integer)
 
 
 
 class Relationship(Base):
-
     __tablename__ = "relationship"
 
     __table_args__ = {
-        "schema": "history"
-    }
-
+        "schema": "history"}
 
     id = Column(
         Integer,
         primary_key=True,
-        index=True
-    )
-
+        index=True)
 
     source_entity_id = Column(
         Integer,
         ForeignKey("history.entity.id"),
-        nullable=False
-    )
-
+        nullable=False)
 
     target_entity_id = Column(
         Integer,
         ForeignKey("history.entity.id"),
-        nullable=False
-    )
-
+        nullable=False)
 
     relationship_type = Column(
         String(100),
-        nullable=False
-    )
-
+        nullable=False)
 
     source_entity = relationship(
         "Entity",
-        foreign_keys=[source_entity_id]
-    )
-
+        foreign_keys=[source_entity_id])
 
     target_entity = relationship(
         "Entity",
-        foreign_keys=[target_entity_id]
-    )
+        foreign_keys=[target_entity_id])

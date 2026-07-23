@@ -166,7 +166,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 👤 Autor
 
-**João Silva**
+**João Ider**
 
 ## 📞 Suporte
 

@@ -33,6 +33,16 @@ SessionLocal = sessionmaker(
     bind=engine
 )
 
+
+def get_db():
+    """Dependency para obter sessão do banco de dados"""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
 #print(DB_USER)
 #print(DB_PASSWORD)
 #print(DB_NAME)

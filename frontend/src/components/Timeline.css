@@ -1,0 +1,65 @@
+.timeline {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 500px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    overflow-x: auto;
+
+}
+
+.axis {
+
+    position: absolute;
+
+    top: 250px;
+
+    left: 0;
+
+    width: 3000px;
+
+    height: 3px;
+
+    background: black;
+
+}
+
+.item {
+
+    position: absolute;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    cursor: pointer;
+
+}
+
+.dot {
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: steelblue;
+
+    margin: auto;
+
+}
+
+.label {
+
+    margin-top: 8px;
+
+    font-size: 14px;
+
+}

@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.database import get_db
-from app.models import Entity
+from app.models import Entity, Relationship
 from app.schemas import StatsResponse
 
 from app.schemas import (
@@ -61,6 +61,7 @@ def create_entity(
         name=entity.name,
         entity_type=entity.entity_type,
         description=entity.description,
+        track=entity.track,
         start_year=entity.start_year,
         end_year=entity.end_year
     )
@@ -112,34 +113,41 @@ def get_relationships(
 )
 def get_timeline(
     type: str | None = None,
+    track: str | None = None,
     start: int | None = None,
     end: int | None = None,
     db: Session = Depends(get_db)
 ):
+    """
+    Retorna eventos da timeline com suporte a filtros por tipo, track e período.
+    
+    - **type**: Filtrar por tipo de entidade (ex: "Política", "Tecnologia")
+    - **track**: Filtrar por track/categoria (ex: "História", "Ciência")
+    - **start**: Filtrar por ano inicial (>=)
+    - **end**: Filtrar por ano final (<=)
+    """
 
     query = db.query(Entity)
 
-
     if type:
-
         query = query.filter(
             Entity.entity_type == type
         )
 
+    if track:
+        query = query.filter(
+            Entity.track == track
+        )
 
     if start:
-
         query = query.filter(
             Entity.start_year >= start
         )
 
-
     if end:
-
         query = query.filter(
             Entity.start_year <= end
         )
-
 
     timeline = (
         query
@@ -147,10 +155,19 @@ def get_timeline(
         .all()
     )
 
-
     return timeline
 
 
+@router.get("/tracks")
+def get_tracks(db: Session = Depends(get_db)):
+    """Retorna lista de todas as tracks/categorias disponíveis"""
+    tracks = (
+        db.query(Entity.track)
+        .distinct()
+        .filter(Entity.track.isnot(None))
+        .all()
+    )
+    return [{"name": t[0]} for t in tracks]
 
 
 @router.get(
