@@ -94,13 +94,13 @@ function TimelineComponent({ entities }) {
             },
             zoomable: true,
             moveable: true,
-            minHeight: "500px",
-            height: "500px",
+            minHeight: "600px",
+            height: "600px",
             stack: true,
             margin: {
                 item: {
-                    horizontal: 10,
-                    vertical: 10
+                    horizontal: 15,
+                    vertical: 15
                 }
             },
             timeaxis: {

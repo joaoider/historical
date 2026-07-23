@@ -160,6 +160,30 @@ button:disabled {
         padding: 15px;
     }
 }
+
+/* Customização vis-timeline - Exibição melhor de nomes */
+.vis-item {
+    min-width: 100px !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    padding: 5px 8px !important;
+}
+
+.vis-item .vis-item-content {
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+}
+
+.vis-item-point {
+    min-width: 120px !important;
+}
+
+.vis-item-range {
+    min-width: 150px !important;
+}
+
     top: 107px;
     height: 26px;
     width: auto;
