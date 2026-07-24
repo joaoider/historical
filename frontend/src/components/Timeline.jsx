@@ -94,8 +94,6 @@ function TimelineComponent({ entities }) {
             },
             zoomable: true,
             moveable: true,
-            minHeight: "600px",
-            height: "600px",
             stack: true,
             margin: {
                 item: {
@@ -147,15 +145,16 @@ function TimelineComponent({ entities }) {
 
 
     return (
-        <div>
+        <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
             <div
                 ref={containerRef}
                 style={{
                     width: "100%",
-                    height: "500px",
-                    border: "1px solid #ddd",
-                    borderRadius: "4px",
-                    overflow: "hidden"
+                    height: "100%",
+                    border: "none",
+                    borderRadius: "0",
+                    overflow: "hidden",
+                    flex: 1
                 }}
             />
             {(!entities || entities.length === 0) && (
