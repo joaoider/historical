@@ -19,37 +19,36 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    // Filtros
-    const [selectedTrack, setSelectedTrack] = useState(null);
-    const [selectedType, setSelectedType] = useState(null);
-    const [startYear, setStartYear] = useState(null);
-    const [endYear, setEndYear] = useState(null);
+    const [selectedTracks, setSelectedTracks] = useState(null);
 
 
     // Carregar eventos da timeline
     useEffect(() => {
-        fetchTimeline();
         fetchTracks();
     }, []);
 
 
     // Recarregar timeline quando filtros mudam
     useEffect(() => {
-        fetchTimeline();
-    }, [selectedTrack, selectedType, startYear, endYear]);
+        if (selectedTracks !== null) fetchTimeline();
+    }, [selectedTracks]);
 
 
     const fetchTimeline = async () => {
+        if (selectedTracks.length === 0) {
+            setTimeline([]);
+            setError(null);
+            setLoading(false);
+            return;
+        }
+
         try {
             setLoading(true);
             setError(null);
 
             const params = new URLSearchParams();
             
-            if (selectedTrack) params.append("track", selectedTrack);
-            if (selectedType) params.append("type", selectedType);
-            if (startYear) params.append("start", startYear);
-            if (endYear) params.append("end", endYear);
+            selectedTracks.forEach((track) => params.append("track", track));
 
             const response = await api.get("/timeline", { params });
             setTimeline(response.data);
@@ -67,18 +66,12 @@ function App() {
     const fetchTracks = async () => {
         try {
             const response = await api.get("/tracks");
-            setTracks(response.data.map(t => t.name));
+            const trackNames = response.data.map((track) => track.name);
+            setTracks(trackNames);
+            setSelectedTracks(trackNames);
         } catch (err) {
             console.error("Erro ao carregar tracks:", err);
         }
-    };
-
-
-    const handleClearFilters = () => {
-        setSelectedTrack(null);
-        setSelectedType(null);
-        setStartYear(null);
-        setEndYear(null);
     };
 
 
@@ -93,15 +86,8 @@ function App() {
             <div className="app-content">
                 <Filters
                     tracks={tracks}
-                    selectedTrack={selectedTrack}
-                    setSelectedTrack={setSelectedTrack}
-                    selectedType={selectedType}
-                    setSelectedType={setSelectedType}
-                    startYear={startYear}
-                    setStartYear={setStartYear}
-                    endYear={endYear}
-                    setEndYear={setEndYear}
-                    onClearFilters={handleClearFilters}
+                    selectedTracks={selectedTracks || []}
+                    setSelectedTracks={setSelectedTracks}
                 />
 
                 <div className="timeline-section">
@@ -119,9 +105,6 @@ function App() {
 
                     {!loading && (
                         <>
-                            <div className="timeline-info">
-                                <span>{timeline.length} evento(s) encontrado(s)</span>
-                            </div>
                             <Timeline
                                 entities={timeline}
                             />

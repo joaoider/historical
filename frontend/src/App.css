@@ -56,19 +56,6 @@ body {
     background: white;
 }
 
-.timeline-info {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 2px solid var(--secondary-color);
-}
-
-.timeline-info span {
-    color: var(--text-secondary);
-    font-size: 0.95em;
-}
-
 .loading-message {
     padding: 40px 20px;
     color: var(--text-secondary);
@@ -98,11 +85,6 @@ button:disabled {
     .app-header h1 { font-size: 1.8em; }
     .app-header p { font-size: 1em; }
     .app-content { padding: 15px; }
-    .timeline-info {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 10px;
-    }
 }
 
 @media (max-width: 480px) {

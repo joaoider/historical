@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from .database import get_db
@@ -112,41 +112,20 @@ def get_relationships(
     response_model=list[TimelineResponse]
 )
 def get_timeline(
-    type: str | None = None,
-    track: str | None = None,
-    start: int | None = None,
-    end: int | None = None,
+    track: list[str] | None = Query(default=None),
     db: Session = Depends(get_db)
 ):
     """
-    Retorna eventos da timeline com suporte a filtros por tipo, track e período.
-    
-    - **type**: Filtrar por tipo de entidade (ex: "Política", "Tecnologia")
-    - **track**: Filtrar por track/categoria (ex: "História", "Ciência")
-    - **start**: Filtrar por ano inicial (>=)
-    - **end**: Filtrar por ano final (<=)
+    Retorna eventos da timeline, aceitando uma ou várias categorias.
+
+    - **track**: Parâmetro repetível, por exemplo `?track=Livros&track=Artistas`.
     """
 
     query = db.query(Entity)
 
-    if type:
-        query = query.filter(
-            Entity.entity_type == type
-        )
-
     if track:
         query = query.filter(
-            Entity.track == track
-        )
-
-    if start:
-        query = query.filter(
-            Entity.start_year >= start
-        )
-
-    if end:
-        query = query.filter(
-            Entity.start_year <= end
+            Entity.track.in_(track)
         )
 
     timeline = (
