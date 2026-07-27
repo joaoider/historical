@@ -112,11 +112,12 @@
     overflow-wrap: anywhere;
 }
 
-.timeline-event-card span {
+.timeline-event-card .timeline-event-group {
     margin-top: 1px;
     overflow: hidden;
-    color: #746b60;
+    color: var(--event-color);
     font-size: 9px;
+    font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
 }

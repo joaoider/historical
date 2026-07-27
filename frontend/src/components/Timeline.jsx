@@ -11,10 +11,29 @@ const YEAR_WIDTH = 3;
 const SIDE_PADDING = 130;
 const AXIS_GAP = 32;
 
-const TRACK_COLORS = [
-    "#c54832", "#3976a8", "#788f2d", "#b56a16", "#8b4f91",
-    "#198477", "#a74468", "#5f6fb0", "#9a7135", "#3f8352"
-];
+const TRACK_COLORS = {
+    "Filósofos": "#c54832",
+    "Cientistas": "#2878a5",
+    "Escritores": "#8b4f91",
+    "Artistas": "#d17a18",
+    "Músicos": "#b13f6b",
+    "Teólogos": "#6f8731",
+    "Obras Pinturas | Esculturas": "#9b6235",
+    "Tecnologias": "#148477",
+    "Livros": "#5969af",
+    "Líderes": "#a13e49",
+    "Sem categoria": "#6f6a63"
+};
+
+const FALLBACK_COLORS = ["#3976a8", "#788f2d", "#b56a16", "#8b4f91", "#198477", "#a74468"];
+
+
+function getTrackColor(track) {
+    if (TRACK_COLORS[track]) return TRACK_COLORS[track];
+
+    const hash = [...track].reduce((total, character) => total + character.codePointAt(0), 0);
+    return FALLBACK_COLORS[hash % FALLBACK_COLORS.length];
+}
 
 
 function formatYear(year) {
@@ -48,8 +67,6 @@ function buildLayout(entities) {
     const width = SIDE_PADDING * 2 + (maxYear - minYear) * YEAR_WIDTH;
     const aboveLanes = [];
     const belowLanes = [];
-    const tracks = [...new Set(events.map((event) => event.track || "Sem categoria"))];
-    const colors = new Map(tracks.map((track, index) => [track, TRACK_COLORS[index % TRACK_COLORS.length]]));
     const positionedEvents = events.map((event, index) => {
         const x = SIDE_PADDING + (event.start_year - minYear) * YEAR_WIDTH;
         const left = x - CARD_WIDTH / 2;
@@ -63,7 +80,7 @@ function buildLayout(entities) {
             x,
             side,
             lane,
-            color: colors.get(event.track || "Sem categoria")
+            color: getTrackColor(event.track || "Sem categoria")
         };
     });
 
@@ -153,7 +170,9 @@ function Timeline({ entities }) {
                                 title={event.description || event.name}
                             >
                                 <strong>{event.name}</strong>
-                                <span>{event.track || "Sem categoria"}</span>
+                                <span className="timeline-event-group">
+                                    Grupo: {event.track || "Sem categoria"}
+                                </span>
                                 <time>{formatYear(event.start_year)}</time>
                             </article>
                         );
