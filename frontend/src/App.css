@@ -1,5 +1,3 @@
-/* App.css - Estilos globais da aplicação */
-
 :root {
     --primary-color: #0066cc;
     --secondary-color: #f5f7fa;
@@ -7,21 +5,14 @@
     --text-primary: #333;
     --text-secondary: #666;
     --border-color: #ddd;
-    --success-color: #28a745;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     background: #f5f5f5;
 }
 
@@ -31,19 +22,17 @@ body {
     flex-direction: column;
 }
 
-/* Header */
 .app-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
     padding: 40px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+    color: white;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .app-header h1 {
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     font-size: 2.5em;
-    font-weight: bold;
 }
 
 .app-header p {
@@ -52,34 +41,27 @@ body {
     opacity: 0.9;
 }
 
-/* Content */
 .app-content {
-    flex: 1;
     width: 100%;
-    margin: 0;
+    flex: 1;
     padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
-/* Timeline Section */
 .timeline-section {
-    background: white;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
     flex: 1;
     display: flex;
     flex-direction: column;
+    background: white;
 }
 
 .timeline-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 2px solid var(--secondary-color);
-    flex-shrink: 0;
 }
 
 .timeline-info span {
@@ -87,243 +69,46 @@ body {
     font-size: 0.95em;
 }
 
-/* Timeline Component Container */
-.vis-timeline {
-    flex: 1 !important;
-}
-
-/* Loading State */
 .loading-message {
-    text-align: center;
     padding: 40px 20px;
     color: var(--text-secondary);
     font-size: 1.1em;
+    text-align: center;
 }
 
-.loading-message::before {
-    content: "⏳ ";
-}
+.loading-message::before { content: "⏳ "; }
 
-/* Error State */
 .error-message {
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-    padding: 15px 20px;
-    border-radius: 4px;
     margin-bottom: 20px;
-    font-size: 0.95em;
+    padding: 15px 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    background: #f8d7da;
+    color: #721c24;
 }
 
-/* Botões gerais */
-button {
-    font-family: inherit;
-}
+button { font-family: inherit; }
 
 button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-/* Responsivo */
-@media (max-width: 1200px) {
-    .app-content {
-        max-width: 100%;
-    }
-}
-
 @media (max-width: 768px) {
-    .app-header h1 {
-        font-size: 1.8em;
-    }
-
-    .app-header p {
-        font-size: 1em;
-    }
-
-    .app-content {
-        padding: 20px 15px;
-    }
-
-    .timeline-section {
-        padding: 20px;
-    }
-
+    .app-header h1 { font-size: 1.8em; }
+    .app-header p { font-size: 1em; }
+    .app-content { padding: 15px; }
     .timeline-info {
+        align-items: flex-start;
         flex-direction: column;
         gap: 10px;
-        align-items: flex-start;
     }
 }
 
 @media (max-width: 480px) {
-    .app-header h1 {
-        font-size: 1.5em;
-    }
-
     .app-header {
         padding: 25px 15px;
     }
 
-    .timeline-section {
-        padding: 15px;
-    }
-}
-
-/* Customização vis-timeline - Exibição melhor de nomes */
-.vis-item {
-    min-width: 100px !important;
-    white-space: normal !important;
-    overflow: visible !important;
-    padding: 5px 8px !important;
-}
-
-.vis-item .vis-item-content {
-    overflow: visible !important;
-    text-overflow: clip !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-}
-
-.vis-item-point {
-    min-width: 120px !important;
-}
-
-.vis-item-range {
-    min-width: 150px !important;
-}
-
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+    .app-header h1 { font-size: 1.5em; }
 }

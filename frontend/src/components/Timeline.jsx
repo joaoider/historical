@@ -1,165 +1,131 @@
 import { useEffect, useRef } from "react";
 
+import { DataSet } from "vis-data";
 import { Timeline } from "vis-timeline/standalone";
 
-import { DataSet } from "vis-data";
-
 import "vis-timeline/styles/vis-timeline-graph2d.min.css";
+import "./Timeline.css";
+
+
+function yearToDate(year) {
+    // setFullYear evita que os anos de 0 a 99 sejam convertidos para 1900 a 1999.
+    const date = new Date(0);
+    date.setHours(0, 0, 0, 0);
+    date.setFullYear(year, 0, 1);
+    return date;
+}
+
+
+function formatYear(year) {
+    if (year === null || year === undefined) return "Data indefinida";
+    if (year < 0) return `${Math.abs(year)} a.C.`;
+    return `${year} d.C.`;
+}
+
+
+function escapeHtml(value = "") {
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 
 
 function TimelineComponent({ entities }) {
-
-
     const containerRef = useRef(null);
-    const timelineRef = useRef(null);
-
-
 
     useEffect(() => {
-        if (!entities || entities.length === 0) {
-            console.warn("Nenhuma entidade fornecida para a timeline");
-            return;
-        }
+        const datedEntities = (entities || []).filter(
+            (entity) => Number.isInteger(entity.start_year)
+        );
 
-        console.log("Entidades recebidas:", entities);
+        if (!containerRef.current || datedEntities.length === 0) return undefined;
 
-        function formatYear(year) {
-            if (!year) return "Data indefinida";
-            if (year < 0) {
-                return `${Math.abs(year)} BC`;
-            }
-            return `${year} AD`;
-        }
+        // A primeira coluna funciona como a coluna congelada de tópicos da planilha.
+        const tracks = [];
+        const trackIds = new Map();
 
-        // Criar conjunto de grupos (tracks) únicos
-        const tracksSet = new Set();
-        entities.forEach(entity => {
-            if (entity.track) {
-                tracksSet.add(entity.track);
+        datedEntities.forEach((entity) => {
+            const track = entity.track || "Sem tópico";
+            if (!trackIds.has(track)) {
+                trackIds.set(track, tracks.length);
+                tracks.push(track);
             }
         });
 
-        const tracks = Array.from(tracksSet);
-        console.log("Tracks encontradas:", tracks);
-
-        // Criar grupos para vis-timeline
         const groups = new DataSet(
             tracks.map((track, index) => ({
                 id: index,
-                content: track || "Sem categoria",
-                title: track || "Sem categoria"
+                content: escapeHtml(track),
+                title: escapeHtml(track),
+                order: index
             }))
         );
 
-        // Mapear track para group id
-        const trackToGroupId = {};
-        tracks.forEach((track, index) => {
-            trackToGroupId[track || "undefined"] = index;
-        });
-
-        // Calcular intervalo de dados para zoom automático
-        let minYear = Infinity;
-        let maxYear = -Infinity;
-        
-        entities.forEach(entity => {
-            if (entity.start_year) {
-                minYear = Math.min(minYear, entity.start_year);
-                maxYear = Math.max(maxYear, entity.end_year || entity.start_year);
-            }
-        });
-
-        // Criar itens da timeline
         const items = new DataSet(
-            entities.map((entity, index) => {
-                const groupId = trackToGroupId[entity.track || "undefined"];
-                
-                return {
-                    id: entity.id || index,
-                    group: groupId,
-                    content: entity.name, // Apenas o nome
-                    start: entity.start_year ? new Date(entity.start_year, 0, 1) : new Date(),
-                    end: entity.end_year && entity.end_year !== entity.start_year 
-                        ? new Date(entity.end_year, 11, 31) 
-                        : null,
-                    title: `<div style="font-weight: bold; margin-bottom: 8px;">${entity.name}</div><div>${entity.description || "Sem descrição"}</div><div style="margin-top: 8px; font-size: 0.9em; color: #666;">${formatYear(entity.start_year)} - ${formatYear(entity.end_year || entity.start_year)}</div>`,
-                    type: entity.end_year && entity.end_year !== entity.start_year ? "range" : "point"
-                };
-            })
+            datedEntities.map((entity, index) => ({
+                id: entity.id ?? `timeline-${index}`,
+                group: trackIds.get(entity.track || "Sem tópico"),
+                content: escapeHtml(entity.name),
+                start: yearToDate(entity.start_year),
+                type: "point",
+                className: "vis-point-event",
+                title: [
+                    `<strong>${escapeHtml(entity.name)}</strong>`,
+                    `<span>${formatYear(entity.start_year)}</span>`,
+                    entity.description
+                        ? `<span>${escapeHtml(entity.description)}</span>`
+                        : ""
+                ].filter(Boolean).join("<br>")
+            }))
         );
 
-        const options = {
-            orientation: {
-                axis: "top",
-                item: "top"
-            },
+        const years = datedEntities.map((entity) => entity.start_year);
+        const minYear = Math.min(...years);
+        const maxYear = Math.max(...years);
+        const span = Math.max(1, maxYear - minYear);
+        const windowMargin = Math.max(25, Math.ceil(span * 0.05));
+
+        const timeline = new Timeline(containerRef.current, items, groups, {
+            orientation: { axis: "top", item: "top" },
+            groupOrder: "order",
+            stack: true,
             zoomable: true,
             moveable: true,
-            stack: true,
+            horizontalScroll: true,
+            verticalScroll: true,
+            zoomKey: "ctrlKey",
+            height: "68vh",
+            minHeight: "420px",
             margin: {
-                item: {
-                    horizontal: 15,
-                    vertical: 15
-                }
+                axis: 18,
+                item: { horizontal: 12, vertical: 16 }
             },
-            timeaxis: {
-                scale: "year",
-                step: 100
-            }
-        };
-
-        const timeline = new Timeline(
-            containerRef.current,
-            items,
-            groups,
-            options
-        );
-
-        timelineRef.current = timeline;
-
-        // Fazer zoom automático para mostrar todos os dados
-        if (minYear !== Infinity && maxYear !== -Infinity) {
-            // Adicionar margem de 10% para visualização melhor
-            const margin = Math.max(100, (maxYear - minYear) * 0.1);
-            const startDate = new Date(minYear - Math.ceil(margin), 0, 1);
-            const endDate = new Date(maxYear + Math.ceil(margin), 11, 31);
-            
-            // Usar setTimeout para permitir que a timeline seja renderizada primeiro
-            setTimeout(() => {
-                timeline.setWindow(startDate, endDate);
-            }, 100);
-        }
-
-        // Tooltip personalizado
-        timeline.on("click", (event) => {
-            if (event.item) {
-                console.log("Item clicado:", event.item);
-            }
+            showCurrentTime: false,
+            tooltip: { followMouse: true, overflowMethod: "cap" }
         });
 
-        return () => {
-            timeline.destroy();
-        };
+        timeline.setWindow(
+            yearToDate(minYear - windowMargin),
+            yearToDate(maxYear + windowMargin),
+            { animation: false }
+        );
 
+        return () => timeline.destroy();
     }, [entities]);
 
-
+    const hasDatedEntities = (entities || []).some(
+        (entity) => Number.isInteger(entity.start_year)
+    );
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-            <div
-                ref={containerRef}
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "none",
-                    borderRadius: "0",
-                    overflow: "hidden",
-                    flex: 1
-                }}
-            />
-            {(!entities || entities.length === 0) && (
-                <div style={{ padding: "20px", textAlign: "center", color: "#999" }}>
-                    Nenhum evento para exibir
+        <div className="timeline-shell">
+            <div ref={containerRef} className="timeline-container" />
+            {!hasDatedEntities && (
+                <div className="timeline-empty">
+                    Nenhum evento com data de início para exibir
                 </div>
             )}
         </div>

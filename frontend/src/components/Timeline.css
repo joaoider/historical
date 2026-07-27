@@ -1,65 +1,87 @@
-.timeline {
-
-    position: relative;
-
+.timeline-shell {
     width: 100%;
-
-    height: 500px;
-
-    border: 1px solid #ddd;
-
-    background: white;
-
-    overflow-x: auto;
-
+    min-height: 420px;
+    background: #fff;
 }
 
-.axis {
-
-    position: absolute;
-
-    top: 250px;
-
-    left: 0;
-
-    width: 3000px;
-
-    height: 3px;
-
-    background: black;
-
+.timeline-container {
+    width: 100%;
+    min-height: 420px;
 }
 
-.item {
-
-    position: absolute;
-
-    transform: translateX(-50%);
-
+.timeline-empty {
+    padding: 48px 20px;
+    color: #777;
     text-align: center;
-
-    cursor: pointer;
-
 }
 
-.dot {
+/* Cabeçalho temporal e coluna de tópicos, como na planilha de referência. */
+.timeline-container .vis-panel.vis-top,
+.timeline-container .vis-time-axis .vis-text {
+    background: #f4f1e9;
+}
 
-    width: 12px;
+.timeline-container .vis-labelset .vis-label {
+    width: 230px;
+    border-bottom-color: #d9d4c8;
+    background: #f4f1e9;
+    color: #292722;
+    font-weight: 650;
+}
 
-    height: 12px;
+.timeline-container .vis-labelset .vis-label .vis-inner {
+    padding: 14px 18px;
+    white-space: normal;
+}
 
+.timeline-container .vis-foreground .vis-group {
+    border-bottom: 1px solid #e4e0d7;
+}
+
+.timeline-container .vis-time-axis .vis-grid.vis-minor {
+    border-color: #e8e4da;
+}
+
+.timeline-container .vis-time-axis .vis-grid.vis-major {
+    border-color: #c9c2b4;
+}
+
+/* Cada nome representa somente seu nascimento/início, nunca um intervalo. */
+.timeline-container .vis-item.vis-point-event {
+    border: 0;
+    background: transparent;
+    color: #25231f;
+    font-size: 13px;
+}
+
+.timeline-container .vis-item.vis-point-event .vis-dot {
+    width: 11px;
+    height: 11px;
+    border: 2px solid #fff;
     border-radius: 50%;
-
-    background: steelblue;
-
-    margin: auto;
-
+    background: #b54132;
+    box-shadow: 0 0 0 2px #b54132;
 }
 
-.label {
+.timeline-container .vis-item.vis-point-event .vis-item-content {
+    max-width: 180px;
+    padding: 2px 6px;
+    overflow: visible;
+    white-space: normal;
+    line-height: 1.2;
+}
 
-    margin-top: 8px;
+.timeline-container .vis-item.vis-point-event.vis-selected .vis-dot {
+    background: #263f73;
+    box-shadow: 0 0 0 3px #263f73;
+}
 
-    font-size: 14px;
+@media (max-width: 768px) {
+    .timeline-container .vis-labelset .vis-label {
+        width: 150px;
+    }
 
+    .timeline-container .vis-labelset .vis-label .vis-inner {
+        padding: 10px;
+    }
 }
