@@ -1,5 +1,6 @@
 import {
     useEffect,
+    useRef,
     useState
 } from "react";
 
@@ -8,6 +9,7 @@ import api from "./services/api";
 
 import Timeline from "./components/Timeline";
 import Filters from "./components/Filters";
+import MapView from "./components/MapView";
 
 import "./App.css";
 
@@ -18,8 +20,10 @@ function App() {
     const [tracks, setTracks] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [activeView, setActiveView] = useState("timeline");
 
     const [selectedTracks, setSelectedTracks] = useState(null);
+    const latestTimelineRequest = useRef(0);
 
 
     // Carregar eventos da timeline
@@ -30,12 +34,15 @@ function App() {
 
     // Recarregar timeline quando filtros mudam
     useEffect(() => {
-        if (selectedTracks !== null) fetchTimeline();
+        if (selectedTracks === null) return;
+
+        const requestId = ++latestTimelineRequest.current;
+        fetchTimeline(selectedTracks, requestId);
     }, [selectedTracks]);
 
 
-    const fetchTimeline = async () => {
-        if (selectedTracks.length === 0) {
+    const fetchTimeline = async (tracksToFetch, requestId) => {
+        if (tracksToFetch.length === 0) {
             setTimeline([]);
             setError(null);
             setLoading(false);
@@ -46,19 +53,24 @@ function App() {
             setLoading(true);
             setError(null);
 
-            const params = new URLSearchParams();
-            
-            selectedTracks.forEach((track) => params.append("track", track));
+            const responses = await Promise.all(
+                tracksToFetch.map((track) => api.get("/timeline", { params: { track } }))
+            );
+            const combinedTimeline = responses.flatMap((response) => response.data);
 
-            const response = await api.get("/timeline", { params });
-            setTimeline(response.data);
+            if (requestId === latestTimelineRequest.current) {
+                setTimeline(combinedTimeline);
+            }
 
         } catch (err) {
+            if (requestId !== latestTimelineRequest.current) return;
             console.error("Erro ao carregar timeline:", err);
             setError("Falha ao carregar eventos. Verifique se o servidor está rodando.");
             setTimeline([]);
         } finally {
-            setLoading(false);
+            if (requestId === latestTimelineRequest.current) {
+                setLoading(false);
+            }
         }
     };
 
@@ -84,6 +96,23 @@ function App() {
             </header>
 
             <div className="app-content">
+                <nav className="view-tabs" aria-label="Visualizações">
+                    <button
+                        type="button"
+                        className={activeView === "timeline" ? "active" : ""}
+                        onClick={() => setActiveView("timeline")}
+                    >
+                        Linha do tempo
+                    </button>
+                    <button
+                        type="button"
+                        className={activeView === "map" ? "active" : ""}
+                        onClick={() => setActiveView("map")}
+                    >
+                        Mapa de origens
+                    </button>
+                </nav>
+
                 <Filters
                     tracks={tracks}
                     selectedTracks={selectedTracks || []}
@@ -105,9 +134,11 @@ function App() {
 
                     {!loading && (
                         <>
-                            <Timeline
-                                entities={timeline}
-                            />
+                            {activeView === "timeline" ? (
+                                <Timeline entities={timeline} />
+                            ) : (
+                                <MapView entities={timeline} />
+                            )}
                         </>
                     )}
                 </div>

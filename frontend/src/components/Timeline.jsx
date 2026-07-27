@@ -1,15 +1,20 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import "./Timeline.css";
 
 
-const CARD_WIDTH = 142;
-const CARD_HEIGHT = 66;
+const CARD_HEIGHT = 50;
 const CARD_GAP = 16;
 const LANE_HEIGHT = 88;
+const MIN_CARD_WIDTH = 82;
+const MAX_CARD_WIDTH = 210;
 const YEAR_WIDTH = 3;
+const MARKER_INTERVAL = 100;
 const SIDE_PADDING = 130;
 const AXIS_GAP = 32;
+const MIN_TRACK_HEIGHT = 520;
+const MIN_ZOOM = 0.08;
+const MAX_ZOOM = 1.5;
 
 const TRACK_COLORS = {
     "Filósofos": "#c54832",
@@ -42,6 +47,16 @@ function formatYear(year) {
 }
 
 
+function getCardWidth(name, hasImage = false) {
+    const estimatedTextWidth = [...name].reduce((width, character) => (
+        width + (/[A-ZÁÉÍÓÚÂÊÔÃÕMW]/.test(character) ? 7.2 : 5.7)
+    ), 0);
+
+    const imageSpace = hasImage ? 38 : 0;
+    return Math.min(MAX_CARD_WIDTH, Math.max(MIN_CARD_WIDTH, Math.ceil(estimatedTextWidth + 24 + imageSpace)));
+}
+
+
 function assignLane(lanes, left, right) {
     const availableLane = lanes.findIndex((lastRight) => left > lastRight + CARD_GAP);
     if (availableLane >= 0) {
@@ -50,6 +65,40 @@ function assignLane(lanes, left, right) {
     }
     lanes.push(right);
     return lanes.length - 1;
+}
+
+
+function positionTrackEvents(events, minYear) {
+    const aboveLanes = [];
+    const belowLanes = [];
+    const positionedEvents = events.map((event, index) => {
+        const x = SIDE_PADDING + (event.start_year - minYear) * YEAR_WIDTH;
+        const cardWidth = getCardWidth(event.name, Boolean(event.image_url));
+        const left = x - cardWidth / 2;
+        const right = x + cardWidth / 2;
+        const side = index % 2 === 0 ? "above" : "below";
+        const lanes = side === "above" ? aboveLanes : belowLanes;
+        const lane = assignLane(lanes, left, right);
+
+        return {
+            ...event,
+            x,
+            cardWidth,
+            side,
+            lane,
+            color: getTrackColor(event.track || "Sem categoria")
+        };
+    });
+
+    const aboveHeight = Math.max(1, aboveLanes.length) * LANE_HEIGHT;
+    const belowHeight = Math.max(1, belowLanes.length) * LANE_HEIGHT;
+    const axisY = aboveHeight + AXIS_GAP;
+
+    return {
+        positionedEvents,
+        axisY,
+        height: axisY + AXIS_GAP + belowHeight
+    };
 }
 
 
@@ -62,59 +111,52 @@ function buildLayout(entities) {
 
     const dataMin = events[0].start_year;
     const dataMax = events[events.length - 1].start_year;
-    const minYear = Math.floor(dataMin / 50) * 50;
-    const maxYear = Math.max(minYear + 50, Math.ceil(dataMax / 50) * 50);
+    const minYear = Math.floor(dataMin / MARKER_INTERVAL) * MARKER_INTERVAL;
+    const maxYear = Math.max(
+        minYear + MARKER_INTERVAL,
+        Math.ceil(dataMax / MARKER_INTERVAL) * MARKER_INTERVAL
+    );
     const width = SIDE_PADDING * 2 + (maxYear - minYear) * YEAR_WIDTH;
-    const aboveLanes = [];
-    const belowLanes = [];
-    const positionedEvents = events.map((event, index) => {
-        const x = SIDE_PADDING + (event.start_year - minYear) * YEAR_WIDTH;
-        const left = x - CARD_WIDTH / 2;
-        const right = x + CARD_WIDTH / 2;
-        const side = index % 2 === 0 ? "above" : "below";
-        const lanes = side === "above" ? aboveLanes : belowLanes;
-        const lane = assignLane(lanes, left, right);
-
-        return {
-            ...event,
-            x,
-            side,
-            lane,
-            color: getTrackColor(event.track || "Sem categoria")
-        };
-    });
-
-    const aboveHeight = Math.max(1, aboveLanes.length) * LANE_HEIGHT;
-    const belowHeight = Math.max(1, belowLanes.length) * LANE_HEIGHT;
-    const axisY = aboveHeight + AXIS_GAP;
-    const height = axisY + AXIS_GAP + belowHeight;
     const markers = [];
-    for (let year = minYear; year <= maxYear; year += 50) {
+    for (let year = minYear; year <= maxYear; year += MARKER_INTERVAL) {
         markers.push({ year, x: SIDE_PADDING + (year - minYear) * YEAR_WIDTH });
     }
 
-    return { positionedEvents, markers, width, height, axisY };
+    const groupedEvents = new Map();
+    events.forEach((event) => {
+        const track = event.track || "Sem categoria";
+        if (!groupedEvents.has(track)) groupedEvents.set(track, []);
+        groupedEvents.get(track).push(event);
+    });
+
+    const tracks = [...groupedEvents].map(([name, trackEvents]) => ({
+        name,
+        color: getTrackColor(name),
+        ...positionTrackEvents(trackEvents, minYear)
+    })).map((track) => ({ ...track, height: Math.max(MIN_TRACK_HEIGHT, track.height) }));
+
+    return {
+        tracks,
+        markers,
+        width,
+        height: tracks.reduce((total, track) => total + track.height, 0)
+    };
 }
 
 
 function Timeline({ entities }) {
     const scrollerRef = useRef(null);
+    const [zoom, setZoom] = useState(1);
     const layout = useMemo(() => buildLayout(entities || []), [entities]);
 
-    useEffect(() => {
-        const scroller = scrollerRef.current;
-        if (!scroller || !layout) return;
+    const changeZoom = (nextZoom) => {
+        setZoom(Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, nextZoom)));
+    };
 
-        const frame = window.requestAnimationFrame(() => {
-            scroller.scrollTop = Math.max(0, layout.axisY - scroller.clientHeight / 2);
-        });
-
-        return () => window.cancelAnimationFrame(frame);
-    }, [layout]);
-
-    const scrollHorizontally = (event) => {
-        if (!scrollerRef.current || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-        scrollerRef.current.scrollLeft += event.deltaY;
+    const fitEntireTimeline = () => {
+        const availableWidth = scrollerRef.current?.clientWidth || layout.width;
+        changeZoom(availableWidth / layout.width);
+        if (scrollerRef.current) scrollerRef.current.scrollLeft = 0;
     };
 
     if (!layout) {
@@ -123,70 +165,100 @@ function Timeline({ entities }) {
 
     return (
         <section className="infographic-timeline">
-            <div className="timeline-scroll-hint">
-                <span>←</span> Arraste a barra inferior ou use a roda do mouse para percorrer <span>→</span>
+            <div className="timeline-toolbar">
+                <div className="timeline-scroll-hint">
+                    <span>←</span> Arraste a barra inferior para comparar as categorias na mesma escala <span>→</span>
+                </div>
+                <div className="timeline-zoom-controls" aria-label="Controles de zoom">
+                    <button type="button" onClick={() => changeZoom(zoom - 0.1)} disabled={zoom <= MIN_ZOOM}>
+                        −
+                    </button>
+                    <span>{Math.round(zoom * 100)}%</span>
+                    <button type="button" onClick={() => changeZoom(zoom + 0.1)} disabled={zoom >= MAX_ZOOM}>
+                        +
+                    </button>
+                    <button type="button" className="fit-timeline-btn" onClick={fitEntireTimeline}>
+                        Ver tudo
+                    </button>
+                </div>
             </div>
             <div
                 ref={scrollerRef}
                 className="timeline-horizontal-scroll"
-                onWheel={scrollHorizontally}
                 tabIndex="0"
                 aria-label="Linha do tempo histórica com rolagem horizontal"
             >
                 <div
-                    className="timeline-canvas"
-                    style={{ width: layout.width, height: layout.height }}
+                    className="timeline-comparison"
+                    style={{ width: layout.width * zoom, height: layout.height * zoom }}
                 >
-                    <div className="timeline-main-axis" style={{ top: layout.axisY }} />
-
-                    {layout.markers.map(({ year, x }) => (
+                    <div
+                        className="timeline-zoom-layer"
+                        style={{
+                            width: layout.width,
+                            height: layout.height,
+                            transform: `scale(${zoom})`
+                        }}
+                    >
+                    {layout.tracks.map((track) => (
                         <div
-                            key={year}
-                            className="timeline-year-marker"
-                            style={{ left: x, top: layout.axisY }}
+                            key={track.name}
+                            className="timeline-canvas timeline-track"
+                            style={{ width: layout.width, height: track.height, "--track-color": track.color }}
                         >
-                            <i aria-hidden="true" />
-                            <span>{formatYear(year)}</span>
-                        </div>
-                    ))}
+                            <h3 className="timeline-track-title">{track.name}</h3>
+                            <div className="timeline-main-axis" style={{ top: track.axisY }} />
 
-                    {layout.positionedEvents.map((event) => {
+                            {layout.markers.map(({ year, x }) => (
+                                <div
+                                    key={year}
+                                    className="timeline-year-marker"
+                                    style={{ left: x, top: track.axisY }}
+                                >
+                                    <i aria-hidden="true" />
+                                    <span>{formatYear(year)}</span>
+                                </div>
+                            ))}
+
+                            {track.positionedEvents.map((event) => {
                         const isAbove = event.side === "above";
                         const cardTop = isAbove
-                            ? layout.axisY - AXIS_GAP - CARD_HEIGHT - event.lane * LANE_HEIGHT
-                            : layout.axisY + AXIS_GAP + event.lane * LANE_HEIGHT;
+                                    ? track.axisY - AXIS_GAP - CARD_HEIGHT - event.lane * LANE_HEIGHT
+                                    : track.axisY + AXIS_GAP + event.lane * LANE_HEIGHT;
 
                         return (
                             <article
                                 key={event.id}
-                                className={`timeline-event-card ${event.side}`}
+                                className={`timeline-event-card ${event.side} ${event.image_url ? "has-image" : ""}`}
                                 style={{
-                                    left: event.x - CARD_WIDTH / 2,
+                                    left: event.x - event.cardWidth / 2,
                                     top: cardTop,
-                                    width: CARD_WIDTH,
+                                    width: event.cardWidth,
                                     height: CARD_HEIGHT,
                                     "--event-color": event.color
                                 }}
                                 title={event.description || event.name}
                             >
-                                <strong>{event.name}</strong>
-                                <span className="timeline-event-group">
-                                    Grupo: {event.track || "Sem categoria"}
+                                {event.image_url && (
+                                    <img src={event.image_url} alt={`Representação de ${event.name}`} />
+                                )}
+                                <span className="timeline-event-details">
+                                    <strong>{event.name}</strong>
+                                    <time>{formatYear(event.start_year)}</time>
                                 </span>
-                                <time>{formatYear(event.start_year)}</time>
                             </article>
                         );
-                    })}
+                            })}
 
-                    {layout.positionedEvents.map((event) => {
+                            {track.positionedEvents.map((event) => {
                         const isAbove = event.side === "above";
                         const cardTop = isAbove
-                            ? layout.axisY - AXIS_GAP - CARD_HEIGHT - event.lane * LANE_HEIGHT
-                            : layout.axisY + AXIS_GAP + event.lane * LANE_HEIGHT;
-                        const top = isAbove ? cardTop + CARD_HEIGHT : layout.axisY;
+                                    ? track.axisY - AXIS_GAP - CARD_HEIGHT - event.lane * LANE_HEIGHT
+                                    : track.axisY + AXIS_GAP + event.lane * LANE_HEIGHT;
+                                const top = isAbove ? cardTop + CARD_HEIGHT : track.axisY;
                         const height = isAbove
-                            ? layout.axisY - top
-                            : cardTop - layout.axisY;
+                                    ? track.axisY - top
+                                    : cardTop - track.axisY;
 
                         return (
                             <i
@@ -201,7 +273,10 @@ function Timeline({ entities }) {
                                 }}
                             />
                         );
-                    })}
+                            })}
+                        </div>
+                    ))}
+                    </div>
                 </div>
             </div>
         </section>

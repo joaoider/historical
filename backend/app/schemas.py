@@ -5,6 +5,10 @@ class EntityBase(BaseModel):
     name: str
     entity_type: str
     description: str | None = None
+    image_url: str | None = None
+    origin_country: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
     track: str | None = None
     start_year: int | None = None
     end_year: int | None = None
@@ -33,6 +37,10 @@ class TimelineResponse(BaseModel):
     entity_type: str
     track: str | None = None
     description: str | None = None
+    image_url: str | None = None
+    origin_country: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
     start_year: int | None = None
     end_year: int | None = None
 

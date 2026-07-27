@@ -79,6 +79,70 @@ START_YEARS = {
     "O Código Da Vinci": 2003,
 }
 
+AUTHORS = {
+    "Instruções de Shuruppak": "autoria anônima da tradição suméria",
+    "Textos das Pirâmides": "autoria coletiva de escribas e sacerdotes do Egito Antigo",
+    "Máximas de Ptahhotep": "Ptahhotep (atribuição tradicional)",
+    "Hinos de Enheduanna": "Enheduanna",
+    "Epopeia de Gilgamesh": "autoria anônima; versão clássica atribuída a Sin-léqi-unnínni",
+    "História de Sinuhe": "autoria anônima do Egito Antigo",
+    "Código de Hamurábi": "Hamurábi (promulgação)",
+    "Épico de Atrahasis": "autoria anônima da tradição mesopotâmica",
+    "O Livro dos Mortos": "autoria coletiva de escribas do Egito Antigo",
+    "Rigveda": "diversos sábios da tradição védica",
+    "Torá (Pentateuco)": "autoria tradicionalmente atribuída a Moisés",
+    "Enuma Elish": "autoria anônima da tradição babilônica",
+    "Instruções de Amenemope": "Amenemope (atribuição tradicional)",
+    "I Ching": "autoria tradicionalmente ligada a Fu Xi, Rei Wen e Duque de Zhou",
+    "Livro dos Salmos": "diversos autores; muitos salmos são atribuídos a Davi",
+    "Upanishads (Antigas)": "diversos sábios da tradição védica",
+    "Ilíada": "Homero",
+    "Odisseia": "Homero",
+    "Trabalhos e Dias": "Hesíodo",
+    "Teogonia": "Hesíodo",
+    "Ramayana": "Valmiki (atribuição tradicional)",
+    "A Arte da Guerra": "Sun Tzu",
+    "Édipo Rei": "Sófocles",
+    "Tao Te Ching": "Lao-Tsé (atribuição tradicional)",
+    "A República": "Platão",
+    "Ética a Nicômaco": "Aristóteles",
+    "Eneida": "Virgílio",
+    "Metamorfoses": "Ovídio",
+    "Meditações": "Marco Aurélio",
+    "Confissões": "Agostinho de Hipona",
+    "Consolação da Filosofia": "Boécio",
+    "Alcorão": "revelado a Maomé segundo a tradição islâmica",
+    "As Mil e Uma Noites": "diversos autores anônimos das tradições árabe, persa e indiana",
+    "Os Contos de Genji": "Murasaki Shikibu",
+    "A Divina Comédia": "Dante Alighieri",
+    "Os Contos de Cantuária": "Geoffrey Chaucer",
+    "Utopia": "Thomas More",
+    "O Príncipe": "Nicolau Maquiavel",
+    "Os Lusíadas": "Luís de Camões",
+    "Hamlet": "William Shakespeare",
+    "Dom Quixote": "Miguel de Cervantes",
+    "Paraíso Perdido": "John Milton",
+    "O Contrato Social": "Jean-Jacques Rousseau",
+    "Os Sofrimentos do Jovem Werther": "Johann Wolfgang von Goethe",
+    "Crítica da Razão Pura": "Immanuel Kant",
+    "Orgulho e Preconceito": "Jane Austen",
+    "Os Miseráveis": "Victor Hugo",
+    "Crime e Castigo": "Fiódor Dostoiévski",
+    "Dom Casmurro": "Machado de Assis",
+    "A Metamorfose": "Franz Kafka",
+    "O Grande Gatsby": "F. Scott Fitzgerald",
+    "O Estrangeiro": "Albert Camus",
+    "O Ser e o Nada": "Jean-Paul Sartre",
+    "1984": "George Orwell",
+    "Cem Anos de Solidão": "Gabriel García Márquez",
+    "O Caçador de Pipas": "Khaled Hosseini",
+    "O Código Da Vinci": "Dan Brown",
+    "A Menina que Roubava Livros": "Markus Zusak",
+    "A Estrada": "Cormac McCarthy",
+    "A Amiga Genial": "Elena Ferrante",
+    "Sapiens: Uma Breve História da Humanidade": "Yuval Noah Harari",
+}
+
 
 def read_books():
     """Lê a seção Livros (cabeçalho 22 e linhas associadas 23–27)."""
@@ -108,9 +172,13 @@ def import_books():
     names = read_books()
     missing_years = sorted(set(names) - set(START_YEARS))
     extra_years = sorted(set(START_YEARS) - set(names))
-    if missing_years or extra_years:
+    missing_authors = sorted(set(names) - set(AUTHORS))
+    extra_authors = sorted(set(AUTHORS) - set(names))
+    if missing_years or extra_years or missing_authors or extra_authors:
         raise ValueError(
-            f"Mapeamento divergente da planilha. Sem ano: {missing_years}; extras: {extra_years}"
+            "Mapeamento divergente da planilha. "
+            f"Sem ano: {missing_years}; anos extras: {extra_years}; "
+            f"sem autor: {missing_authors}; autores extras: {extra_authors}"
         )
 
     database = SessionLocal()
@@ -134,8 +202,7 @@ def import_books():
 
             entity.entity_type = "Livro"
             entity.start_year = START_YEARS[name]
-            if not entity.description:
-                entity.description = "Livro ou texto listado no arquivo HISTORY OF.xlsx."
+            entity.description = f"Autor: {AUTHORS[name]}."
 
         database.commit()
         print(f"Planilha: {len(names)} livros | criados: {created} | atualizados: {updated}")

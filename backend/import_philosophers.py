@@ -48,10 +48,7 @@ BIRTH_YEARS = {
     "Jean-Paul Sartre": 1905,
     "Michel Foucault": 1926,
     "Albert Camus": 1913,
-    "Hannah Arendt": 1906,
     "Ludwig Wittgenstein": 1889,
-    "Slavoj Žižek": 1949,
-    "Judith Butler": 1956,
     "Jürgen Habermas": 1929,
 }
 

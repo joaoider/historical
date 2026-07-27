@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from sqlalchemy import Column, Float, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -28,6 +28,16 @@ class Entity(Base):
 
     description = Column(
         Text)
+
+    image_url = Column(
+        String(500))
+
+    origin_country = Column(
+        String(120))
+
+    latitude = Column(Float)
+
+    longitude = Column(Float)
 
     start_year = Column(
         Integer)
