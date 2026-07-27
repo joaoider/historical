@@ -1,87 +1,151 @@
-.timeline-shell {
+.infographic-timeline {
     width: 100%;
-    min-height: 420px;
-    background: #fff;
+    border: 1px solid #d8d1c5;
+    background: #fffdf8;
 }
 
-.timeline-container {
-    width: 100%;
-    min-height: 420px;
-}
-
-.timeline-empty {
-    padding: 48px 20px;
-    color: #777;
+.timeline-scroll-hint {
+    padding: 9px 16px;
+    border-bottom: 1px solid #ded8cd;
+    background: #f4f1e9;
+    color: #6a6258;
+    font-size: 12px;
     text-align: center;
 }
 
-/* Cabeçalho temporal e coluna de tópicos, como na planilha de referência. */
-.timeline-container .vis-panel.vis-top,
-.timeline-container .vis-time-axis .vis-text {
-    background: #f4f1e9;
+.timeline-scroll-hint span {
+    color: #b44630;
+    font-weight: 800;
 }
 
-.timeline-container .vis-labelset .vis-label {
-    width: 230px;
-    border-bottom-color: #d9d4c8;
-    background: #f4f1e9;
-    color: #292722;
-    font-weight: 650;
+.timeline-horizontal-scroll {
+    width: 100%;
+    max-height: 76vh;
+    overflow: auto;
+    scrollbar-color: #a99d8c #eee9df;
+    scrollbar-width: auto;
 }
 
-.timeline-container .vis-labelset .vis-label .vis-inner {
-    padding: 14px 18px;
-    white-space: normal;
+.timeline-horizontal-scroll:focus-visible {
+    outline: 3px solid rgb(38 93 145 / 28%);
+    outline-offset: -3px;
 }
 
-.timeline-container .vis-foreground .vis-group {
-    border-bottom: 1px solid #e4e0d7;
+.timeline-canvas {
+    min-height: 520px;
+    position: relative;
+    background: linear-gradient(180deg, #fff 0%, #fffdf8 48%, #fdfaf3 100%);
 }
 
-.timeline-container .vis-time-axis .vis-grid.vis-minor {
-    border-color: #e8e4da;
+.timeline-main-axis {
+    height: 6px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    border-block: 1px solid #c7bba9;
+    background: #e8dfd2;
+    box-shadow: 0 1px 2px rgb(60 48 35 / 12%);
 }
 
-.timeline-container .vis-time-axis .vis-grid.vis-major {
-    border-color: #c9c2b4;
+.timeline-year-marker {
+    position: absolute;
+    z-index: 3;
+    transform: translate(-50%, -50%);
 }
 
-/* Cada nome representa somente seu nascimento/início, nunca um intervalo. */
-.timeline-container .vis-item.vis-point-event {
-    border: 0;
-    background: transparent;
-    color: #25231f;
-    font-size: 13px;
-}
-
-.timeline-container .vis-item.vis-point-event .vis-dot {
-    width: 11px;
-    height: 11px;
-    border: 2px solid #fff;
+.timeline-year-marker i {
+    width: 12px;
+    height: 12px;
+    display: block;
+    border: 3px solid #fff;
     border-radius: 50%;
-    background: #b54132;
-    box-shadow: 0 0 0 2px #b54132;
+    background: #8f7e67;
+    box-shadow: 0 0 0 2px #8f7e67;
 }
 
-.timeline-container .vis-item.vis-point-event .vis-item-content {
-    max-width: 180px;
-    padding: 2px 6px;
-    overflow: visible;
-    white-space: normal;
-    line-height: 1.2;
+.timeline-year-marker span {
+    position: absolute;
+    top: 17px;
+    left: 50%;
+    padding: 2px 4px;
+    transform: translateX(-50%);
+    background: rgb(255 253 248 / 92%);
+    color: #5d5347;
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
-.timeline-container .vis-item.vis-point-event.vis-selected .vis-dot {
-    background: #263f73;
-    box-shadow: 0 0 0 3px #263f73;
+.timeline-event-card {
+    padding: 8px 9px;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #d7cec0;
+    border-top: 5px solid var(--event-color);
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 3px 9px rgb(62 48 31 / 14%);
+    text-align: center;
 }
 
-@media (max-width: 768px) {
-    .timeline-container .vis-labelset .vis-label {
-        width: 150px;
-    }
+.timeline-event-card:hover {
+    z-index: 5;
+    border-color: var(--event-color);
+    box-shadow: 0 6px 16px rgb(62 48 31 / 24%);
+    transform: translateY(-2px);
+}
 
-    .timeline-container .vis-labelset .vis-label .vis-inner {
-        padding: 10px;
-    }
+.timeline-event-card strong {
+    display: -webkit-box;
+    overflow: hidden;
+    color: #2c2925;
+    font-size: 12px;
+    line-height: 1.25;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.timeline-event-card span {
+    margin-top: 3px;
+    overflow: hidden;
+    color: #746b60;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.timeline-event-card time {
+    margin-top: 3px;
+    color: var(--event-color);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.timeline-event-connector {
+    width: 2px;
+    min-height: 20px;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    background: var(--event-color);
+    opacity: 0.75;
+    transform: translateX(-50%);
+}
+
+.timeline-empty {
+    padding: 60px 20px;
+    border: 1px solid #ddd5c8;
+    background: #fffdf8;
+    color: #756c61;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .timeline-scroll-hint { text-align: left; }
+    .timeline-horizontal-scroll { max-height: 70vh; }
 }
