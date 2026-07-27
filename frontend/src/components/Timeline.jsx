@@ -3,10 +3,10 @@ import { useEffect, useMemo, useRef } from "react";
 import "./Timeline.css";
 
 
-const CARD_WIDTH = 168;
-const CARD_HEIGHT = 78;
-const CARD_GAP = 22;
-const LANE_HEIGHT = 104;
+const CARD_WIDTH = 142;
+const CARD_HEIGHT = 66;
+const CARD_GAP = 16;
+const LANE_HEIGHT = 88;
 const YEAR_WIDTH = 3;
 const SIDE_PADDING = 130;
 const AXIS_GAP = 32;
