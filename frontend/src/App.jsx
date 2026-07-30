@@ -8,6 +8,7 @@ import {
 import api from "./services/api";
 
 import Timeline from "./components/Timeline";
+import VerticalTimeline from "./components/VerticalTimeline";
 import Filters from "./components/Filters";
 import MapView from "./components/MapView";
 
@@ -18,27 +19,12 @@ function App() {
 
     const [timeline, setTimeline] = useState([]);
     const [tracks, setTracks] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [activeView, setActiveView] = useState("timeline");
 
     const [selectedTracks, setSelectedTracks] = useState(null);
     const latestTimelineRequest = useRef(0);
-
-
-    // Carregar eventos da timeline
-    useEffect(() => {
-        fetchTracks();
-    }, []);
-
-
-    // Recarregar timeline quando filtros mudam
-    useEffect(() => {
-        if (selectedTracks === null) return;
-
-        const requestId = ++latestTimelineRequest.current;
-        fetchTimeline(selectedTracks, requestId);
-    }, [selectedTracks]);
 
 
     const fetchTimeline = async (tracksToFetch, requestId) => {
@@ -75,16 +61,35 @@ function App() {
     };
 
 
-    const fetchTracks = async () => {
-        try {
-            const response = await api.get("/tracks");
+    // Carregar categorias ao abrir a aplicação.
+    useEffect(() => {
+        api.get("/tracks").then((response) => {
             const trackNames = response.data.map((track) => track.name);
+
+            if (trackNames.length === 0) {
+                setError("Nenhuma categoria foi encontrada no banco de dados.");
+                setSelectedTracks([]);
+                return;
+            }
+
             setTracks(trackNames);
             setSelectedTracks(trackNames);
-        } catch (err) {
+        }).catch((err) => {
             console.error("Erro ao carregar tracks:", err);
-        }
-    };
+            setError("Falha ao conectar à API. Confirme que o backend está rodando na porta 8000.");
+            setSelectedTracks([]);
+            setLoading(false);
+        });
+    }, []);
+
+
+    // Recarregar timeline quando filtros mudam.
+    useEffect(() => {
+        if (selectedTracks === null) return;
+
+        const requestId = ++latestTimelineRequest.current;
+        fetchTimeline(selectedTracks, requestId);
+    }, [selectedTracks]);
 
 
     return (
@@ -111,6 +116,13 @@ function App() {
                     >
                         Mapa de origens
                     </button>
+                    <button
+                        type="button"
+                        className={activeView === "vertical" ? "active" : ""}
+                        onClick={() => setActiveView("vertical")}
+                    >
+                        Linha vertical
+                    </button>
                 </nav>
 
                 <Filters
@@ -136,8 +148,10 @@ function App() {
                         <>
                             {activeView === "timeline" ? (
                                 <Timeline entities={timeline} />
-                            ) : (
+                            ) : activeView === "map" ? (
                                 <MapView entities={timeline} />
+                            ) : (
+                                <VerticalTimeline entities={timeline} />
                             )}
                         </>
                     )}

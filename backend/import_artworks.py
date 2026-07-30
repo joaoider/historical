@@ -11,7 +11,7 @@ from backend.app.models import Entity
 ROOT = Path(__file__).resolve().parent.parent
 WORKBOOK = ROOT / "HISTORY OF.xlsx"
 NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
-TRACK = "Obras Pinturas | Esculturas"
+TRACK = "Obras"
 
 # Ano de criação ou início da execução. Valores negativos representam a.C.;
 # obras antigas sem data exata usam uma aproximação convencional.
@@ -72,6 +72,9 @@ def import_artworks():
     created = 0
     updated = 0
     try:
+        database.query(Entity).filter(
+            Entity.track == "Obras Pinturas | Esculturas"
+        ).update({Entity.track: TRACK}, synchronize_session=False)
         existing = {
             entity.name: entity
             for entity in database.query(Entity)

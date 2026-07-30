@@ -1,0 +1,142 @@
+{
+  "Quéops": {
+    "page": "https://en.wikipedia.org/wiki/Khufu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Statue_of_Khufu_in_the_Cairo_Egyptian_Museum.jpg/330px-Statue_of_Khufu_in_the_Cairo_Egyptian_Museum.jpg",
+    "local_path": "/images/leaders/queops.jpg"
+  },
+  "Sargão da Acádia": {
+    "page": "https://en.wikipedia.org/wiki/Sargon_of_Akkad",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Sargon_of_Akkad_on_his_victory_stele.jpg/330px-Sargon_of_Akkad_on_his_victory_stele.jpg",
+    "local_path": "/images/leaders/sargao-da-acadia.jpg"
+  },
+  "Moisés": {
+    "page": "https://en.wikipedia.org/wiki/Moses",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Rembrandt_Harmensz._van_Rijn_079.jpg/330px-Rembrandt_Harmensz._van_Rijn_079.jpg",
+    "local_path": "/images/leaders/moises.jpg"
+  },
+  "Ramsés II": {
+    "page": "https://en.wikipedia.org/wiki/Ramesses_II",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Ramses_II_British_Museum.jpg/330px-Ramses_II_British_Museum.jpg",
+    "local_path": "/images/leaders/ramses-ii.jpg"
+  },
+  "Rei Davi": {
+    "page": "https://en.wikipedia.org/wiki/David",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/King_David%2C_the_King_of_Israel.jpg/330px-King_David%2C_the_King_of_Israel.jpg",
+    "local_path": "/images/leaders/rei-davi.jpg"
+  },
+  "Ciro, o Grande": {
+    "page": "https://en.wikipedia.org/wiki/Cyrus_the_Great",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Cyrus_II_%28The_Great%29_%28cropped%29.jpg/330px-Cyrus_II_%28The_Great%29_%28cropped%29.jpg",
+    "local_path": "/images/leaders/ciro-o-grande.jpg"
+  },
+  "Buda": {
+    "page": "https://en.wikipedia.org/wiki/The_Buddha",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Buddha_in_Sarnath_Museum_%28Dhammajak_Mutra%29.jpg/330px-Buddha_in_Sarnath_Museum_%28Dhammajak_Mutra%29.jpg",
+    "local_path": "/images/leaders/buda.jpg"
+  },
+  "Péricles": {
+    "page": "https://en.wikipedia.org/wiki/Pericles",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Pericles_Pio-Clementino_Inv269_n2.jpg/330px-Pericles_Pio-Clementino_Inv269_n2.jpg",
+    "local_path": "/images/leaders/pericles.jpg"
+  },
+  "Alexandre, o Grande": {
+    "page": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Alexander_Mosaic_detail_of_Alexander_the_Great_%283x4_cropped%29.jpg/330px-Alexander_Mosaic_detail_of_Alexander_the_Great_%283x4_cropped%29.jpg",
+    "local_path": "/images/leaders/alexandre-o-grande.jpg"
+  },
+  "Ashoka": {
+    "page": "https://en.wikipedia.org/wiki/Ashoka",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Ashoka%27s_visit_to_the_Ramagrama_stupa_Sanchi_Stupa_1_Southern_gateway.jpg/330px-Ashoka%27s_visit_to_the_Ramagrama_stupa_Sanchi_Stupa_1_Southern_gateway.jpg",
+    "local_path": "/images/leaders/ashoka.jpg"
+  },
+  "Júlio César": {
+    "page": "https://en.wikipedia.org/wiki/Julius_Caesar",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Retrato_de_Julio_C%C3%A9sar_%2826724093101%29_%28cropped%29.jpg/330px-Retrato_de_Julio_C%C3%A9sar_%2826724093101%29_%28cropped%29.jpg",
+    "local_path": "/images/leaders/julio-cesar.jpg"
+  },
+  "Cleópatra": {
+    "page": "https://en.wikipedia.org/wiki/Cleopatra",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kleopatra-VII.-Altes-Museum-Berlin1.jpg/330px-Kleopatra-VII.-Altes-Museum-Berlin1.jpg",
+    "local_path": "/images/leaders/cleopatra.jpg"
+  },
+  "Augusto": {
+    "page": "https://en.wikipedia.org/wiki/Augustus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Augustus_of_Prima_Porta.jpg/330px-Augustus_of_Prima_Porta.jpg",
+    "local_path": "/images/leaders/augusto.jpg"
+  },
+  "Jesus": {
+    "page": "https://en.wikipedia.org/wiki/Jesus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Spas_vsederzhitel_sinay_%28cropped1%29.jpg/330px-Spas_vsederzhitel_sinay_%28cropped1%29.jpg",
+    "local_path": "/images/leaders/jesus.jpg"
+  },
+  "Constantino": {
+    "page": "https://en.wikipedia.org/wiki/Constantine_the_Great",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Statua_di_Costantino_ai_musei_capitolini.jpg/330px-Statua_di_Costantino_ai_musei_capitolini.jpg",
+    "local_path": "/images/leaders/constantino.jpg"
+  },
+  "Justiniano I": {
+    "page": "https://en.wikipedia.org/wiki/Justinian_I",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Mosaic_of_Justinianus_I_-_Basilica_San_Vitale_%28Ravenna%29.jpg/330px-Mosaic_of_Justinianus_I_-_Basilica_San_Vitale_%28Ravenna%29.jpg",
+    "local_path": "/images/leaders/justiniano-i.jpg"
+  },
+  "Maomé": {
+    "page": "https://en.wikipedia.org/wiki/Muhammad",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Al-Masjid_AL-Nabawi_Door.jpg/330px-Al-Masjid_AL-Nabawi_Door.jpg",
+    "local_path": "/images/leaders/maome.jpg"
+  },
+  "Carlos Magno": {
+    "page": "https://en.wikipedia.org/wiki/Charlemagne",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Charlemagne_denier_Mayence_812_814.jpg/330px-Charlemagne_denier_Mayence_812_814.jpg",
+    "local_path": "/images/leaders/carlos-magno.jpg"
+  },
+  "Harun al-Rashid": {
+    "page": "https://en.wikipedia.org/wiki/Harun_al-Rashid",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Harun_Al-Rashid_on_the_Takht.png/330px-Harun_Al-Rashid_on_the_Takht.png",
+    "local_path": "/images/leaders/harun-al-rashid.png"
+  },
+  "Genghis Khan": {
+    "page": "https://en.wikipedia.org/wiki/Genghis_Khan",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/YuanEmperorAlbumGenghisPortrait.jpg/330px-YuanEmperorAlbumGenghisPortrait.jpg",
+    "local_path": "/images/leaders/genghis-khan.jpg"
+  },
+  "Joana d'Arc": {
+    "page": "https://en.wikipedia.org/wiki/Joan_of_Arc",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Joan_of_Arc_miniature_graded.jpg/330px-Joan_of_Arc_miniature_graded.jpg",
+    "local_path": "/images/leaders/joana-d-arc.jpg"
+  },
+  "Pachacuti": {
+    "page": "https://en.wikipedia.org/wiki/Pachacuti",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Brooklyn_Museum_-_Pachacuti%2C_Tenth_Inca%2C_1_of_14_Portraits_of_Inca_Kings_%28cropped%29.jpg/330px-Brooklyn_Museum_-_Pachacuti%2C_Tenth_Inca%2C_1_of_14_Portraits_of_Inca_Kings_%28cropped%29.jpg",
+    "local_path": "/images/leaders/pachacuti.jpg"
+  },
+  "Solimão, o Magnífico": {
+    "page": "https://en.wikipedia.org/wiki/Suleiman_the_Magnificent",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/EmperorSuleiman.jpg/330px-EmperorSuleiman.jpg",
+    "local_path": "/images/leaders/solimao-o-magnifico.jpg"
+  },
+  "Elizabeth I": {
+    "page": "https://en.wikipedia.org/wiki/Elizabeth_I",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Darnley_stage_3.jpg/330px-Darnley_stage_3.jpg",
+    "local_path": "/images/leaders/elizabeth-i.jpg"
+  },
+  "Tokugawa Ieyasu": {
+    "page": "https://en.wikipedia.org/wiki/Tokugawa_Ieyasu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Tokugawa_Ieyasu2.JPG/330px-Tokugawa_Ieyasu2.JPG",
+    "local_path": "/images/leaders/tokugawa-ieyasu.jpg"
+  },
+  "George Washington": {
+    "page": "https://en.wikipedia.org/wiki/George_Washington",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/330px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg",
+    "local_path": "/images/leaders/george-washington.jpg"
+  },
+  "Barack Obama": {
+    "page": "https://en.wikipedia.org/wiki/Barack_Obama",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/330px-President_Barack_Obama.jpg",
+    "local_path": "/images/leaders/barack-obama.jpg"
+  },
+  "Malala Yousafzai": {
+    "page": "https://en.wikipedia.org/wiki/Malala_Yousafzai",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Malala_Yousafzai_2023_portrait_2x3.jpg/330px-Malala_Yousafzai_2023_portrait_2x3.jpg",
+    "local_path": "/images/leaders/malala-yousafzai.jpg"
+  }
+}

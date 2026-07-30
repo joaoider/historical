@@ -1,0 +1,292 @@
+{
+  "Hipócrates": {
+    "page": "https://pt.wikipedia.org/wiki/Hip%C3%B3crates",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Hippocrates.jpg",
+    "local_path": "/images/scientists/hipocrates.jpg"
+  },
+  "Euclides": {
+    "page": "https://pt.wikipedia.org/wiki/Euclides",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/30/Euklid-von-Alexandria_1.jpg",
+    "local_path": "/images/scientists/euclides.jpg"
+  },
+  "Aristarco de Samos": {
+    "page": "https://pt.wikipedia.org/wiki/Aristarco_de_Samos",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Aristarchus_van_Samos%2C_atlas_of_Cellarius_%281646%29.jpg",
+    "local_path": "/images/scientists/aristarco-de-samos.jpg"
+  },
+  "Arquimedes": {
+    "page": "https://pt.wikipedia.org/wiki/Arquimedes",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Archimedes_by_Giuseppe_Nogari2.png",
+    "local_path": "/images/scientists/arquimedes.png"
+  },
+  "Eratóstenes": {
+    "page": "https://pt.wikipedia.org/wiki/Erat%C3%B3stenes",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Portrait_of_Eratosthenes.png",
+    "local_path": "/images/scientists/eratostenes.png"
+  },
+  "Galileu Galilei": {
+    "page": "https://pt.wikipedia.org/wiki/Galileu_Galilei",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Justus_Sustermans_-_Portrait_of_Galileo_Galilei%2C_1636.jpg/960px-Justus_Sustermans_-_Portrait_of_Galileo_Galilei%2C_1636.jpg",
+    "local_path": "/images/scientists/galileu-galilei.jpg"
+  },
+  "Johannes Kepler": {
+    "page": "https://pt.wikipedia.org/wiki/Johannes_Kepler",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/JKepler.jpg",
+    "local_path": "/images/scientists/johannes-kepler.jpg"
+  },
+  "Blaise Pascal": {
+    "page": "https://pt.wikipedia.org/wiki/Blaise_Pascal",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Blaise_Pascal_Versailles.JPG/960px-Blaise_Pascal_Versailles.JPG",
+    "local_path": "/images/scientists/blaise-pascal.jpg"
+  },
+  "Antonie van Leeuwenhoek": {
+    "page": "https://pt.wikipedia.org/wiki/Anton_van_Leeuwenhoek",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Jan_Verkolje_-_Antonie_van_Leeuwenhoek.jpg/960px-Jan_Verkolje_-_Antonie_van_Leeuwenhoek.jpg",
+    "local_path": "/images/scientists/antonie-van-leeuwenhoek.jpg"
+  },
+  "Ptolomeu": {
+    "page": "https://pt.wikipedia.org/wiki/Ptolemeu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Ptolemy_16century.jpg/960px-Ptolemy_16century.jpg",
+    "local_path": "/images/scientists/ptolomeu.jpg"
+  },
+  "Galeno": {
+    "page": "https://pt.wikipedia.org/wiki/Cl%C3%A1udio_Galeno",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Galen_detail.jpg",
+    "local_path": "/images/scientists/galeno.jpg"
+  },
+  "Hipátia": {
+    "page": "https://pt.wikipedia.org/wiki/Hip%C3%A1tia",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Hypatia_portrait.png/960px-Hypatia_portrait.png",
+    "local_path": "/images/scientists/hipatia.png"
+  },
+  "Al-Khwarizmi": {
+    "page": "https://pt.wikipedia.org/wiki/Alcuarismi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Al-Khwarizmi_portrait.jpg",
+    "local_path": "/images/scientists/al-khwarizmi.jpg"
+  },
+  "Alhazen": {
+    "page": "https://pt.wikipedia.org/wiki/Alhaz%C3%A9m",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Alhazen_%28122459248%29.jpg/960px-Alhazen_%28122459248%29.jpg",
+    "local_path": "/images/scientists/alhazen.jpg"
+  },
+  "Al-Biruni": {
+    "page": "https://pt.wikipedia.org/wiki/Albiruni",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Al-Biruni.jpg/960px-Al-Biruni.jpg",
+    "local_path": "/images/scientists/al-biruni.jpg"
+  },
+  "Avicena": {
+    "page": "https://pt.wikipedia.org/wiki/Avicena",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/50/Avicenna_TajikistanP17-20Somoni-1999_%28cropped%29.png",
+    "local_path": "/images/scientists/avicena.png"
+  },
+  "Omar Khayyam": {
+    "page": "https://pt.wikipedia.org/wiki/Omar_Caiame",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c7/033-Earth-could-not-answer-nor-the-Seas-that-mourn-q75-829x1159.jpg",
+    "local_path": "/images/scientists/omar-khayyam.jpg"
+  },
+  "Nicolau Copérnico": {
+    "page": "https://pt.wikipedia.org/wiki/Nicolau_Cop%C3%A9rnico",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Copernicus.jpg/960px-Copernicus.jpg",
+    "local_path": "/images/scientists/nicolau-copernico.jpg"
+  },
+  "Tycho Brahe": {
+    "page": "https://pt.wikipedia.org/wiki/Tycho_Brahe",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tycho_Brahe.JPG/960px-Tycho_Brahe.JPG",
+    "local_path": "/images/scientists/tycho-brahe.jpg"
+  },
+  "William Harvey": {
+    "page": "https://pt.wikipedia.org/wiki/William_Harvey",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/SS-harvey.jpg",
+    "local_path": "/images/scientists/william-harvey.jpg"
+  },
+  "Robert Boyle": {
+    "page": "https://pt.wikipedia.org/wiki/Robert_Boyle",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Robert_Boyle_0001.jpg",
+    "local_path": "/images/scientists/robert-boyle.jpg"
+  },
+  "Christiaan Huygens": {
+    "page": "https://pt.wikipedia.org/wiki/Christiaan_Huygens",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Christiaan_Huygens-painting.jpeg/960px-Christiaan_Huygens-painting.jpeg",
+    "local_path": "/images/scientists/christiaan-huygens.jpg"
+  },
+  "Robert Hooke": {
+    "page": "https://pt.wikipedia.org/wiki/Robert_Hooke",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/13_Portrait_of_Robert_Hooke.JPG/960px-13_Portrait_of_Robert_Hooke.JPG",
+    "local_path": "/images/scientists/robert-hooke.jpg"
+  },
+  "Isaac Newton": {
+    "page": "https://pt.wikipedia.org/wiki/Isaac_Newton",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg/960px-Portrait_of_Sir_Isaac_Newton%2C_1689_%28brightened%29.jpg",
+    "local_path": "/images/scientists/isaac-newton.jpg"
+  },
+  "Benjamin Franklin": {
+    "page": "https://pt.wikipedia.org/wiki/Benjamin_Franklin",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/BenFranklinDuplessis.jpg/960px-BenFranklinDuplessis.jpg",
+    "local_path": "/images/scientists/benjamin-franklin.jpg"
+  },
+  "Carl Linnaeus": {
+    "page": "https://pt.wikipedia.org/wiki/Lineu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Carl_von_Linn%C3%A9.jpg/960px-Carl_von_Linn%C3%A9.jpg",
+    "local_path": "/images/scientists/carl-linnaeus.jpg"
+  },
+  "Leonhard Euler": {
+    "page": "https://pt.wikipedia.org/wiki/Leonhard_Euler",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Leonhard_Euler_2.jpg",
+    "local_path": "/images/scientists/leonhard-euler.jpg"
+  },
+  "Antoine Lavoisier": {
+    "page": "https://pt.wikipedia.org/wiki/Antoine_Lavoisier",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/David_-_Portrait_of_Monsieur_Lavoisier_%28cropped%29.jpg/960px-David_-_Portrait_of_Monsieur_Lavoisier_%28cropped%29.jpg",
+    "local_path": "/images/scientists/antoine-lavoisier.jpg"
+  },
+  "Alessandro Volta": {
+    "page": "https://pt.wikipedia.org/wiki/Alessandro_Volta",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/52/Alessandro_Volta.jpeg",
+    "local_path": "/images/scientists/alessandro-volta.jpg"
+  },
+  "Edward Jenner": {
+    "page": "https://pt.wikipedia.org/wiki/Edward_Jenner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/32/Eduard_Jenner.jpg",
+    "local_path": "/images/scientists/edward-jenner.jpg"
+  },
+  "John Dalton": {
+    "page": "https://pt.wikipedia.org/wiki/John_Dalton",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Dalton_John_desk.jpg/960px-Dalton_John_desk.jpg",
+    "local_path": "/images/scientists/john-dalton.jpg"
+  },
+  "Michael Faraday": {
+    "page": "https://pt.wikipedia.org/wiki/Michael_Faraday",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Faraday-Millikan-Gale-1913.jpg/960px-Faraday-Millikan-Gale-1913.jpg",
+    "local_path": "/images/scientists/michael-faraday.jpg"
+  },
+  "Charles Darwin": {
+    "page": "https://pt.wikipedia.org/wiki/Charles_Darwin",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Charles_Darwin_seated_crop.jpg/960px-Charles_Darwin_seated_crop.jpg",
+    "local_path": "/images/scientists/charles-darwin.jpg"
+  },
+  "Ada Lovelace": {
+    "page": "https://pt.wikipedia.org/wiki/Ada_Lovelace",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Ada_Lovelace_daguerreotype_by_Antoine_Claudet_1843_-_cropped.png",
+    "local_path": "/images/scientists/ada-lovelace.png"
+  },
+  "Louis Pasteur": {
+    "page": "https://pt.wikipedia.org/wiki/Louis_Pasteur",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg/960px-Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg",
+    "local_path": "/images/scientists/louis-pasteur.jpg"
+  },
+  "Gregor Mendel": {
+    "page": "https://pt.wikipedia.org/wiki/Gregor_Mendel",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Gregor_Mendel_2.jpg/960px-Gregor_Mendel_2.jpg",
+    "local_path": "/images/scientists/gregor-mendel.jpg"
+  },
+  "James Clerk Maxwell": {
+    "page": "https://pt.wikipedia.org/wiki/James_Clerk_Maxwell",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1e/James_Clerk_Maxwell_big.jpg",
+    "local_path": "/images/scientists/james-clerk-maxwell.jpg"
+  },
+  "Dmitri Mendeleev": {
+    "page": "https://pt.wikipedia.org/wiki/Dmitri_Mendeleiev",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Dmitri_Mendeleev.jpg/960px-Dmitri_Mendeleev.jpg",
+    "local_path": "/images/scientists/dmitri-mendeleev.jpg"
+  },
+  "Thomas Edison": {
+    "page": "https://pt.wikipedia.org/wiki/Thomas_Edison",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Thomas_Edison2.jpg/960px-Thomas_Edison2.jpg",
+    "local_path": "/images/scientists/thomas-edison.jpg"
+  },
+  "Alexander Graham Bell": {
+    "page": "https://pt.wikipedia.org/wiki/Alexander_Graham_Bell",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/10/Alexander_Graham_Bell.jpg",
+    "local_path": "/images/scientists/alexander-graham-bell.jpg"
+  },
+  "Nikola Tesla": {
+    "page": "https://pt.wikipedia.org/wiki/Nikola_Tesla",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Tesla_circa_1890.jpeg",
+    "local_path": "/images/scientists/nikola-tesla.jpg"
+  },
+  "Max Planck": {
+    "page": "https://pt.wikipedia.org/wiki/Max_Planck",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Max_Planck_1933.jpg/960px-Max_Planck_1933.jpg",
+    "local_path": "/images/scientists/max-planck.jpg"
+  },
+  "Marie Curie": {
+    "page": "https://pt.wikipedia.org/wiki/Marie_Curie",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/960px-Marie_Curie_c._1920s.jpg",
+    "local_path": "/images/scientists/marie-curie.jpg"
+  },
+  "Albert Einstein": {
+    "page": "https://pt.wikipedia.org/wiki/Albert_Einstein",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/960px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
+    "local_path": "/images/scientists/albert-einstein.jpg"
+  },
+  "Niels Bohr": {
+    "page": "https://pt.wikipedia.org/wiki/Niels_Bohr",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Niels_Bohr.jpg/960px-Niels_Bohr.jpg",
+    "local_path": "/images/scientists/niels-bohr.jpg"
+  },
+  "Erwin Schrödinger": {
+    "page": "https://pt.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Erwin_Schr%C3%B6dinger_%281933%29.jpg",
+    "local_path": "/images/scientists/erwin-schrodinger.jpg"
+  },
+  "Edwin Hubble": {
+    "page": "https://pt.wikipedia.org/wiki/Edwin_Powell_Hubble",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/15/Studio_portrait_photograph_of_Edwin_Powell_Hubble_%28cropped%29.JPG",
+    "local_path": "/images/scientists/edwin-hubble.jpg"
+  },
+  "Enrico Fermi": {
+    "page": "https://pt.wikipedia.org/wiki/Enrico_Fermi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Enrico_Fermi_1943-49.jpg/960px-Enrico_Fermi_1943-49.jpg",
+    "local_path": "/images/scientists/enrico-fermi.jpg"
+  },
+  "Werner Heisenberg": {
+    "page": "https://pt.wikipedia.org/wiki/Werner_Heisenberg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Bundesarchiv_Bild183-R57262%2C_Werner_Heisenberg.jpg",
+    "local_path": "/images/scientists/werner-heisenberg.jpg"
+  },
+  "J. Robert Oppenheimer": {
+    "page": "https://pt.wikipedia.org/wiki/Robert_Oppenheimer",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Oppenheimer_%28cropped%29.jpg/960px-Oppenheimer_%28cropped%29.jpg",
+    "local_path": "/images/scientists/j-robert-oppenheimer.jpg"
+  },
+  "Alan Turing": {
+    "page": "https://pt.wikipedia.org/wiki/Alan_Turing",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Alan_Turing_%281951%29.jpg",
+    "local_path": "/images/scientists/alan-turing.jpg"
+  },
+  "Richard Feynman": {
+    "page": "https://pt.wikipedia.org/wiki/Richard_Feynman",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1a/RichardFeynman-PaineMansionWoods1984_copyrightTamikoThiel_bw.jpg",
+    "local_path": "/images/scientists/richard-feynman.jpg"
+  },
+  "Rosalind Franklin": {
+    "page": "https://pt.wikipedia.org/wiki/Rosalind_Franklin",
+    "image": "https://upload.wikimedia.org/wikipedia/pt/9/97/Rosalind_Franklin.jpg",
+    "local_path": "/images/scientists/rosalind-franklin.jpg"
+  },
+  "Carl Sagan": {
+    "page": "https://pt.wikipedia.org/wiki/Carl_Sagan",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/be/Carl_Sagan_Planetary_Society.JPG",
+    "local_path": "/images/scientists/carl-sagan.jpg"
+  },
+  "Jane Goodall": {
+    "page": "https://pt.wikipedia.org/wiki/Jane_Goodall",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Jane_Goodall_2010_%28cropped%29.jpg/960px-Jane_Goodall_2010_%28cropped%29.jpg",
+    "local_path": "/images/scientists/jane-goodall.jpg"
+  },
+  "Kip Thorne": {
+    "page": "https://pt.wikipedia.org/wiki/Kip_Thorne",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/22/Kip_Thorne_at_Caltech.jpg",
+    "local_path": "/images/scientists/kip-thorne.jpg"
+  },
+  "Stephen Hawking": {
+    "page": "https://pt.wikipedia.org/wiki/Stephen_Hawking",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Stephen_Hawking.StarChild.jpg",
+    "local_path": "/images/scientists/stephen-hawking.jpg"
+  },
+  "Tim Berners-Lee": {
+    "page": "https://pt.wikipedia.org/wiki/Tim_Berners-Lee",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Sir_Tim_Berners-Lee_%28cropped%29.jpg",
+    "local_path": "/images/scientists/tim-berners-lee.jpg"
+  }
+}

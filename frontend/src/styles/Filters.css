@@ -62,22 +62,24 @@
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 5px;
 }
 
 .category-option {
-    min-height: 42px;
-    padding: 9px 11px;
+    min-height: 36px;
+    padding: 6px 7px;
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 5px;
     border: 1px solid #c5ced9;
     border-radius: 5px;
     background: rgb(255 255 255 / 70%);
     color: #454d58;
     cursor: pointer;
     transition: 120ms ease;
+    font-size: 11px;
+    line-height: 1.15;
 }
 
 .category-option:hover { border-color: #7188a5; }
@@ -90,17 +92,20 @@
 }
 
 .category-option input {
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
     margin: 0;
     accent-color: #176fc1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .filters-header {
         align-items: stretch;
         flex-direction: column;
     }
 
-    .category-grid { grid-template-columns: 1fr; }
+    .category-grid {
+        grid-template-columns: repeat(10, minmax(105px, 1fr));
+        overflow-x: auto;
+    }
 }

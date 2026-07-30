@@ -1,0 +1,92 @@
+{
+  "Guido d'Arezzo": {
+    "page": "https://en.wikipedia.org/wiki/Guido_of_Arezzo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Guido_van_Arezzo.jpg/330px-Guido_van_Arezzo.jpg",
+    "local_path": "/images/musicians/guido-d-arezzo.jpg"
+  },
+  "Hildegard von Bingen": {
+    "page": "https://en.wikipedia.org/wiki/Hildegard_of_Bingen",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Hildegard_von_Bingen.jpg/330px-Hildegard_von_Bingen.jpg",
+    "local_path": "/images/musicians/hildegard-von-bingen.jpg"
+  },
+  "Josquin des Prez": {
+    "page": "https://en.wikipedia.org/wiki/Josquin_des_Prez",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Josquin_woodcut.jpg/330px-Josquin_woodcut.jpg",
+    "local_path": "/images/musicians/josquin-des-prez.jpg"
+  },
+  "Giovanni Pierluigi da Palestrina": {
+    "page": "https://en.wikipedia.org/wiki/Giovanni_Pierluigi_da_Palestrina",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Giovanni_Pierluigi_da_Palestrina.jpg/330px-Giovanni_Pierluigi_da_Palestrina.jpg",
+    "local_path": "/images/musicians/giovanni-pierluigi-da-palestrina.jpg"
+  },
+  "Antonio Vivaldi": {
+    "page": "https://en.wikipedia.org/wiki/Antonio_Vivaldi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Vivaldi.jpg/330px-Vivaldi.jpg",
+    "local_path": "/images/musicians/antonio-vivaldi.jpg"
+  },
+  "Johann Sebastian Bach": {
+    "page": "https://en.wikipedia.org/wiki/Johann_Sebastian_Bach",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Johann_Sebastian_Bach.jpg/330px-Johann_Sebastian_Bach.jpg",
+    "local_path": "/images/musicians/johann-sebastian-bach.jpg"
+  },
+  "Wolfgang Amadeus Mozart": {
+    "page": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg/330px-The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg",
+    "local_path": "/images/musicians/wolfgang-amadeus-mozart.jpg"
+  },
+  "Ludwig van Beethoven": {
+    "page": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg/330px-Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg",
+    "local_path": "/images/musicians/ludwig-van-beethoven.jpg"
+  },
+  "Frédéric Chopin": {
+    "page": "https://en.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Chopin",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Frederic_Chopin_photo.jpeg/330px-Frederic_Chopin_photo.jpeg",
+    "local_path": "/images/musicians/frederic-chopin.jpg"
+  },
+  "Richard Wagner": {
+    "page": "https://en.wikipedia.org/wiki/Richard_Wagner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/RichardWagner.jpg/330px-RichardWagner.jpg",
+    "local_path": "/images/musicians/richard-wagner.jpg"
+  },
+  "Pyotr Ilyich Tchaikovsky": {
+    "page": "https://en.wikipedia.org/wiki/Pyotr_Ilyich_Tchaikovsky",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Tchaikovsky_by_Reutlinger_%28cropped%29.jpg/330px-Tchaikovsky_by_Reutlinger_%28cropped%29.jpg",
+    "local_path": "/images/musicians/pyotr-ilyich-tchaikovsky.jpg"
+  },
+  "Igor Stravinsky": {
+    "page": "https://en.wikipedia.org/wiki/Igor_Stravinsky",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Igor_Stravinsky_LOC_32392u.jpg/330px-Igor_Stravinsky_LOC_32392u.jpg",
+    "local_path": "/images/musicians/igor-stravinsky.jpg"
+  },
+  "Miles Davis": {
+    "page": "https://en.wikipedia.org/wiki/Miles_Davis",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Miles_Davis_1987.png/330px-Miles_Davis_1987.png",
+    "local_path": "/images/musicians/miles-davis.png"
+  },
+  "Elvis Presley": {
+    "page": "https://en.wikipedia.org/wiki/Elvis_Presley",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elvis_Presley_promoting_Jailhouse_Rock.jpg/330px-Elvis_Presley_promoting_Jailhouse_Rock.jpg",
+    "local_path": "/images/musicians/elvis-presley.jpg"
+  },
+  "The Beatles": {
+    "page": "https://en.wikipedia.org/wiki/The_Beatles",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/The_Beatles_1963_Dezo_Hoffman_Capitol_Records_press_photo_2.jpg/330px-The_Beatles_1963_Dezo_Hoffman_Capitol_Records_press_photo_2.jpg",
+    "local_path": "/images/musicians/the-beatles.jpg"
+  },
+  "Beyoncé": {
+    "page": "https://en.wikipedia.org/wiki/Beyonc%C3%A9",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2810_of_118%29_%2852946364598%29_%28best_crop%29.jpg/330px-Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2810_of_118%29_%2852946364598%29_%28best_crop%29.jpg",
+    "local_path": "/images/musicians/beyonce.jpg"
+  },
+  "Taylor Swift": {
+    "page": "https://en.wikipedia.org/wiki/Taylor_Swift",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png/330px-Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_%283%29.png",
+    "local_path": "/images/musicians/taylor-swift.png"
+  },
+  "Coldplay": {
+    "page": "https://en.wikipedia.org/wiki/Coldplay",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/ColdplayWembley120925_%28cropped%29.jpg/330px-ColdplayWembley120925_%28cropped%29.jpg",
+    "local_path": "/images/musicians/coldplay.jpg"
+  }
+}

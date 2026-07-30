@@ -7,7 +7,7 @@ const CARD_HEIGHT = 50;
 const CARD_GAP = 16;
 const LANE_HEIGHT = 88;
 const MIN_CARD_WIDTH = 82;
-const MAX_CARD_WIDTH = 210;
+const MAX_CARD_WIDTH = 280;
 const YEAR_WIDTH = 3;
 const MARKER_INTERVAL = 100;
 const SIDE_PADDING = 130;
@@ -23,7 +23,7 @@ const TRACK_COLORS = {
     "Artistas": "#d17a18",
     "Músicos": "#b13f6b",
     "Teólogos": "#6f8731",
-    "Obras Pinturas | Esculturas": "#9b6235",
+    "Obras": "#9b6235",
     "Tecnologias": "#148477",
     "Livros": "#5969af",
     "Líderes": "#a13e49",
@@ -47,13 +47,17 @@ function formatYear(year) {
 }
 
 
-function getCardWidth(name, hasImage = false) {
+function getCardWidth(name, hasImage = false, secondaryText = "") {
     const estimatedTextWidth = [...name].reduce((width, character) => (
         width + (/[A-ZÁÉÍÓÚÂÊÔÃÕMW]/.test(character) ? 7.2 : 5.7)
     ), 0);
 
+    const estimatedSecondaryWidth = [...secondaryText].length * 5.7;
     const imageSpace = hasImage ? 38 : 0;
-    return Math.min(MAX_CARD_WIDTH, Math.max(MIN_CARD_WIDTH, Math.ceil(estimatedTextWidth + 24 + imageSpace)));
+    return Math.min(MAX_CARD_WIDTH, Math.max(
+        MIN_CARD_WIDTH,
+        Math.ceil(Math.max(estimatedTextWidth + imageSpace, estimatedSecondaryWidth) + 24)
+    ));
 }
 
 
@@ -73,7 +77,8 @@ function positionTrackEvents(events, minYear) {
     const belowLanes = [];
     const positionedEvents = events.map((event, index) => {
         const x = SIDE_PADDING + (event.start_year - minYear) * YEAR_WIDTH;
-        const cardWidth = getCardWidth(event.name, Boolean(event.image_url));
+        const birthLabel = `${formatYear(event.start_year)}${event.origin_country ? ` · ${event.origin_country}` : ""}`;
+        const cardWidth = getCardWidth(event.name, Boolean(event.image_url), birthLabel);
         const left = x - cardWidth / 2;
         const right = x + cardWidth / 2;
         const side = index % 2 === 0 ? "above" : "below";
@@ -244,7 +249,10 @@ function Timeline({ entities }) {
                                 )}
                                 <span className="timeline-event-details">
                                     <strong>{event.name}</strong>
-                                    <time>{formatYear(event.start_year)}</time>
+                                    <time title={event.origin_country || undefined}>
+                                        {formatYear(event.start_year)}
+                                        {event.origin_country && ` · ${event.origin_country}`}
+                                    </time>
                                 </span>
                             </article>
                         );

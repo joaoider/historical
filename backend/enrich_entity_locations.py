@@ -12,7 +12,7 @@ from app.database import engine
 
 API_URL = "https://www.wikidata.org/w/api.php"
 USER_AGENT = "HistoricalTimeline/1.0 (educational project)"
-OBJECT_TRACKS = {"Livros", "Tecnologias", "Obras Pinturas | Esculturas"}
+OBJECT_TRACKS = {"Livros", "Tecnologias", "Obras"}
 
 
 def api_request(parameters):

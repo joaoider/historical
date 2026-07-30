@@ -12,7 +12,7 @@ const TRACK_COLORS = {
     "Artistas": "#d17a18",
     "Músicos": "#b13f6b",
     "Teólogos": "#6f8731",
-    "Obras Pinturas | Esculturas": "#9b6235",
+    "Obras": "#9b6235",
     "Tecnologias": "#148477",
     "Livros": "#5969af",
     "Líderes": "#a13e49"
