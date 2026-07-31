@@ -20,10 +20,11 @@ const ProfileView = lazy(() => import("./components/ProfileView"));
 const AboutPage = lazy(() => import("./components/AboutPage"));
 const AdminPage = lazy(() => import("./components/AdminPage"));
 const StudyTrails = lazy(() => import("./components/StudyTrails"));
+const KnowledgeAreaPage = lazy(() => import("./components/KnowledgeAreaPage"));
 
 function primarySection(view) {
     if (["timeline", "vertical", "philosophy-tree"].includes(view)) return "timeline";
-    if (["knowledge-tree", "knowledge-map"].includes(view)) return "knowledge";
+    if (["knowledge-tree", "knowledge-map", "knowledge-area"].includes(view)) return "knowledge";
     return view;
 }
 
@@ -35,6 +36,7 @@ function App() {
     const [error, setError] = useState(null);
     const [activeView, setActiveView] = useState(initialRoute.view);
     const [profileEntityId, setProfileEntityId] = useState(initialRoute.entityId);
+    const [knowledgeAreaPath, setKnowledgeAreaPath] = useState(initialRoute.areaPath || "");
     const [selectedTracks, setSelectedTracks] = useState(null);
     const latestTimelineRequest = useRef(0);
 
@@ -43,6 +45,7 @@ function App() {
         if (window.location.pathname !== path) window.history.pushState(null, "", path);
         setActiveView(view);
         if (view === "profiles") setProfileEntityId(entityId);
+        if (view === "knowledge-area") setKnowledgeAreaPath(entityId || "");
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
@@ -53,6 +56,7 @@ function App() {
             const route = routeFromPath(window.location.pathname);
             setActiveView(route.view);
             if (route.view === "profiles") setProfileEntityId(route.entityId);
+            if (route.view === "knowledge-area") setKnowledgeAreaPath(route.areaPath || "");
         };
         window.addEventListener("popstate", syncRoute);
         if (window.location.hash.startsWith("#/")) { window.history.replaceState(null, "", window.location.hash.slice(1)); syncRoute(); }
@@ -64,7 +68,7 @@ function App() {
         const labels = {
             home: "Início", timeline: "Tempo Horizontal", vertical: "Tempo Vertical",
             "philosophy-tree": "Árvore Histórica", "knowledge-tree": "Evolução do Conhecimento",
-            "knowledge-map": "Árvore do Conhecimento", trails: "Trilhas de Estudo", profiles: "Perfis", map: "Mapa de Origens", about: "Sobre", admin: "Administração",
+            "knowledge-map": "Árvore do Conhecimento", "knowledge-area": "Área do Conhecimento", trails: "Trilhas de Estudo", profiles: "Perfis", map: "Mapa de Origens", about: "Sobre", admin: "Administração",
         };
         document.title = `${labels[activeView]} · IDER`;
     }, [activeView]);
@@ -107,7 +111,8 @@ function App() {
         if (activeView === "trails") return <StudyTrails onOpenProfile={openProfile} />;
         if (activeView === "profiles") return <ProfileView initialEntityId={profileEntityId} onNavigate={navigate} />;
         if (activeView === "knowledge-tree") return <KnowledgeTree onOpenProfile={openProfile} />;
-        if (activeView === "knowledge-map") return <KnowledgeMap />;
+        if (activeView === "knowledge-map") return <KnowledgeMap onOpenArea={(path) => navigate("knowledge-area", path)} />;
+        if (activeView === "knowledge-area") return <KnowledgeAreaPage areaPath={knowledgeAreaPath} onOpenArea={(path) => navigate("knowledge-area", path)} onBack={() => navigate("knowledge-map")} />;
         if (loading) return <div className="loading-message">Carregando conteúdos...</div>;
         if (activeView === "timeline") return <Timeline entities={timeline} onOpenProfile={openProfile} />;
         if (activeView === "vertical") return <VerticalTimeline entities={timeline} onOpenProfile={openProfile} />;
@@ -143,7 +148,7 @@ function App() {
                 )}
                 {section === "knowledge" && (
                     <nav className="subview-tabs" aria-label="Modos de conhecimento">
-                        <button type="button" className={activeView === "knowledge-map" ? "active" : ""} onClick={() => navigate("knowledge-map")}>Árvore do conhecimento</button>
+                        <button type="button" className={["knowledge-map", "knowledge-area"].includes(activeView) ? "active" : ""} onClick={() => navigate("knowledge-map")}>Árvore do conhecimento</button>
                         <button type="button" className={activeView === "knowledge-tree" ? "active" : ""} onClick={() => navigate("knowledge-tree")}>Evolução das áreas</button>
                     </nav>
                 )}

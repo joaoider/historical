@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { appendKnowledgePath, knowledgeSlug } from "../utils/knowledgePaths";
 import "./KnowledgeMap.css";
 
 
@@ -229,7 +230,7 @@ function KnowledgeMapLegacy() {
 }
 
 
-function KnowledgeMap() {
+function KnowledgeMap({ onOpenArea }) {
     const [expandedDomains, setExpandedDomains] = useState(new Set(DOMAINS.map((domain) => domain.name)));
     const [foundationsExpanded, setFoundationsExpanded] = useState(true);
     const allExpanded = foundationsExpanded && expandedDomains.size === DOMAINS.length;
@@ -253,25 +254,25 @@ function KnowledgeMap() {
                 <div className="knowledge-genealogy">
                     <div className={`knowledge-root-lineage ${foundationsExpanded ? "expanded" : ""}`}>
                         <article className="knowledge-root-node knowledge-theology">
-                            <h3>{FOUNDATIONS[0].name}</h3>
+                            <h3><button type="button" onClick={() => onOpenArea(knowledgeSlug(FOUNDATIONS[0].name))}>{FOUNDATIONS[0].name}</button></h3>
                             <p>{FOUNDATIONS[0].description}</p>
                             {foundationsExpanded && <div className="knowledge-root-subareas" aria-label={`Subáreas de ${FOUNDATIONS[0].name}`}>
                                 {FOUNDATIONS[0].areas.map((area) => (
                                     <section className="knowledge-root-subarea" key={area}>
-                                        <h4>{area}</h4>
-                                        <div>{FOUNDATION_DETAILS[area]?.map((detail) => <span key={detail}>{detail}</span>)}</div>
+                                        <h4><button type="button" onClick={() => onOpenArea(appendKnowledgePath(knowledgeSlug(FOUNDATIONS[0].name), area))}>{area}</button></h4>
+                                        <div>{FOUNDATION_DETAILS[area]?.map((detail) => <button type="button" key={detail} onClick={() => onOpenArea(appendKnowledgePath(appendKnowledgePath(knowledgeSlug(FOUNDATIONS[0].name), area), detail))}>{detail}</button>)}</div>
                                     </section>
                                 ))}
                             </div>}
                         </article>
                         <article className="knowledge-root-node knowledge-philosophy">
-                            <h3>{FOUNDATIONS[1].name}</h3>
+                            <h3><button type="button" onClick={() => onOpenArea(knowledgeSlug(FOUNDATIONS[1].name))}>{FOUNDATIONS[1].name}</button></h3>
                             <p>{FOUNDATIONS[1].description}</p>
                             {foundationsExpanded && <div className="knowledge-root-subareas" aria-label={`Subáreas de ${FOUNDATIONS[1].name}`}>
                                 {FOUNDATIONS[1].areas.map((area) => (
                                     <section className="knowledge-root-subarea" key={area}>
-                                        <h4>{area}</h4>
-                                        <div>{FOUNDATION_DETAILS[area]?.map((detail) => <span key={detail}>{detail}</span>)}</div>
+                                        <h4><button type="button" onClick={() => onOpenArea(appendKnowledgePath(knowledgeSlug(FOUNDATIONS[1].name), area))}>{area}</button></h4>
+                                        <div>{FOUNDATION_DETAILS[area]?.map((detail) => <button type="button" key={detail} onClick={() => onOpenArea(appendKnowledgePath(appendKnowledgePath(knowledgeSlug(FOUNDATIONS[1].name), area), detail))}>{detail}</button>)}</div>
                                     </section>
                                 ))}
                             </div>}
@@ -287,16 +288,16 @@ function KnowledgeMap() {
                             const groupDomains = group.domains.map((name) => DOMAINS.find((domain) => domain.name === name)).filter(Boolean);
                             return (
                                 <section className="knowledge-group" style={{ "--group-color": group.color, "--domain-count": groupDomains.length }} key={group.name}>
-                                    <h2>{group.name}</h2>
+                                    <h2><button type="button" onClick={() => onOpenArea(knowledgeSlug(group.name))}>{group.name}</button></h2>
                                     <div className="knowledge-group-domains">
                                         {groupDomains.map((domain) => (
                                             <article className="knowledge-family" style={{ "--domain-color": domain.color }} key={domain.name}>
-                                                <h3><button type="button" aria-expanded={expandedDomains.has(domain.name)} onClick={() => toggleDomain(domain.name)}>{domain.name}<span>{expandedDomains.has(domain.name) ? "−" : "+"}</span></button></h3>
+                                                <h3><button type="button" className="knowledge-area-link" onClick={() => onOpenArea(appendKnowledgePath(knowledgeSlug(group.name), domain.name))}>{domain.name}</button><button type="button" className="knowledge-expand-button" aria-expanded={expandedDomains.has(domain.name)} aria-label={`${expandedDomains.has(domain.name) ? "Recolher" : "Expandir"} ${domain.name}`} onClick={() => toggleDomain(domain.name)}>{expandedDomains.has(domain.name) ? "−" : "+"}</button></h3>
                                                 {expandedDomains.has(domain.name) && <div className="knowledge-branch-generation">
                                                     {domain.branches.map((branch) => (
                                                         <section key={branch.name}>
-                                                            <h4>{branch.name}</h4>
-                                                            <ul>{branch.children.map((child) => <li key={child}>{child}</li>)}</ul>
+                                                            <h4><button type="button" onClick={() => onOpenArea(appendKnowledgePath(appendKnowledgePath(knowledgeSlug(group.name), domain.name), branch.name))}>{branch.name}</button></h4>
+                                                            <ul>{branch.children.map((child) => <li key={child}><button type="button" onClick={() => onOpenArea(appendKnowledgePath(appendKnowledgePath(appendKnowledgePath(knowledgeSlug(group.name), domain.name), branch.name), child))}>{child}</button></li>)}</ul>
                                                         </section>
                                                     ))}
                                                 </div>}
@@ -314,5 +315,7 @@ function KnowledgeMap() {
 }
 
 void KnowledgeMapLegacy;
+
+export { DOMAINS, FOUNDATIONS, FOUNDATION_DETAILS, KNOWLEDGE_GROUPS };
 
 export default KnowledgeMap;

@@ -15,6 +15,12 @@ test("perfis individuais preservam o identificador na URL", () => {
     assert.deepEqual(routeFromPath("/perfis/42"), { view: "profiles", entityId: 42 });
 });
 
+test("áreas do conhecimento preservam todo o caminho hierárquico", () => {
+    const path = "/conhecimento/area/ciencias-formais/matematica/fundamentos";
+    assert.equal(pathForView("knowledge-area", "ciencias-formais/matematica/fundamentos"), path);
+    assert.deepEqual(routeFromPath(path), { view: "knowledge-area", entityId: null, areaPath: "ciencias-formais/matematica/fundamentos" });
+});
+
 test("raiz, barra final e rota desconhecida têm fallback previsível", () => {
     assert.deepEqual(routeFromPath("/"), { view: "home", entityId: null });
     assert.deepEqual(routeFromPath("/sobre/"), { view: "about", entityId: null });
