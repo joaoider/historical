@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 130" role="img" aria-labelledby="title">
+  <title id="title">IDER</title>
+  <g fill="none" stroke="#245c45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M78.5 120V100.5C78.5 94.7 75.4 90.4 74.2 83.3C72.5 73.2 65.7 64.6 56.6 53.6C48.2 43.3 44.2 33.7 46.1 24.3C48.3 12.7 59.3 4.3 73.7 2.2C88.5.1 101.6 6.2 108 17C114.9 28.6 111.6 41 101.6 53.8C89.8 68.7 83.6 79.1 81.7 91C81.1 94.5 80.3 96.7 79.2 98.2"/>
+  </g>
+  <text x="132" y="91" fill="#245c45" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="600" letter-spacing="7">IDER</text>
+</svg>

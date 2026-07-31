@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
 from sqlalchemy.orm import Session
 
 from .database import get_db
@@ -8,6 +8,8 @@ from .schemas import StatsResponse
 from .schemas import (
     EntityResponse,
     EntityCreate,
+    RelationshipCreate,
+    RelationshipResponse,
     RelationshipDetailResponse,
     TimelineResponse
 )
@@ -46,6 +48,8 @@ def get_entity(
         .first()
     )
 
+    if entity is None:
+        raise HTTPException(status_code=404, detail="Entidade não encontrada")
     return entity
 
 @router.post(
@@ -57,14 +61,7 @@ def create_entity(
     db: Session = Depends(get_db)
 ):
 
-    db_entity = Entity(
-        name=entity.name,
-        entity_type=entity.entity_type,
-        description=entity.description,
-        track=entity.track,
-        start_year=entity.start_year,
-        end_year=entity.end_year
-    )
+    db_entity = Entity(**entity.model_dump())
 
     db.add(db_entity)
 
@@ -73,6 +70,29 @@ def create_entity(
     db.refresh(db_entity)
 
     return db_entity
+
+@router.put("/entities/{entity_id}", response_model=EntityResponse)
+def update_entity(entity_id: int, entity: EntityCreate, db: Session = Depends(get_db)):
+    db_entity = db.query(Entity).filter(Entity.id == entity_id).first()
+    if db_entity is None:
+        raise HTTPException(status_code=404, detail="Entidade não encontrada")
+    for field, value in entity.model_dump().items():
+        setattr(db_entity, field, value)
+    db.commit()
+    db.refresh(db_entity)
+    return db_entity
+
+@router.delete("/entities/{entity_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_entity(entity_id: int, db: Session = Depends(get_db)):
+    db_entity = db.query(Entity).filter(Entity.id == entity_id).first()
+    if db_entity is None:
+        raise HTTPException(status_code=404, detail="Entidade não encontrada")
+    db.query(Relationship).filter(
+        (Relationship.source_entity_id == entity_id) | (Relationship.target_entity_id == entity_id)
+    ).delete(synchronize_session=False)
+    db.delete(db_entity)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 
@@ -97,13 +117,42 @@ def get_relationships(
 
         result.append(
             {
+                "id": r.id,
+                "source_id": r.source_entity_id,
                 "source": r.source_entity.name,
                 "relation": r.relationship_type,
-                "target": r.target_entity.name
+                "target": r.target_entity.name,
+                "target_id": r.target_entity_id,
+                "notes": r.notes,
+                "source_reference": r.source_reference,
             }
         )
 
     return result
+
+@router.post("/relationships", response_model=RelationshipResponse)
+def create_relationship(relationship: RelationshipCreate, db: Session = Depends(get_db)):
+    if relationship.source_entity_id == relationship.target_entity_id:
+        raise HTTPException(status_code=400, detail="Uma entidade não pode se relacionar consigo mesma")
+    entity_ids = {row[0] for row in db.query(Entity.id).filter(Entity.id.in_([
+        relationship.source_entity_id, relationship.target_entity_id
+    ])).all()}
+    if len(entity_ids) != 2:
+        raise HTTPException(status_code=400, detail="Entidade de origem ou destino não encontrada")
+    db_relationship = Relationship(**relationship.model_dump())
+    db.add(db_relationship)
+    db.commit()
+    db.refresh(db_relationship)
+    return db_relationship
+
+@router.delete("/relationships/{relationship_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_relationship(relationship_id: int, db: Session = Depends(get_db)):
+    relationship = db.query(Relationship).filter(Relationship.id == relationship_id).first()
+    if relationship is None:
+        raise HTTPException(status_code=404, detail="Relação não encontrada")
+    db.delete(relationship)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 
@@ -112,41 +161,20 @@ def get_relationships(
     response_model=list[TimelineResponse]
 )
 def get_timeline(
-    type: str | None = None,
-    track: str | None = None,
-    start: int | None = None,
-    end: int | None = None,
+    track: list[str] | None = Query(default=None),
     db: Session = Depends(get_db)
 ):
     """
-    Retorna eventos da timeline com suporte a filtros por tipo, track e período.
-    
-    - **type**: Filtrar por tipo de entidade (ex: "Política", "Tecnologia")
-    - **track**: Filtrar por track/categoria (ex: "História", "Ciência")
-    - **start**: Filtrar por ano inicial (>=)
-    - **end**: Filtrar por ano final (<=)
+    Retorna eventos da timeline, aceitando uma ou várias categorias.
+
+    - **track**: Parâmetro repetível, por exemplo `?track=Livros&track=Artistas`.
     """
 
     query = db.query(Entity)
 
-    if type:
-        query = query.filter(
-            Entity.entity_type == type
-        )
-
     if track:
         query = query.filter(
-            Entity.track == track
-        )
-
-    if start:
-        query = query.filter(
-            Entity.start_year >= start
-        )
-
-    if end:
-        query = query.filter(
-            Entity.start_year <= end
+            Entity.track.in_(track)
         )
 
     timeline = (

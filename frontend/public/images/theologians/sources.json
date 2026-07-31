@@ -1,0 +1,237 @@
+{
+  "Irineu de Lyon": {
+    "page": "https://en.wikipedia.org/wiki/Irenaeus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Saint_irenee_saint_irenee.jpg/960px-Saint_irenee_saint_irenee.jpg",
+    "local_path": "/images/theologians/irineu-de-lyon.jpg"
+  },
+  "Clemente de Alexandria": {
+    "page": "https://en.wikipedia.org/wiki/Clement_of_Alexandria",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Clement_alexandrin.jpg/960px-Clement_alexandrin.jpg",
+    "local_path": "/images/theologians/clemente-de-alexandria.jpg"
+  },
+  "Tertuliano": {
+    "page": "https://en.wikipedia.org/wiki/Tertullian",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Tertullian2.png/960px-Tertullian2.png",
+    "local_path": "/images/theologians/tertuliano.png"
+  },
+  "Orígenes": {
+    "page": "https://en.wikipedia.org/wiki/Origen",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Origen3.jpg",
+    "local_path": "/images/theologians/origenes.jpg"
+  },
+  "Atanásio de Alexandria": {
+    "page": "https://en.wikipedia.org/wiki/Athanasius_of_Alexandria",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Fethiye_Camii%2C_parekklesion%2C_diakonikon%2C_mosaics%2C_Istanbul%2C_Turkey_-_South_wall%2C_St._Athanasius%2C_detail_of_upper_half_-_MSBZ004_BF_T_F_027_B_-_Dumbarton_Oaks.jpg/960px-thumbnail.jpg",
+    "local_path": "/images/theologians/atanasio-de-alexandria.jpg"
+  },
+  "João Crisóstomo": {
+    "page": "https://en.wikipedia.org/wiki/John_Chrysostom",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Johnchrysostom.jpg/960px-Johnchrysostom.jpg",
+    "local_path": "/images/theologians/joao-crisostomo.jpg"
+  },
+  "Isidoro de Sevilha": {
+    "page": "https://en.wikipedia.org/wiki/Isidore_of_Seville",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Isidor_von_Sevilla.jpeg/960px-Isidor_von_Sevilla.jpeg",
+    "local_path": "/images/theologians/isidoro-de-sevilha.jpg"
+  },
+  "Beda, o Venerável": {
+    "page": "https://en.wikipedia.org/wiki/Bede",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0d/E-codices_bke-0047_001v_medium_%28cropped%29.jpg",
+    "local_path": "/images/theologians/beda-o-veneravel.jpg"
+  },
+  "João Damasceno": {
+    "page": "https://en.wikipedia.org/wiki/John_of_Damascus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/42/Athonite_Fresco_Icon_of_Saint_John_of_Damascus.jpg",
+    "local_path": "/images/theologians/joao-damasceno.jpg"
+  },
+  "Simeão, o Novo Teólogo": {
+    "page": "https://en.wikipedia.org/wiki/Symeon_the_New_Theologian",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/41/Simeon_novyj.jpg",
+    "local_path": "/images/theologians/simeao-o-novo-teologo.jpg"
+  },
+  "Anselmo de Cantuária": {
+    "page": "https://en.wikipedia.org/wiki/Anselm_of_Canterbury",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Anselm_of_Canterbury%2C_seal.svg/960px-Anselm_of_Canterbury%2C_seal.svg.png",
+    "local_path": "/images/theologians/anselmo-de-cantuaria.png"
+  },
+  "Pedro Abelardo": {
+    "page": "https://en.wikipedia.org/wiki/Peter_Abelard",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Piotr_Abelard_%28cropped%29.jpg",
+    "local_path": "/images/theologians/pedro-abelardo.jpg"
+  },
+  "Bernardo de Claraval": {
+    "page": "https://en.wikipedia.org/wiki/Bernard_of_Clairvaux",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/San_Bernardo%2C_de_Juan_Correa_de_Vivar_%28Museo_del_Prado%29.jpg/500px-San_Bernardo%2C_de_Juan_Correa_de_Vivar_%28Museo_del_Prado%29.jpg",
+    "local_path": "/images/theologians/bernardo-de-claraval.jpg"
+  },
+  "Pedro Lombardo": {
+    "page": "https://en.wikipedia.org/wiki/Peter_Lombard",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/PeterLombar01Medieval.png/500px-PeterLombar01Medieval.png",
+    "local_path": "/images/theologians/pedro-lombardo.png"
+  },
+  "Hugo de São Vítor": {
+    "page": "https://en.wikipedia.org/wiki/Hugh_of_Saint_Victor",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Hugostv.jpg/500px-Hugostv.jpg",
+    "local_path": "/images/theologians/hugo-de-sao-vitor.jpg"
+  },
+  "Alberto Magno": {
+    "page": "https://en.wikipedia.org/wiki/Albertus_Magnus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Vicente_salvador_gomez-san_alberto.jpg/500px-Vicente_salvador_gomez-san_alberto.jpg",
+    "local_path": "/images/theologians/alberto-magno.jpg"
+  },
+  "Boaventura": {
+    "page": "https://en.wikipedia.org/wiki/Bonaventure",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Fran%C3%A7ois%2C_Claude_%28dit_Fr%C3%A8re_Luc%29_-_Saint_Bonaventure.jpg/500px-Fran%C3%A7ois%2C_Claude_%28dit_Fr%C3%A8re_Luc%29_-_Saint_Bonaventure.jpg",
+    "local_path": "/images/theologians/boaventura.jpg"
+  },
+  "Tomás de Aquino": {
+    "page": "https://en.wikipedia.org/wiki/Thomas_Aquinas",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/St-thomas-aquinasFXD.jpg/500px-St-thomas-aquinasFXD.jpg",
+    "local_path": "/images/theologians/tomas-de-aquino.jpg"
+  },
+  "Meister Eckhart": {
+    "page": "https://en.wikipedia.org/wiki/Meister_Eckhart",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Meister_Eckhart_base_copie.jpg/500px-Meister_Eckhart_base_copie.jpg",
+    "local_path": "/images/theologians/meister-eckhart.jpg"
+  },
+  "Duns Scotus": {
+    "page": "https://en.wikipedia.org/wiki/Duns_Scotus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Scoto_%28Duns_Scoto%29.jpg/500px-Scoto_%28Duns_Scoto%29.jpg",
+    "local_path": "/images/theologians/duns-scotus.jpg"
+  },
+  "Gregório Palamas": {
+    "page": "https://en.wikipedia.org/wiki/Gregory_Palamas",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BC%D0%B0_14%D0%B2.jpg/500px-%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%B8%D0%B9_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BC%D0%B0_14%D0%B2.jpg",
+    "local_path": "/images/theologians/gregorio-palamas.jpg"
+  },
+  "John Wycliffe": {
+    "page": "https://en.wikipedia.org/wiki/John_Wycliffe",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Wycliffe_by_Kirby.jpg/500px-Wycliffe_by_Kirby.jpg",
+    "local_path": "/images/theologians/john-wycliffe.jpg"
+  },
+  "Jan Hus": {
+    "page": "https://en.wikipedia.org/wiki/Jan_Hus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Stimmer_Jan_Hus.jpg/500px-Stimmer_Jan_Hus.jpg",
+    "local_path": "/images/theologians/jan-hus.jpg"
+  },
+  "Tomás de Kempis": {
+    "page": "https://en.wikipedia.org/wiki/Thomas_%C3%A0_Kempis",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Thomas_von_Kempen_JS.JPG/500px-Thomas_von_Kempen_JS.JPG",
+    "local_path": "/images/theologians/tomas-de-kempis.jpg"
+  },
+  "Girolamo Savonarola": {
+    "page": "https://en.wikipedia.org/wiki/Girolamo_Savonarola",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Savonarola_%28cropped%29.jpg/500px-Savonarola_%28cropped%29.jpg",
+    "local_path": "/images/theologians/girolamo-savonarola.jpg"
+  },
+  "Martinho Lutero": {
+    "page": "https://en.wikipedia.org/wiki/Martin_Luther",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Lucas_Cranach_d.%C3%84._-_Martin_Luther%2C_1528_%28Veste_Coburg%29.jpg/500px-Lucas_Cranach_d.%C3%84._-_Martin_Luther%2C_1528_%28Veste_Coburg%29.jpg",
+    "local_path": "/images/theologians/martinho-lutero.jpg"
+  },
+  "Ulrico Zuínglio": {
+    "page": "https://en.wikipedia.org/wiki/Huldrych_Zwingli",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Ulrich-Zwingli-1.jpg/500px-Ulrich-Zwingli-1.jpg",
+    "local_path": "/images/theologians/ulrico-zuinglio.jpg"
+  },
+  "Filipe Melâncton": {
+    "page": "https://en.wikipedia.org/wiki/Philipp_Melanchthon",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Portrait_of_Philipp_Melanchthon_%281497%E2%80%931560%29%2C_by_Lucas_Cranach_the_Elder_-_Gem%C3%A4ldegalerie_Alte_Meister%2C_Kassel.jpg/500px-Portrait_of_Philipp_Melanchthon_%281497%E2%80%931560%29%2C_by_Lucas_Cranach_the_Elder_-_Gem%C3%A4ldegalerie_Alte_Meister%2C_Kassel.jpg",
+    "local_path": "/images/theologians/filipe-melancton.jpg"
+  },
+  "João Calvino": {
+    "page": "https://en.wikipedia.org/wiki/John_Calvin",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/John_Calvin_Museum_Catharijneconvent_RMCC_s84_cropped.png/500px-John_Calvin_Museum_Catharijneconvent_RMCC_s84_cropped.png",
+    "local_path": "/images/theologians/joao-calvino.png"
+  },
+  "Jacob Armínio": {
+    "page": "https://en.wikipedia.org/wiki/Jacobus_Arminius",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1d/James_Arminius_2.jpg",
+    "local_path": "/images/theologians/jacob-arminio.jpg"
+  },
+  "John Owen": {
+    "page": "https://en.wikipedia.org/wiki/John_Owen_(theologian)",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/John_Owen_by_John_Greenhill.jpg/500px-John_Owen_by_John_Greenhill.jpg",
+    "local_path": "/images/theologians/john-owen.jpg"
+  },
+  "Blaise Pascal": {
+    "page": "https://en.wikipedia.org/wiki/Blaise_Pascal",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Blaise_Pascal_Versailles.JPG/500px-Blaise_Pascal_Versailles.JPG",
+    "local_path": "/images/theologians/blaise-pascal.jpg"
+  },
+  "Jonathan Edwards": {
+    "page": "https://en.wikipedia.org/wiki/Jonathan_Edwards_(theologian)",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Jonathan_Edwards_%28Princeton_Portrait%29.jpg/500px-Jonathan_Edwards_%28Princeton_Portrait%29.jpg",
+    "local_path": "/images/theologians/jonathan-edwards.jpg"
+  },
+  "John Wesley": {
+    "page": "https://en.wikipedia.org/wiki/John_Wesley",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/John_Wesley_by_George_Romney.jpg/500px-John_Wesley_by_George_Romney.jpg",
+    "local_path": "/images/theologians/john-wesley.jpg"
+  },
+  "George Whitefield": {
+    "page": "https://en.wikipedia.org/wiki/George_Whitefield",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Robert_Hunter_%28c.1715-1720-c.1803%29_%28possibly%29_-_Reverend_George_Whitefield_%281714%E2%80%931770%29%2C_MA_-_72_-_Mansfield_College.jpg/500px-Robert_Hunter_%28c.1715-1720-c.1803%29_%28possibly%29_-_Reverend_George_Whitefield_%281714%E2%80%931770%29%2C_MA_-_72_-_Mansfield_College.jpg",
+    "local_path": "/images/theologians/george-whitefield.jpg"
+  },
+  "Friedrich Schleiermacher": {
+    "page": "https://en.wikipedia.org/wiki/Friedrich_Schleiermacher",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Friedrich_Daniel_Ernst_Schleiermacher.jpg/500px-Friedrich_Daniel_Ernst_Schleiermacher.jpg",
+    "local_path": "/images/theologians/friedrich-schleiermacher.jpg"
+  },
+  "John Henry Newman": {
+    "page": "https://en.wikipedia.org/wiki/John_Henry_Newman",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/John_Henry_Newman_1887_Portrait_Photograph_%283x4_cropped%29.jpg/500px-John_Henry_Newman_1887_Portrait_Photograph_%283x4_cropped%29.jpg",
+    "local_path": "/images/theologians/john-henry-newman.jpg"
+  },
+  "Søren Kierkegaard": {
+    "page": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/S%C3%B8ren_Kierkegaard_%281813-1855%29_-_%28cropped%29.jpg/500px-S%C3%B8ren_Kierkegaard_%281813-1855%29_-_%28cropped%29.jpg",
+    "local_path": "/images/theologians/sren-kierkegaard.jpg"
+  },
+  "Charles Spurgeon": {
+    "page": "https://en.wikipedia.org/wiki/Charles_Spurgeon",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Charles_Haddon_Spurgeon_by_Alexander_Melville.jpg/500px-Charles_Haddon_Spurgeon_by_Alexander_Melville.jpg",
+    "local_path": "/images/theologians/charles-spurgeon.jpg"
+  },
+  "Karl Barth": {
+    "page": "https://en.wikipedia.org/wiki/Karl_Barth",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Karl_Barth_Bundesarchiv_Bild.png",
+    "local_path": "/images/theologians/karl-barth.png"
+  },
+  "C.S. Lewis": {
+    "page": "https://en.wikipedia.org/wiki/C._S._Lewis",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/CS_Lewis_photo_on_dust_jacket.jpg/500px-CS_Lewis_photo_on_dust_jacket.jpg",
+    "local_path": "/images/theologians/c-s-lewis.jpg"
+  },
+  "Dietrich Bonhoeffer": {
+    "page": "https://en.wikipedia.org/wiki/Dietrich_Bonhoeffer",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Bundesarchiv_Bild_146-1987-074-16%2C_Dietrich_Bonhoeffer.jpg",
+    "local_path": "/images/theologians/dietrich-bonhoeffer.jpg"
+  },
+  "Gustavo Gutiérrez": {
+    "page": "https://en.wikipedia.org/wiki/Gustavo_Guti%C3%A9rrez",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Gustavo_gutierrez_%28Peruvian_theologian%29.jpg",
+    "local_path": "/images/theologians/gustavo-gutierrez.jpg"
+  },
+  "R. C. Sproul": {
+    "page": "https://en.wikipedia.org/wiki/R._C._Sproul",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/R._C._Sproul_%28cropped%29.jpg/500px-R._C._Sproul_%28cropped%29.jpg",
+    "local_path": "/images/theologians/r-c-sproul.jpg"
+  },
+  "N. T. Wright": {
+    "page": "https://en.wikipedia.org/wiki/N._T._Wright",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/NTWright071220.jpg/500px-NTWright071220.jpg",
+    "local_path": "/images/theologians/n-t-wright.jpg"
+  },
+  "João Escoto Erígena": {
+    "page": "https://en.wikipedia.org/wiki/John_Scotus_Eriugena",
+    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/John-Scotus-Eriugena.png?width=500",
+    "local_path": "/images/theologians/joao-escoto-erigena.png"
+  },
+  "Paul Tillich": {
+    "page": "https://en.wikipedia.org/wiki/Paul_Tillich",
+    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Paul_Tillich_bust.JPG?width=500",
+    "local_path": "/images/theologians/paul-tillich.jpg"
+  }
+}

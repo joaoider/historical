@@ -1,0 +1,92 @@
+{
+  "Fídias": {
+    "page": "https://en.wikipedia.org/wiki/Phidias",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/The_Sculptor_Phidias-Ny_Carlsberg_Glyptotek.jpg/960px-The_Sculptor_Phidias-Ny_Carlsberg_Glyptotek.jpg",
+    "local_path": "/images/artists/fidias.jpg"
+  },
+  "Praxíteles": {
+    "page": "https://en.wikipedia.org/wiki/Praxiteles",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Leaning_satyr_Musei_Capitolini_MC739.jpg/960px-Leaning_satyr_Musei_Capitolini_MC739.jpg",
+    "local_path": "/images/artists/praxiteles.jpg"
+  },
+  "Donatello": {
+    "page": "https://en.wikipedia.org/wiki/Donatello",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Donatello%2C_miracolo_della_mula%2C_1446-49_ca._%28pd%2C_museo_antoniano%29_37_uomo_che_si_allontana%2C_forse_autoritratto_%28cropped%29.jpg/960px-Donatello%2C_miracolo_della_mula%2C_1446-49_ca._%28pd%2C_museo_antoniano%29_37_uomo_che_si_allontana%2C_forse_autoritratto_%28cropped%29.jpg",
+    "local_path": "/images/artists/donatello.jpg"
+  },
+  "Sandro Botticelli": {
+    "page": "https://en.wikipedia.org/wiki/Sandro_Botticelli",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Sandro_Botticelli_083.jpg/960px-Sandro_Botticelli_083.jpg",
+    "local_path": "/images/artists/sandro-botticelli.jpg"
+  },
+  "Leonardo da Vinci": {
+    "page": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Francesco_Melzi_-_Portrait_of_Leonardo.png/960px-Francesco_Melzi_-_Portrait_of_Leonardo.png",
+    "local_path": "/images/artists/leonardo-da-vinci.png"
+  },
+  "Michelangelo": {
+    "page": "https://en.wikipedia.org/wiki/Michelangelo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg/960px-Michelangelo_Daniele_da_Volterra_%28dettaglio%29.jpg",
+    "local_path": "/images/artists/michelangelo.jpg"
+  },
+  "Rafael Sanzio": {
+    "page": "https://en.wikipedia.org/wiki/Raphael",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Raffaello_Sanzio.jpg/960px-Raffaello_Sanzio.jpg",
+    "local_path": "/images/artists/rafael-sanzio.jpg"
+  },
+  "Caravaggio": {
+    "page": "https://en.wikipedia.org/wiki/Caravaggio",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bild-Ottavio_Leoni%2C_Caravaggio.jpg/960px-Bild-Ottavio_Leoni%2C_Caravaggio.jpg",
+    "local_path": "/images/artists/caravaggio.jpg"
+  },
+  "Diego Velázquez": {
+    "page": "https://en.wikipedia.org/wiki/Diego_Vel%C3%A1zquez",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Diego_Vel%C3%A1zquez_Autorretrato_45_x_38_cm_-_Colecci%C3%B3n_Real_Academia_de_Bellas_Artes_de_San_Carlos_-_Museo_de_Bellas_Artes_de_Valencia.jpg",
+    "local_path": "/images/artists/diego-velazquez.jpg"
+  },
+  "Rembrandt": {
+    "page": "https://en.wikipedia.org/wiki/Rembrandt",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg/960px-Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg",
+    "local_path": "/images/artists/rembrandt.jpg"
+  },
+  "Auguste Rodin": {
+    "page": "https://en.wikipedia.org/wiki/Auguste_Rodin",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Auguste_Rodin_by_George_Charles_Beresford_%28NPG_x6573%29.jpg",
+    "local_path": "/images/artists/auguste-rodin.jpg"
+  },
+  "Claude Monet": {
+    "page": "https://en.wikipedia.org/wiki/Claude_Monet",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/960px-Claude_Monet_1899_Nadar_crop.jpg",
+    "local_path": "/images/artists/claude-monet.jpg"
+  },
+  "Vincent van Gogh": {
+    "page": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg/960px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg",
+    "local_path": "/images/artists/vincent-van-gogh.jpg"
+  },
+  "Edvard Munch": {
+    "page": "https://en.wikipedia.org/wiki/Edvard_Munch",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Portrait_of_Edvard_Munch_%28cropped%29.png",
+    "local_path": "/images/artists/edvard-munch.png"
+  },
+  "Pablo Picasso": {
+    "page": "https://en.wikipedia.org/wiki/Pablo_Picasso",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Pablo_picasso_1.jpg/960px-Pablo_picasso_1.jpg",
+    "local_path": "/images/artists/pablo-picasso.jpg"
+  },
+  "Salvador Dalí": {
+    "page": "https://en.wikipedia.org/wiki/Salvador_Dal%C3%AD",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Salvador_Dal%C3%AD_1939.jpg/960px-Salvador_Dal%C3%AD_1939.jpg",
+    "local_path": "/images/artists/salvador-dali.jpg"
+  },
+  "Frida Kahlo": {
+    "page": "https://en.wikipedia.org/wiki/Frida_Kahlo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Frida_Kahlo%2C_by_Guillermo_Kahlo.jpg/960px-Frida_Kahlo%2C_by_Guillermo_Kahlo.jpg",
+    "local_path": "/images/artists/frida-kahlo.jpg"
+  },
+  "Policleto": {
+    "page": "https://en.wikipedia.org/wiki/Doryphoros",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/02_10_2024_Photo_Paolo_Villa-Napoli-mann-Museo_Archeologico-FO232526tris-Arte_Greca_copia_romana-Policleto_Doriforo_Polykleitos_Doryphoros_from_Pompeii-marmo_marble_carrara.jpg/960px-thumbnail.jpg",
+    "local_path": "/images/artists/policleto.jpg"
+  }
+}

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from sqlalchemy import Column, Float, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -28,6 +28,34 @@ class Entity(Base):
 
     description = Column(
         Text)
+
+    notable_works = Column(Text)
+
+    key_ideas = Column(Text)
+
+    legacy = Column(Text)
+
+    sources = Column(Text)
+
+    image_source = Column(String(500))
+
+    image_license = Column(String(120))
+
+    reviewed_at = Column(String(10))
+
+    certainty_level = Column(String(30), default="confirmado")
+
+    editorial_status = Column(String(30), default="rascunho")
+
+    image_url = Column(
+        String(500))
+
+    origin_country = Column(
+        String(120))
+
+    latitude = Column(Float)
+
+    longitude = Column(Float)
 
     start_year = Column(
         Integer)
@@ -61,6 +89,10 @@ class Relationship(Base):
     relationship_type = Column(
         String(100),
         nullable=False)
+
+    notes = Column(Text)
+
+    source_reference = Column(String(500))
 
     source_entity = relationship(
         "Entity",

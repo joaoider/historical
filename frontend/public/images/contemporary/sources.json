@@ -1,0 +1,72 @@
+{
+  "Autumn de Forest": {
+    "page": "https://en.wikipedia.org/wiki/Autumn_de_Forest",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Autumn_De_Forest_at_auction_of_her_work.jpg",
+    "local_path": "/images/contemporary/autumn-de-forest.jpg"
+  },
+  "Gitanjali Rao": {
+    "page": "https://en.wikipedia.org/wiki/Gitanjali_Rao_(inventor)",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gitanjali_Headshot_%284x5_cropped%29.jpg/500px-Gitanjali_Headshot_%284x5_cropped%29.jpg",
+    "local_path": "/images/contemporary/gitanjali-rao.jpg"
+  },
+  "Kiara Nirghin": {
+    "page": "https://en.wikipedia.org/wiki/Kiara_Nirghin",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Kiara_Nirghin_Image.png/500px-Kiara_Nirghin_Image.png",
+    "local_path": "/images/contemporary/kiara-nirghin.png"
+  },
+  "Ann Liang": {
+    "page": "https://en.wikipedia.org/wiki/Ann_Liang",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Ann_Liang_Headshot.jpg/500px-Ann_Liang_Headshot.jpg",
+    "local_path": "/images/contemporary/ann-liang.jpg"
+  },
+  "Billie Eilish": {
+    "page": "https://en.wikipedia.org/wiki/Billie_Eilish",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/BillieEilishO2140725-39_-_54665577407_%28cropped%29.jpg/500px-BillieEilishO2140725-39_-_54665577407_%28cropped%29.jpg",
+    "local_path": "/images/contemporary/billie-eilish.jpg"
+  },
+  "Tyla": {
+    "page": "https://en.wikipedia.org/wiki/Tyla",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Tyla_at_2026_Montreux_Jazz_Festival_8.png/500px-Tyla_at_2026_Montreux_Jazz_Festival_8.png",
+    "local_path": "/images/contemporary/tyla.png"
+  },
+  "The Kid Laroi": {
+    "page": "https://en.wikipedia.org/wiki/The_Kid_Laroi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/LEAD_PRESS_PC_ADAMKARGENIAN_%28cropped%29.tif/lossy-page1-500px-LEAD_PRESS_PC_ADAMKARGENIAN_%28cropped%29.tif.jpg",
+    "local_path": "/images/contemporary/the-kid-laroi.jpg"
+  },
+  "Olivia Rodrigo": {
+    "page": "https://en.wikipedia.org/wiki/Olivia_Rodrigo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Glasto2025-546_%28cropped%29_2.jpg/500px-Glasto2025-546_%28cropped%29_2.jpg",
+    "local_path": "/images/contemporary/olivia-rodrigo.jpg"
+  },
+  "Benson Boone": {
+    "page": "https://en.wikipedia.org/wiki/Benson_Boone",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/Benson_Boone_Press_Copy_Warner_Records_%28cropped%29.png",
+    "local_path": "/images/contemporary/benson-boone.png"
+  },
+  "Adélaïde Charlier": {
+    "page": "https://en.wikipedia.org/wiki/Ad%C3%A9la%C3%AFde_Charlier",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Ad%C3%A9la%C3%AFde_Charlier%2C_2021_%28cropped%29.jpg/500px-Ad%C3%A9la%C3%AFde_Charlier%2C_2021_%28cropped%29.jpg",
+    "local_path": "/images/contemporary/adelaide-charlier.jpg"
+  },
+  "Greta Thunberg": {
+    "page": "https://en.wikipedia.org/wiki/Greta_Thunberg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Greta_Thunberg_in_November_in_Stockholm_%28cropped%29%282%29.jpg/500px-Greta_Thunberg_in_November_in_Stockholm_%28cropped%29%282%29.jpg",
+    "local_path": "/images/contemporary/greta-thunberg.jpg"
+  },
+  "Mari Copeny": {
+    "page": "https://en.wikipedia.org/wiki/Amariyanna_Copeny",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Amariyanna_Copeny%2C_2016_%28cropped%29.jpg",
+    "local_path": "/images/contemporary/mari-copeny.jpg"
+  },
+  "Licypriya Kangujam": {
+    "page": "https://en.wikipedia.org/wiki/Licypriya_Kangujam",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Licypriya_Kangujam%2C_2019.jpg/500px-Licypriya_Kangujam%2C_2019.jpg",
+    "local_path": "/images/contemporary/licypriya-kangujam.jpg"
+  },
+  "Autumn Peltier": {
+    "page": "https://en.wikipedia.org/wiki/Autumn_Peltier",
+    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Autumn_Peltier.jpg?width=500",
+    "local_path": "/images/contemporary/autumn-peltier.jpg"
+  }
+}

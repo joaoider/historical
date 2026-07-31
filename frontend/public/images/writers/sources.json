@@ -1,0 +1,157 @@
+{
+  "Homero": {
+    "page": "https://en.wikipedia.org/wiki/Homer",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Homer_At_the_British_Museum_2024_%283x4_cropped%29.jpg/960px-Homer_At_the_British_Museum_2024_%283x4_cropped%29.jpg",
+    "local_path": "/images/writers/homero.jpg"
+  },
+  "Sófocles": {
+    "page": "https://en.wikipedia.org/wiki/Sophocles",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/19/Sophocles_pushkin.jpg",
+    "local_path": "/images/writers/sofocles.jpg"
+  },
+  "Virgílio": {
+    "page": "https://en.wikipedia.org/wiki/Virgil",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Virgil_mosaic_in_the_Bardo_National_Museum_%28Tunis%29_%2812241228546%29.jpg/960px-Virgil_mosaic_in_the_Bardo_National_Museum_%28Tunis%29_%2812241228546%29.jpg",
+    "local_path": "/images/writers/virgilio.jpg"
+  },
+  "Li Bai": {
+    "page": "https://en.wikipedia.org/wiki/Li_Bai",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/LiBai.jpg",
+    "local_path": "/images/writers/li-bai.jpg"
+  },
+  "Murasaki Shikibu": {
+    "page": "https://en.wikipedia.org/wiki/Murasaki_Shikibu",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Murasaki-Shikibu-composing-Genji-Monogatari.png/960px-Murasaki-Shikibu-composing-Genji-Monogatari.png",
+    "local_path": "/images/writers/murasaki-shikibu.png"
+  },
+  "Dante Alighieri": {
+    "page": "https://en.wikipedia.org/wiki/Dante_Alighieri",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Bargello_-_Kapelle_Fresko_2a.jpg",
+    "local_path": "/images/writers/dante-alighieri.jpg"
+  },
+  "Geoffrey Chaucer": {
+    "page": "https://en.wikipedia.org/wiki/Geoffrey_Chaucer",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Chaucer_manuscrit_portrait_%28d%C3%A9tail%29.jpeg",
+    "local_path": "/images/writers/geoffrey-chaucer.jpg"
+  },
+  "William Shakespeare": {
+    "page": "https://en.wikipedia.org/wiki/William_Shakespeare",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/William_Shakespeare_by_John_Taylor%2C_edited.jpg/960px-William_Shakespeare_by_John_Taylor%2C_edited.jpg",
+    "local_path": "/images/writers/william-shakespeare.jpg"
+  },
+  "Molière": {
+    "page": "https://en.wikipedia.org/wiki/Moli%C3%A8re",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Pierre_Mignard_-_Portrait_de_Jean-Baptiste_Poquelin_dit_Moli%C3%A8re_%281622-1673%29_-_Google_Art_Project_%28cropped%29.jpg/960px-Pierre_Mignard_-_Portrait_de_Jean-Baptiste_Poquelin_dit_Moli%C3%A8re_%281622-1673%29_-_Google_Art_Project_%28cropped%29.jpg",
+    "local_path": "/images/writers/moliere.jpg"
+  },
+  "Voltaire": {
+    "page": "https://en.wikipedia.org/wiki/Voltaire",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Nicolas_de_Largilli%C3%A8re_-_Portrait_de_Voltaire_%281694-1778%29_en_1718_-_P208_-_mus%C3%A9e_Carnavalet_-_5_%28cropped%29.jpg/960px-Nicolas_de_Largilli%C3%A8re_-_Portrait_de_Voltaire_%281694-1778%29_en_1718_-_P208_-_mus%C3%A9e_Carnavalet_-_5_%28cropped%29.jpg",
+    "local_path": "/images/writers/voltaire.jpg"
+  },
+  "Fiódor Dostoiévski": {
+    "page": "https://en.wikipedia.org/wiki/Fyodor_Dostoevsky",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Vasily_Perov_-_%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_-_Google_Art_Project.jpg/960px-Vasily_Perov_-_%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_-_Google_Art_Project.jpg",
+    "local_path": "/images/writers/fiodor-dostoievski.jpg"
+  },
+  "Gabriel García Márquez": {
+    "page": "https://en.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Gabriel_Garcia_Marquez.jpg",
+    "local_path": "/images/writers/gabriel-garcia-marquez.jpg"
+  },
+  "Chimamanda Ngozi Adichie": {
+    "page": "https://en.wikipedia.org/wiki/Chimamanda_Ngozi_Adichie",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Chimamanda_Ngozi_Adichie_%282015%29.png",
+    "local_path": "/images/writers/chimamanda-ngozi-adichie.png"
+  },
+  "Hesíodo": {
+    "page": "https://en.wikipedia.org/wiki/Hesiod",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Bust_of_Hesiod_%28%3F%29-Ancient_Roman_busts_in_the_Neues_Museum.jpg",
+    "local_path": "/images/writers/hesiodo.jpg"
+  },
+  "Eurípides": {
+    "page": "https://en.wikipedia.org/wiki/Euripides",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Euripide_%28cropped%29.jpg/960px-Euripide_%28cropped%29.jpg",
+    "local_path": "/images/writers/euripides.jpg"
+  },
+  "Ovídio": {
+    "page": "https://en.wikipedia.org/wiki/Ovid",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Ovid_by_an_anonymous_sculptor.jpg/960px-Ovid_by_an_anonymous_sculptor.jpg",
+    "local_path": "/images/writers/ovidio.jpg"
+  },
+  "Plutarco": {
+    "page": "https://en.wikipedia.org/wiki/Plutarch",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Portrait_of_a_philosopher%2C_maybe_Plutarch%2C_2nd_century_BC%2C_AM_Delphi%2C_0135.jpg",
+    "local_path": "/images/writers/plutarco.jpg"
+  },
+  "Miguel de Cervantes": {
+    "page": "https://en.wikipedia.org/wiki/Miguel_de_Cervantes",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Cervantes_J%C3%A1uregui.jpg/960px-Cervantes_J%C3%A1uregui.jpg",
+    "local_path": "/images/writers/miguel-de-cervantes.jpg"
+  },
+  "Goethe": {
+    "page": "https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Goethe_%28Stieler_1828%29.jpg/960px-Goethe_%28Stieler_1828%29.jpg",
+    "local_path": "/images/writers/goethe.jpg"
+  },
+  "Machado de Assis": {
+    "page": "https://en.wikipedia.org/wiki/Machado_de_Assis",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Machado_de_Assis_by_Marc_Ferrez.jpg/960px-Machado_de_Assis_by_Marc_Ferrez.jpg",
+    "local_path": "/images/writers/machado-de-assis.jpg"
+  },
+  "Jorge Luis Borges": {
+    "page": "https://en.wikipedia.org/wiki/Jorge_Luis_Borges",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Jorge_Luis_Borges_1951%2C_by_Grete_Stern_%28full%29.jpg/960px-Jorge_Luis_Borges_1951%2C_by_Grete_Stern_%28full%29.jpg",
+    "local_path": "/images/writers/jorge-luis-borges.jpg"
+  },
+  "Safo": {
+    "page": "https://en.wikipedia.org/wiki/Sappho",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Malarz_Safony_-_Kalpis_wykonana_technik%C4%85_Six.jpg",
+    "local_path": "/images/writers/safo.jpg"
+  },
+  "Luís de Camões": {
+    "page": "https://en.wikipedia.org/wiki/Lu%C3%ADs_de_Cam%C3%B5es",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Cam%C3%B5es%2C_por_Fern%C3%A3o_Gomes.jpg",
+    "local_path": "/images/writers/luis-de-camoes.jpg"
+  },
+  "Franz Kafka": {
+    "page": "https://en.wikipedia.org/wiki/Franz_Kafka",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Franz_Kafka%2C_1923.jpg/960px-Franz_Kafka%2C_1923.jpg",
+    "local_path": "/images/writers/franz-kafka.jpg"
+  },
+  "Virginia Woolf": {
+    "page": "https://en.wikipedia.org/wiki/Virginia_Woolf",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/George_Charles_Beresford_-_Virginia_Woolf_in_1902_-_Restoration.jpg/960px-George_Charles_Beresford_-_Virginia_Woolf_in_1902_-_Restoration.jpg",
+    "local_path": "/images/writers/virginia-woolf.jpg"
+  },
+  "J. K. Rowling": {
+    "page": "https://en.wikipedia.org/wiki/J._K._Rowling",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/J._K._Rowling_2010.jpg/960px-J._K._Rowling_2010.jpg",
+    "local_path": "/images/writers/j-k-rowling.jpg"
+  },
+  "Jane Austen": {
+    "page": "https://en.wikipedia.org/wiki/Jane_Austen",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/CassandraAusten-JaneAusten%28c.1810%29_hires.jpg/960px-CassandraAusten-JaneAusten%28c.1810%29_hires.jpg",
+    "local_path": "/images/writers/jane-austen.jpg"
+  },
+  "Clarice Lispector": {
+    "page": "https://en.wikipedia.org/wiki/Clarice_Lispector",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/75/Clarice_Lispector_%28cropped%29.jpg",
+    "local_path": "/images/writers/clarice-lispector.jpg"
+  },
+  "Victor Hugo": {
+    "page": "https://en.wikipedia.org/wiki/Victor_Hugo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Victor_Hugo_by_%C3%89tienne_Carjat_1876_-_full.jpg/960px-Victor_Hugo_by_%C3%89tienne_Carjat_1876_-_full.jpg",
+    "local_path": "/images/writers/victor-hugo.jpg"
+  },
+  "George Orwell": {
+    "page": "https://en.wikipedia.org/wiki/George_Orwell",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/George_Orwell_press_photo.jpg/960px-George_Orwell_press_photo.jpg",
+    "local_path": "/images/writers/george-orwell.jpg"
+  },
+  "Sally Rooney": {
+    "page": "https://en.wikipedia.org/wiki/Sally_Rooney",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Sally_Rooney_%28cropped%29.png",
+    "local_path": "/images/writers/sally-rooney.png"
+  }
+}

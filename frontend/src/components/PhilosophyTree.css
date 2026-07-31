@@ -1,0 +1,409 @@
+.philosophy-tree-view {
+    min-height: 100%;
+    padding: clamp(32px, 5vw, 72px) clamp(14px, 4vw, 54px) 90px;
+    background:
+        radial-gradient(circle at 12% 4%, rgb(190 148 83 / 14%), transparent 25rem),
+        linear-gradient(180deg, #fbf6e9, #f4ead5);
+    color: #382d21;
+}
+
+.philosophy-tree-intro { margin-bottom: 64px; text-align: center; }
+.philosophy-tree-intro p {
+    margin: 0 0 10px;
+    color: #98713c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+}
+.philosophy-tree-intro h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 4vw, 52px);
+    font-weight: 500;
+}
+.philosophy-tree-intro > span { margin-top: 12px; display: block; color: #75644f; }
+
+.philosophy-tree-legend {
+    margin-top: 20px;
+    margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+}
+
+.philosophy-tree-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #5e5144;
+    font-size: 12px;
+}
+
+.philosophy-tree-legend i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--track-color);
+}
+
+.philosophy-tree-controls {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+}
+
+.philosophy-tree-controls button {
+    padding: 6px 11px;
+    border: 1px solid #bda27c;
+    border-radius: 999px;
+    background: transparent;
+    color: #725a3e;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.philosophy-tree-controls button.active {
+    border-color: #795331;
+    background: #795331;
+    color: #fffaf0;
+}
+
+.philosophy-person-details {
+    max-width: 720px;
+    margin: -38px auto 28px;
+    padding: 14px 42px 14px 14px;
+    position: relative;
+    display: flex;
+    gap: 14px;
+    border: 1px solid #d5c09e;
+    border-radius: 14px;
+    background: rgb(255 253 247 / 94%);
+    box-shadow: 0 10px 28px rgb(79 57 31 / 12%);
+}
+
+.philosophy-person-details img { width: 68px; height: 68px; flex: 0 0 68px; border-radius: 50%; object-fit: cover; object-position: top; }
+.philosophy-person-details span { color: #98713c; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.philosophy-person-details h3 { margin: 2px 0; font-family: Georgia, "Times New Roman", serif; font-size: 20px; }
+.philosophy-person-details time,
+.philosophy-person-details small { margin-right: 8px; color: #75644f; font-size: 11px; }
+.philosophy-person-details p { margin: 6px 0 0; color: #574b3f; font-size: 12px; line-height: 1.4; }
+.philosophy-person-details > button { position: absolute; top: 7px; right: 9px; border: 0; background: none; color: #795331; cursor: pointer; font-size: 22px; }
+
+.philosophy-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.matrix-columns-header {
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(156 117 74 / 24%);
+    color: #8b663d;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.matrix-period-column { width: 160px; flex: 0 0 160px; }
+.matrix-movement-column { width: 160px; flex: 0 0 160px; }
+.matrix-people-column { flex: 1 1 auto; }
+.matrix-date-column { width: 100px; flex: 0 0 100px; }
+.matrix-event-column { width: 220px; flex: 0 0 220px; }
+
+.historical-period {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+}
+
+.historical-period-label {
+    min-height: 100%;
+    padding: 3px 14px 18px 25px;
+    position: relative;
+    border-left: 2px dotted #a88459;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+.historical-period-label > div { flex: 1; }
+
+.historical-period-label > button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid #b99a70;
+    border-radius: 50%;
+    background: #fffaf0;
+    color: #795331;
+    cursor: pointer;
+    font-size: 17px;
+    line-height: 20px;
+}
+
+.historical-period-label > i {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 3px;
+    left: -7px;
+    border: 2px solid #765736;
+    border-radius: 50%;
+    background: #fbf6e9;
+}
+
+.historical-period-label h3 {
+    margin: 0;
+    color: #493726;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.15;
+}
+
+.historical-period-label span {
+    margin-top: 5px;
+    display: block;
+    color: #8b663d;
+    font-size: 11px;
+    line-height: 1.25;
+}
+
+.historical-period-generations {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.historical-period-generations[hidden] { display: none; }
+
+.historical-period.is-collapsed .historical-period-label { min-height: 46px; }
+
+.philosophy-generation-row {
+    width: 100%;
+    padding: 1px 2px 2px;
+    overflow: visible;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 8px;
+}
+
+.philosophy-generation-row:nth-child(even) { background: rgb(184 145 91 / 7%); }
+
+.historical-movement-label {
+    width: 160px;
+    min-height: 76px;
+    padding: 1px 8px 3px 18px;
+    position: relative;
+    flex: 0 0 160px;
+    border-left: 2px dotted #718474;
+}
+
+.historical-movement-label > div {
+    position: relative;
+    display: flex;
+    text-align: left;
+}
+
+.historical-movement-label > div + div { margin-top: 7px; }
+
+.historical-movement-label i {
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    top: 1px;
+    left: -25px;
+    border: 2px solid #526d59;
+    border-radius: 50%;
+    background: #fbf6e9;
+}
+
+.historical-movement-label span,
+.historical-movement-label strong,
+.historical-movement-label small { display: block; }
+
+.historical-movement-label strong {
+    color: #405647;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    line-height: 1.15;
+}
+
+.historical-movement-label small {
+    margin-top: 2px;
+    color: #708073;
+    font-size: 9px;
+    line-height: 1.15;
+}
+
+.philosophy-generation-row > time {
+    width: 100px;
+    padding: 5px 12px 0 0;
+    flex: 0 0 100px;
+    color: #8b663d;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.historical-events-label {
+    width: 220px;
+    min-height: 76px;
+    padding: 2px 8px 4px 18px;
+    position: relative;
+    flex: 0 0 220px;
+    border-left: 2px dotted #88786a;
+}
+
+.historical-events-label > div {
+    position: relative;
+    display: flex;
+    text-align: left;
+}
+
+.historical-events-label > div + div { margin-top: 7px; }
+
+.historical-events-label i {
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    top: 1px;
+    left: -25px;
+    border: 2px solid var(--event-color);
+    border-radius: 50%;
+    background: #fbf6e9;
+}
+
+.historical-events-label span,
+.historical-events-label strong,
+.historical-events-label small { display: block; }
+
+.historical-events-label strong {
+    color: var(--event-color);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    line-height: 1.15;
+}
+
+.historical-events-label small {
+    margin-top: 2px;
+    color: #786b60;
+    font-size: 9px;
+    line-height: 1.15;
+}
+
+.philosophy-generation-row ol {
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0 3px;
+    flex: 1 1 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 8px;
+    list-style: none;
+}
+
+.philosopher {
+    width: 72px;
+    position: relative;
+    z-index: 0;
+    flex: 0 0 72px;
+    text-align: center;
+}
+
+.philosopher:not(:last-child) { margin-right: 18px; }
+.philosopher.connects-next::after {
+    width: 26px;
+    height: 2px;
+    position: absolute;
+    top: 31px;
+    left: 67px;
+    z-index: -1;
+    background: var(--track-color);
+    content: "";
+    opacity: .48;
+}
+
+.philosopher-button {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+}
+
+.philosopher-button:focus-visible { outline: 2px solid var(--track-color); outline-offset: 4px; border-radius: 8px; }
+.philosopher-button:hover .philosopher-portrait { transform: translateY(-2px); }
+
+.philosopher-portrait {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    border: 2px solid #fffaf0;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--track-color) 65%, #f4ead5);
+    box-shadow: 0 0 0 2px var(--track-color), 0 8px 22px rgb(79 57 31 / 18%);
+    transition: transform .18s ease;
+}
+
+.philosopher-portrait img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.philosopher-portrait span {
+    color: #fffaf0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+}
+
+.philosopher strong {
+    margin-top: 6px;
+    display: block;
+    color: var(--track-color);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.philosophy-tree-empty { padding: 70px 20px; color: #75644f; text-align: center; }
+
+@media (max-width: 760px) {
+    .philosophy-tree-view { padding-inline: 10px; }
+    .philosophy-tree-intro { margin-bottom: 42px; }
+    .philosophy-tree-legend { margin-left: 0; }
+    .philosophy-person-details { margin: -20px 8px 24px; }
+    .historical-period { display: block; }
+    .historical-period-label { min-height: 0; margin-top: 12px; padding: 10px 12px 10px 20px; position: sticky; left: 0; z-index: 3; background: #f8efdd; }
+    .historical-period-label h3 { font-size: 14px; }
+    .historical-period-label span { font-size: 10px; }
+    .philosophy-generation-row { margin: 8px 0; padding: 12px; display: grid; grid-template-columns: 1fr; gap: 10px; border: 1px solid rgb(156 117 74 / 18%); background: rgb(255 253 247 / 55%); }
+    .historical-movement-label,
+    .historical-events-label { width: auto; min-height: 0; padding: 5px 8px 5px 18px; }
+    .historical-movement-label { order: 1; }
+    .philosophy-generation-row ol { width: 100%; order: 3; }
+    .philosophy-generation-row > time { width: auto; padding: 0; order: 2; text-align: left; }
+    .historical-events-label { order: 4; }
+    .philosopher { width: 68px; flex-basis: 68px; }
+    .philosopher:not(:last-child) { margin-right: 12px; }
+    .philosopher.connects-next::after { width: 20px; left: 63px; }
+}

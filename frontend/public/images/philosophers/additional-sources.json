@@ -1,0 +1,127 @@
+{
+  "Lao-Tsé": {
+    "page": "https://en.wikipedia.org/wiki/Laozi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Laozi_%28Chinese_characters%29.svg/330px-Laozi_%28Chinese_characters%29.svg.png",
+    "local_path": "/images/philosophers/lao-tse.png"
+  },
+  "Sêneca": {
+    "page": "https://en.wikipedia.org/wiki/Seneca_the_Younger",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Duble_herma_of_Socrates_and_Seneca_Antikensammlung_Berlin_07.jpg/330px-Duble_herma_of_Socrates_and_Seneca_Antikensammlung_Berlin_07.jpg",
+    "local_path": "/images/philosophers/seneca.jpg"
+  },
+  "Epicteto": {
+    "page": "https://en.wikipedia.org/wiki/Epictetus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Epicteti_Enchiridion_Latinis_versibus_adumbratum_%28Oxford_1715%29_frontispiece_%28cropped%29.jpg/330px-Epicteti_Enchiridion_Latinis_versibus_adumbratum_%28Oxford_1715%29_frontispiece_%28cropped%29.jpg",
+    "local_path": "/images/philosophers/epicteto.jpg"
+  },
+  "Marco Aurélio": {
+    "page": "https://en.wikipedia.org/wiki/Marcus_Aurelius",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/MSR-ra-61-b-1-DM.jpg/330px-MSR-ra-61-b-1-DM.jpg",
+    "local_path": "/images/philosophers/marco-aurelio.jpg"
+  },
+  "Agostinho de Hipona": {
+    "page": "https://en.wikipedia.org/wiki/Augustine_of_Hippo",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Saint_Augustine_by_Philippe_de_Champaigne.jpg/330px-Saint_Augustine_by_Philippe_de_Champaigne.jpg",
+    "local_path": "/images/philosophers/agostinho-de-hipona.jpg"
+  },
+  "René Descartes": {
+    "page": "https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg/330px-Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg",
+    "local_path": "/images/philosophers/rene-descartes.jpg"
+  },
+  "Boécio": {
+    "page": "https://en.wikipedia.org/wiki/Boethius",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Boethius.jpeg/330px-Boethius.jpeg",
+    "local_path": "/images/philosophers/boecio.jpg"
+  },
+  "Averróis": {
+    "page": "https://en.wikipedia.org/wiki/Averroes",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Andrea_di_bonaiuto%2C_apoteosi_di_san_tommaso_d%27aquino%2C_11_averro%C3%A8.jpg/330px-Andrea_di_bonaiuto%2C_apoteosi_di_san_tommaso_d%27aquino%2C_11_averro%C3%A8.jpg",
+    "local_path": "/images/philosophers/averrois.jpg"
+  },
+  "Thomas Hobbes": {
+    "page": "https://en.wikipedia.org/wiki/Thomas_Hobbes",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Thomas_Hobbes_by_John_Michael_Wright_%28colour%29_%283x4_cropped%29.jpg/330px-Thomas_Hobbes_by_John_Michael_Wright_%28colour%29_%283x4_cropped%29.jpg",
+    "local_path": "/images/philosophers/thomas-hobbes.jpg"
+  },
+  "John Locke": {
+    "page": "https://en.wikipedia.org/wiki/John_Locke",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Godfrey_Kneller_-_Portrait_of_John_Locke_%28Hermitage%29.jpg/330px-Godfrey_Kneller_-_Portrait_of_John_Locke_%28Hermitage%29.jpg",
+    "local_path": "/images/philosophers/john-locke.jpg"
+  },
+  "Baruch Spinoza": {
+    "page": "https://en.wikipedia.org/wiki/Baruch_Spinoza",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Spinoza.jpg/330px-Spinoza.jpg",
+    "local_path": "/images/philosophers/baruch-spinoza.jpg"
+  },
+  "Gottfried Wilhelm Leibniz": {
+    "page": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Christoph_Bernhard_Francke_-_Bildnis_des_Philosophen_Leibniz_%28ca._1695%29.jpg/330px-Christoph_Bernhard_Francke_-_Bildnis_des_Philosophen_Leibniz_%28ca._1695%29.jpg",
+    "local_path": "/images/philosophers/gottfried-wilhelm-leibniz.jpg"
+  },
+  "David Hume": {
+    "page": "https://en.wikipedia.org/wiki/David_Hume",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/David_Hume_Ramsay.jpg/330px-David_Hume_Ramsay.jpg",
+    "local_path": "/images/philosophers/david-hume.jpg"
+  },
+  "Jean-Jacques Rousseau": {
+    "page": "https://en.wikipedia.org/wiki/Jean-Jacques_Rousseau",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Maurice_Quentin_de_La_Tour_-_Portrait_of_Jean-Jacques_Rousseau_-_adjusted.jpg/330px-Maurice_Quentin_de_La_Tour_-_Portrait_of_Jean-Jacques_Rousseau_-_adjusted.jpg",
+    "local_path": "/images/philosophers/jean-jacques-rousseau.jpg"
+  },
+  "Immanuel Kant": {
+    "page": "https://en.wikipedia.org/wiki/Immanuel_Kant",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Immanuel_Kant_-_Gemaelde_1.jpg/330px-Immanuel_Kant_-_Gemaelde_1.jpg",
+    "local_path": "/images/philosophers/immanuel-kant.jpg"
+  },
+  "G. W. F. Hegel": {
+    "page": "https://en.wikipedia.org/wiki/Georg_Wilhelm_Friedrich_Hegel",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Jakob_Schlesinger_-_Hegel_1831.jpg/330px-Jakob_Schlesinger_-_Hegel_1831.jpg",
+    "local_path": "/images/philosophers/g-w-f-hegel.jpg"
+  },
+  "Schopenhauer": {
+    "page": "https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Arthur_Schopenhauer_by_J_Sch%C3%A4fer%2C_1859b.jpg/330px-Arthur_Schopenhauer_by_J_Sch%C3%A4fer%2C_1859b.jpg",
+    "local_path": "/images/philosophers/schopenhauer.jpg"
+  },
+  "Søren Kierkegaard": {
+    "page": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/S%C3%B8ren_Kierkegaard_%281813-1855%29_-_%28cropped%29.jpg/330px-S%C3%B8ren_Kierkegaard_%281813-1855%29_-_%28cropped%29.jpg",
+    "local_path": "/images/philosophers/soren-kierkegaard.jpg"
+  },
+  "Karl Marx": {
+    "page": "https://en.wikipedia.org/wiki/Karl_Marx",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored.png/330px-Karl_Marx_by_John_Jabez_Edwin_Mayall_1875_-_Restored.png",
+    "local_path": "/images/philosophers/karl-marx.png"
+  },
+  "Friedrich Nietzsche": {
+    "page": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nietzsche187a.jpg/330px-Nietzsche187a.jpg",
+    "local_path": "/images/philosophers/friedrich-nietzsche.jpg"
+  },
+  "Ludwig Wittgenstein": {
+    "page": "https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Ludwig_Wittgenstein_1929.jpg/330px-Ludwig_Wittgenstein_1929.jpg",
+    "local_path": "/images/philosophers/ludwig-wittgenstein.jpg"
+  },
+  "Jean-Paul Sartre": {
+    "page": "https://en.wikipedia.org/wiki/Jean-Paul_Sartre",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Jean_Paul_Sartre_1965.jpg/330px-Jean_Paul_Sartre_1965.jpg",
+    "local_path": "/images/philosophers/jean-paul-sartre.jpg"
+  },
+  "Albert Camus": {
+    "page": "https://en.wikipedia.org/wiki/Albert_Camus",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg/330px-Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg",
+    "local_path": "/images/philosophers/albert-camus.jpg"
+  },
+  "Michel Foucault": {
+    "page": "https://en.wikipedia.org/wiki/Michel_Foucault",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Photo_of_Michel_Foucault_on_1970_dustjacket_of_The_Order_of_Things.jpg",
+    "local_path": "/images/philosophers/michel-foucault.jpg"
+  },
+  "Jürgen Habermas": {
+    "page": "https://en.wikipedia.org/wiki/J%C3%BCrgen_Habermas",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/JuergenHabermas_crop1.jpg/330px-JuergenHabermas_crop1.jpg",
+    "local_path": "/images/philosophers/jurgen-habermas.jpg"
+  }
+}

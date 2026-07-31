@@ -5,8 +5,8 @@ from .routes import router
 
 
 app = FastAPI(
-    title="História API",
-    description="API para visualização de timeline histórica com múltiplas tracks",
+    title="IDER API",
+    description="API educacional de ideias, descobertas, evoluções e raízes",
     version="1.0.0"
 )
 
@@ -32,7 +32,7 @@ app.include_router(router, prefix="/api")
 def home():
 
     return {
-        "message": "Bem-vindo ao projeto História!",
+        "message": "Bem-vindo ao IDER!",
         "version": "1.0.0",
         "docs": "/docs"
     }
