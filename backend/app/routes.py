@@ -117,9 +117,14 @@ def get_relationships(
 
         result.append(
             {
+                "id": r.id,
+                "source_id": r.source_entity_id,
                 "source": r.source_entity.name,
                 "relation": r.relationship_type,
-                "target": r.target_entity.name
+                "target": r.target_entity.name,
+                "target_id": r.target_entity_id,
+                "notes": r.notes,
+                "source_reference": r.source_reference,
             }
         )
 

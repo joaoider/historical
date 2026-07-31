@@ -9,6 +9,7 @@ const STUDY_OPTIONS = [
     { view: "knowledge-tree", number: "05", title: "Áreas do Conhecimento", text: "Acompanhe a evolução temporal da Física, Matemática, Estatística, Computação e outras ciências.", action: "Ver evoluções" },
     { view: "knowledge-map", number: "06", title: "Mapa do Conhecimento", text: "Navegue pela genealogia fixa das disciplinas, da Teologia e Filosofia às áreas e especialidades atuais.", action: "Navegar pelas áreas" },
     { view: "map", number: "07", title: "Mapa de Origens", text: "Descubra onde nasceram personagens e ideias, conectando conhecimento, história e território.", action: "Explorar o mapa" },
+    { view: "trails", number: "08", title: "Trilhas de Estudo", text: "Siga percursos temáticos organizados em etapas e aprofunde cada personagem em seu perfil.", action: "Escolher uma trilha" },
 ];
 
 function HomePage({ onNavigate, entities = [], trackCount = 0 }) {
@@ -41,7 +42,7 @@ function HomePage({ onNavigate, entities = [], trackCount = 0 }) {
                 <div>
                     <button type="button" onClick={() => onNavigate("philosophy-tree")}><span>01</span><strong>Formação das ideias</strong><small>Observe épocas, movimentos e personagens na árvore histórica.</small></button>
                     <button type="button" onClick={() => onNavigate("knowledge-tree")}><span>02</span><strong>Revoluções científicas</strong><small>Acompanhe a evolução das áreas e seus principais representantes.</small></button>
-                    <button type="button" onClick={() => onNavigate("profiles")}><span>03</span><strong>Da visão geral ao indivíduo</strong><small>Escolha um nome e descubra obras, contexto, relações e legado.</small></button>
+                    <button type="button" onClick={() => onNavigate("trails")}><span>03</span><strong>Estudo orientado</strong><small>Siga uma sequência temática e aprofunde cada etapa em seu próprio ritmo.</small></button>
                 </div>
             </section>
             <section className="home-study">

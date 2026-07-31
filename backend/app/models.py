@@ -35,6 +35,18 @@ class Entity(Base):
 
     legacy = Column(Text)
 
+    sources = Column(Text)
+
+    image_source = Column(String(500))
+
+    image_license = Column(String(120))
+
+    reviewed_at = Column(String(10))
+
+    certainty_level = Column(String(30), default="confirmado")
+
+    editorial_status = Column(String(30), default="rascunho")
+
     image_url = Column(
         String(500))
 
@@ -77,6 +89,10 @@ class Relationship(Base):
     relationship_type = Column(
         String(100),
         nullable=False)
+
+    notes = Column(Text)
+
+    source_reference = Column(String(500))
 
     source_entity = relationship(
         "Entity",

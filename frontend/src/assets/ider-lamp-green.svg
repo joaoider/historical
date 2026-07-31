@@ -1,4 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 150" role="img" aria-labelledby="title">
   <title id="title">Lâmpada IDER</title>
-  <path d="M58 143V117C57 96 47 84 32 65C19 49 18 30 26 16C34 3 47 0 61 0C77 0 90 7 97 20C104 34 100 51 87 67C73 84 65 96 63 112" fill="none" stroke="#245c45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path
+    d="M59.5 143V119.5C59.5 112.5 55.8 107.4 54.4 98.8C52.3 86.7 44.2 76.4 33.3 63.2C23.2 50.9 18.5 39.3 20.7 28.1C23.4 14.2 36.5 4.2 53.8 1.7C71.6-.8 87.3 6.5 95 19.4C103.2 33.3 99.3 48.2 87.3 63.5C73.1 81.4 65.7 93.8 63.4 108.1C62.7 112.3 61.8 114.9 60.5 116.7"
+    fill="none"
+    stroke="#245c45"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 </svg>

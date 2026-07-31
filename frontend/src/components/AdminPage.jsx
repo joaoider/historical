@@ -1,78 +1,40 @@
 import { useEffect, useMemo, useState } from "react";
-
 import api from "../services/api";
+import { FIELD_LABELS, getCompleteness } from "../utils/editorial";
 import "./AdminPage.css";
 
-const EMPTY = { name: "", entity_type: "person", track: "", start_year: "", end_year: "", origin_country: "", image_url: "", description: "", notable_works: "", key_ideas: "", legacy: "", latitude: "", longitude: "" };
+const EMPTY = { name: "", entity_type: "person", track: "", start_year: "", end_year: "", origin_country: "", image_url: "", image_source: "", image_license: "", description: "", notable_works: "", key_ideas: "", legacy: "", sources: "", reviewed_at: "", certainty_level: "confirmado", editorial_status: "rascunho", latitude: "", longitude: "" };
+const LABELS = { name: "Nome", entity_type: "Tipo", track: "Categoria", start_year: "Ano inicial", end_year: "Ano final", origin_country: "Origem", image_url: "URL da imagem", image_source: "Fonte da imagem", image_license: "Licença da imagem", description: "Descrição", notable_works: "Obras e contribuições", key_ideas: "Ideias principais", legacy: "Legado", sources: "Fontes — uma por linha", reviewed_at: "Última revisão", certainty_level: "Grau de certeza", editorial_status: "Estado editorial", latitude: "Latitude", longitude: "Longitude" };
+const RELATION_TYPES = ["influenciou", "foi influenciado por", "contemporâneo de", "professor de", "aluno de", "contestou", "contribuiu para", "pertence ao movimento", "autor de", "obra associada a"];
 
-function normalizeForm(form) {
-    const nullableNumber = (value) => value === "" ? null : Number(value);
-    return { ...form, start_year: nullableNumber(form.start_year), end_year: nullableNumber(form.end_year), latitude: nullableNumber(form.latitude), longitude: nullableNumber(form.longitude), track: form.track || null };
-}
+function normalizeForm(form) { const numberOrNull = (value) => value === "" ? null : Number(value); return { ...form, start_year: numberOrNull(form.start_year), end_year: numberOrNull(form.end_year), latitude: numberOrNull(form.latitude), longitude: numberOrNull(form.longitude), track: form.track || null }; }
 
 function AdminPage() {
-    const [entities, setEntities] = useState([]);
-    const [form, setForm] = useState(EMPTY);
-    const [editingId, setEditingId] = useState(null);
-    const [query, setQuery] = useState("");
-    const [status, setStatus] = useState("");
-    const [relation, setRelation] = useState({ source_entity_id: "", target_entity_id: "", relationship_type: "influenciou" });
-
-    const reload = () => api.get("/entities").then((response) => setEntities(response.data.sort((a, b) => a.name.localeCompare(b.name, "pt-BR"))));
+    const [entities, setEntities] = useState([]); const [relationships, setRelationships] = useState([]); const [form, setForm] = useState(EMPTY); const [editingId, setEditingId] = useState(null); const [query, setQuery] = useState(""); const [qualityFilter, setQualityFilter] = useState("all"); const [status, setStatus] = useState("");
+    const [relation, setRelation] = useState({ source_entity_id: "", target_entity_id: "", relationship_type: "influenciou", notes: "", source_reference: "" });
+    const reload = () => Promise.all([api.get("/entities"), api.get("/relationships")]).then(([entitiesResponse, relationsResponse]) => { setEntities(entitiesResponse.data.sort((a, b) => a.name.localeCompare(b.name, "pt-BR"))); setRelationships(relationsResponse.data); });
     useEffect(() => { reload().catch(() => setStatus("Não foi possível carregar o acervo.")); }, []);
-    const filtered = useMemo(() => entities.filter((entity) => entity.name.toLocaleLowerCase("pt-BR").includes(query.toLocaleLowerCase("pt-BR"))).slice(0, 80), [entities, query]);
-
-    const edit = (entity) => {
-        setEditingId(entity.id);
-        setForm(Object.fromEntries(Object.keys(EMPTY).map((key) => [key, entity[key] ?? ""])));
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    const metrics = useMemo(() => entities.reduce((result, entity) => { result[getCompleteness(entity).level] += 1; return result; }, { complete: 0, review: 0, incomplete: 0 }), [entities]);
+    const filtered = useMemo(() => entities.filter((entity) => entity.name.toLocaleLowerCase("pt-BR").includes(query.toLocaleLowerCase("pt-BR")) && (qualityFilter === "all" || getCompleteness(entity).level === qualityFilter)).slice(0, 100), [entities, query, qualityFilter]);
+    const edit = (entity) => { setEditingId(entity.id); setForm(Object.fromEntries(Object.keys(EMPTY).map((key) => [key, entity[key] ?? ""]))); window.scrollTo({ top: 0, behavior: "smooth" }); };
     const reset = () => { setEditingId(null); setForm(EMPTY); };
-    const submit = async (event) => {
-        event.preventDefault(); setStatus("Salvando...");
-        try {
-            if (editingId) await api.put(`/entities/${editingId}`, normalizeForm(form));
-            else await api.post("/entities", normalizeForm(form));
-            await reload(); reset(); setStatus("Conteúdo salvo com sucesso.");
-        } catch { setStatus("Não foi possível salvar. Confira os campos e a API."); }
-    };
-    const remove = async (entity) => {
-        if (!window.confirm(`Excluir definitivamente “${entity.name}” e suas relações?`)) return;
-        await api.delete(`/entities/${entity.id}`); await reload(); if (editingId === entity.id) reset();
-    };
-    const createRelation = async (event) => {
-        event.preventDefault();
-        try { await api.post("/relationships", { ...relation, source_entity_id: Number(relation.source_entity_id), target_entity_id: Number(relation.target_entity_id) }); setStatus("Relação criada."); }
-        catch { setStatus("Não foi possível criar a relação."); }
-    };
+    const submit = async (event) => { event.preventDefault(); setStatus("Salvando..."); try { if (editingId) await api.put(`/entities/${editingId}`, normalizeForm(form)); else await api.post("/entities", normalizeForm(form)); await reload(); reset(); setStatus("Conteúdo salvo com sucesso."); } catch { setStatus("Não foi possível salvar. Confira os campos e a API."); } };
+    const remove = async (entity) => { if (!window.confirm(`Excluir definitivamente “${entity.name}” e suas relações?`)) return; await api.delete(`/entities/${entity.id}`); await reload(); if (editingId === entity.id) reset(); };
+    const createRelation = async (event) => { event.preventDefault(); try { await api.post("/relationships", { ...relation, source_entity_id: Number(relation.source_entity_id), target_entity_id: Number(relation.target_entity_id) }); await reload(); setRelation({ source_entity_id: "", target_entity_id: "", relationship_type: "influenciou", notes: "", source_reference: "" }); setStatus("Relação criada."); } catch { setStatus("Não foi possível criar a relação."); } };
+    const removeRelation = async (id) => { await api.delete(`/relationships/${id}`); await reload(); setStatus("Relação removida."); };
 
-    return (
-        <main className="admin-page">
-            <header><p>FERRAMENTA LOCAL</p><h2>Painel administrativo</h2><span>Cadastre, revise e relacione conteúdos. Antes de publicar, esta área deverá receber autenticação.</span></header>
-            {status && <div className="admin-status" role="status">{status}</div>}
-            <section className="admin-editor">
-                <h3>{editingId ? `Editando #${editingId}` : "Novo conteúdo"}</h3>
-                <form onSubmit={submit}>
-                    {Object.keys(EMPTY).map((field) => {
-                        const long = ["description", "notable_works", "key_ideas", "legacy"].includes(field);
-                        const numeric = ["start_year", "end_year", "latitude", "longitude"].includes(field);
-                        return <label className={long ? "wide" : ""} key={field}><span>{field.replaceAll("_", " ")}</span>{long ? <textarea rows="4" value={form[field]} onChange={(event) => setForm({ ...form, [field]: event.target.value })} /> : <input required={["name", "entity_type"].includes(field)} type={numeric ? "number" : "text"} step={["latitude", "longitude"].includes(field) ? "any" : undefined} value={form[field]} onChange={(event) => setForm({ ...form, [field]: event.target.value })} />}</label>;
-                    })}
-                    <div className="admin-form-actions"><button type="submit">{editingId ? "Salvar alterações" : "Criar conteúdo"}</button>{editingId && <button type="button" onClick={reset}>Cancelar</button>}</div>
-                </form>
-            </section>
-            <section className="admin-relation">
-                <h3>Nova relação</h3>
-                <form onSubmit={createRelation}>
-                    <select required value={relation.source_entity_id} onChange={(event) => setRelation({ ...relation, source_entity_id: event.target.value })}><option value="">Origem</option>{entities.map((entity) => <option value={entity.id} key={entity.id}>{entity.name}</option>)}</select>
-                    <input required value={relation.relationship_type} onChange={(event) => setRelation({ ...relation, relationship_type: event.target.value })} aria-label="Tipo de relação" />
-                    <select required value={relation.target_entity_id} onChange={(event) => setRelation({ ...relation, target_entity_id: event.target.value })}><option value="">Destino</option>{entities.map((entity) => <option value={entity.id} key={entity.id}>{entity.name}</option>)}</select>
-                    <button type="submit">Criar relação</button>
-                </form>
-            </section>
-            <section className="admin-list"><div><h3>Acervo ({entities.length})</h3><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Localizar conteúdo" /></div>{filtered.map((entity) => <article key={entity.id}><span><strong>{entity.name}</strong><small>{entity.track || entity.entity_type}</small></span><button type="button" onClick={() => edit(entity)}>Editar</button><button type="button" className="danger" onClick={() => remove(entity)}>Excluir</button></article>)}</section>
-        </main>
-    );
+    return <main className="admin-page">
+        <header><p>FERRAMENTA LOCAL</p><h2>Painel editorial</h2><span>Cadastre, revise, documente fontes e relacione conteúdos. Antes de publicar, esta área deverá receber autenticação.</span></header>
+        <section className="admin-quality" aria-label="Qualidade do acervo">{[["all", entities.length, "Total"], ["complete", metrics.complete, "Completos"], ["review", metrics.review, "Em revisão"], ["incomplete", metrics.incomplete, "Incompletos"]].map(([key, value, label]) => <button type="button" key={key} onClick={() => setQualityFilter(key)} className={qualityFilter === key ? "active" : ""}><strong>{value}</strong><span>{label}</span></button>)}</section>
+        {status && <div className="admin-status" role="status">{status}</div>}
+        <section className="admin-editor"><h3>{editingId ? `Editando #${editingId}` : "Novo conteúdo"}</h3><form onSubmit={submit}>{Object.keys(EMPTY).map((field) => {
+            const long = ["description", "notable_works", "key_ideas", "legacy", "sources"].includes(field); const numeric = ["start_year", "end_year", "latitude", "longitude"].includes(field);
+            if (field === "certainty_level") return <label key={field}><span>{LABELS[field]}</span><select value={form[field]} onChange={(event) => setForm({ ...form, [field]: event.target.value })}>{["confirmado", "provável", "aproximado", "controverso"].map((value) => <option key={value}>{value}</option>)}</select></label>;
+            if (field === "editorial_status") return <label key={field}><span>{LABELS[field]}</span><select value={form[field]} onChange={(event) => setForm({ ...form, [field]: event.target.value })}><option value="rascunho">Rascunho</option><option value="em_revisao">Em revisão</option><option value="revisado">Revisado</option></select></label>;
+            return <label className={long ? "wide" : ""} key={field}><span>{LABELS[field]}</span>{long ? <textarea rows="4" value={form[field]} onChange={(event) => setForm({ ...form, [field]: event.target.value })} /> : <input required={["name", "entity_type"].includes(field)} type={field === "reviewed_at" ? "date" : numeric ? "number" : "text"} step={["latitude", "longitude"].includes(field) ? "any" : undefined} value={form[field]} onChange={(event) => setForm({ ...form, [field]: event.target.value })} />}</label>;
+        })}<div className="admin-form-actions"><button type="submit">{editingId ? "Salvar alterações" : "Criar conteúdo"}</button>{editingId && <button type="button" onClick={reset}>Cancelar</button>}</div></form></section>
+        <section className="admin-relation"><h3>Relações históricas ({relationships.length})</h3><form onSubmit={createRelation}><select required value={relation.source_entity_id} onChange={(event) => setRelation({ ...relation, source_entity_id: event.target.value })}><option value="">Origem</option>{entities.map((entity) => <option value={entity.id} key={entity.id}>{entity.name}</option>)}</select><select value={relation.relationship_type} onChange={(event) => setRelation({ ...relation, relationship_type: event.target.value })}>{RELATION_TYPES.map((type) => <option key={type}>{type}</option>)}</select><select required value={relation.target_entity_id} onChange={(event) => setRelation({ ...relation, target_entity_id: event.target.value })}><option value="">Destino</option>{entities.map((entity) => <option value={entity.id} key={entity.id}>{entity.name}</option>)}</select><input value={relation.notes} onChange={(event) => setRelation({ ...relation, notes: event.target.value })} placeholder="Contexto da relação" /><input value={relation.source_reference} onChange={(event) => setRelation({ ...relation, source_reference: event.target.value })} placeholder="Fonte da relação" /><button type="submit">Criar relação</button></form><div className="admin-relations-list">{relationships.slice(-30).reverse().map((item) => <article key={item.id}><span><strong>{item.source}</strong> {item.relation} <strong>{item.target}</strong>{item.notes && <small>{item.notes}</small>}</span><button type="button" className="danger" onClick={() => removeRelation(item.id)}>Remover</button></article>)}</div></section>
+        <section className="admin-list"><div><h3>Acervo ({filtered.length} exibidos)</h3><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Localizar conteúdo" /></div>{filtered.map((entity) => { const quality = getCompleteness(entity); return <article key={entity.id}><span><strong>{entity.name}</strong><small>{entity.track || entity.entity_type}</small></span><span className={`quality-badge ${quality.level}`} title={`Faltam: ${quality.missing.map((field) => FIELD_LABELS[field]).join(", ") || "nenhum campo essencial"}`}>{quality.score}%</span><span className="editorial-badge">{entity.editorial_status?.replace("_", " ") || "rascunho"}</span><button type="button" onClick={() => edit(entity)}>Editar</button><button type="button" className="danger" onClick={() => remove(entity)}>Excluir</button></article>; })}</section>
+    </main>;
 }
-
 export default AdminPage;

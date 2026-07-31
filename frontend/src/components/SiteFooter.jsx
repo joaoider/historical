@@ -19,7 +19,7 @@ function SiteFooter() {
                 <small>CONTATO E COLABORAÇÕES</small>
                 <strong>Vamos conversar</strong>
                 <p>Canal de contato público a ser informado.</p>
-                <nav><a href="/sobre">Sobre o IDER</a><a href="/administracao">Administração</a></nav>
+                <nav><a href="/trilhas">Trilhas de estudo</a><a href="/sobre">Sobre o IDER</a><a href="/administracao">Administração</a></nav>
             </div>
 
             <div className="site-footer-bottom">

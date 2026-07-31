@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import api from "../services/api";
+import { getCompleteness } from "../utils/editorial";
 
 import "./ProfileView.css";
 
@@ -67,6 +68,7 @@ function ProfileView({ initialEntityId = null, onNavigate }) {
         && Math.abs(entity.start_year - selected.start_year) <= 50
     )).slice(0, 8) : [];
     const labels = selected ? getProfileLabels(selected) : getProfileLabels({});
+    const quality = selected ? getCompleteness(selected) : null;
 
     if (loading) return <div className="profile-status">Carregando perfis...</div>;
     if (error) return <div className="profile-status">{error}</div>;
@@ -127,6 +129,7 @@ function ProfileView({ initialEntityId = null, onNavigate }) {
                                     {formatYear(selected.start_year) && <><dt>Início / nascimento</dt><dd>{formatYear(selected.start_year)}</dd></>}
                                     {formatYear(selected.end_year) && <><dt>Fim / morte</dt><dd>{formatYear(selected.end_year)}</dd></>}
                                     {selected.origin_country && <><dt>Origem</dt><dd>{selected.origin_country}</dd></>}
+                                    {selected.certainty_level && <><dt>Precisão histórica</dt><dd className={`certainty ${selected.certainty_level}`}>{selected.certainty_level}</dd></>}
                                 </dl>
                             </div>
                         </header>
@@ -178,13 +181,14 @@ function ProfileView({ initialEntityId = null, onNavigate }) {
                         {selected.legacy && <section className="profile-section"><h3>Legado e influência</h3><p>{selected.legacy}</p></section>}
 
                         {related.length > 0 && (
-                            <section className="profile-section">
+                            <section className="profile-section profile-relations">
                                 <h3>Relações históricas</h3>
-                                <ul>{related.map((relationship) => (
-                                    <li key={`${relationship.source}-${relationship.relation}-${relationship.target}`}>
-                                        {relationship.source} — {relationship.relation} — {relationship.target}
-                                    </li>
-                                ))}</ul>
+                                <div>{related.map((relationship) => {
+                                    const selectedIsSource = relationship.source_id === selected.id;
+                                    const otherName = selectedIsSource ? relationship.target : relationship.source;
+                                    const otherId = selectedIsSource ? relationship.target_id : relationship.source_id;
+                                    return <article key={relationship.id}><span>{selectedIsSource ? relationship.relation : `relação inversa: ${relationship.relation}`}</span><button type="button" onClick={() => onNavigate?.("profiles", otherId)}>{otherName}</button>{relationship.notes && <p>{relationship.notes}</p>}{relationship.source_reference && <a href={relationship.source_reference} target="_blank" rel="noreferrer">Consultar fonte ↗</a>}</article>;
+                                })}</div>
                             </section>
                         )}
 
@@ -203,8 +207,9 @@ function ProfileView({ initialEntityId = null, onNavigate }) {
 
                         <section className="profile-section profile-sources">
                             <h3>Fontes e revisão</h3>
-                            <p>Conteúdo educativo em revisão contínua. Datas aproximadas, atribuições disputadas e referências específicas devem ser indicadas conforme a documentação de cada registro.</p>
-                            <small>Última consulta deste perfil: {new Date().toLocaleDateString("pt-BR")}</small>
+                            {splitLines(selected.sources).length ? <ol>{splitLines(selected.sources).map((source) => <li key={source}>{/^https?:\/\//.test(source) ? <a href={source} target="_blank" rel="noreferrer">{source}</a> : source}</li>)}</ol> : <p className="source-warning">Este registro ainda não possui referências bibliográficas cadastradas.</p>}
+                            {(selected.image_source || selected.image_license) && <p className="image-credit"><strong>Imagem:</strong> {selected.image_source || "origem não informada"}{selected.image_license ? ` · ${selected.image_license}` : ""}</p>}
+                            <div className="review-metadata"><span>Estado: {selected.editorial_status?.replace("_", " ") || "rascunho"}</span><span>Completude: {quality?.score}%</span><span>Última revisão: {selected.reviewed_at || "não registrada"}</span></div>
                         </section>
                     </article>
                 )}

@@ -19,6 +19,7 @@ const MapView = lazy(() => import("./components/MapView"));
 const ProfileView = lazy(() => import("./components/ProfileView"));
 const AboutPage = lazy(() => import("./components/AboutPage"));
 const AdminPage = lazy(() => import("./components/AdminPage"));
+const StudyTrails = lazy(() => import("./components/StudyTrails"));
 
 function primarySection(view) {
     if (["timeline", "vertical", "philosophy-tree"].includes(view)) return "timeline";
@@ -63,7 +64,7 @@ function App() {
         const labels = {
             home: "Início", timeline: "Tempo Horizontal", vertical: "Tempo Vertical",
             "philosophy-tree": "Árvore Histórica", "knowledge-tree": "Evolução do Conhecimento",
-            "knowledge-map": "Árvore do Conhecimento", profiles: "Perfis", map: "Mapa de Origens", about: "Sobre", admin: "Administração",
+            "knowledge-map": "Árvore do Conhecimento", trails: "Trilhas de Estudo", profiles: "Perfis", map: "Mapa de Origens", about: "Sobre", admin: "Administração",
         };
         document.title = `${labels[activeView]} · IDER`;
     }, [activeView]);
@@ -103,6 +104,7 @@ function App() {
         if (activeView === "home") return <HomePage onNavigate={navigate} entities={timeline} trackCount={tracks.length} />;
         if (activeView === "about") return <AboutPage />;
         if (activeView === "admin") return <AdminPage />;
+        if (activeView === "trails") return <StudyTrails onOpenProfile={openProfile} />;
         if (activeView === "profiles") return <ProfileView initialEntityId={profileEntityId} onNavigate={navigate} />;
         if (activeView === "knowledge-tree") return <KnowledgeTree onOpenProfile={openProfile} />;
         if (activeView === "knowledge-map") return <KnowledgeMap />;
@@ -127,6 +129,7 @@ function App() {
                     <button type="button" className={section === "home" ? "active" : ""} onClick={() => navigate("home")}>Início</button>
                     <button type="button" className={section === "timeline" ? "active" : ""} onClick={() => navigate("philosophy-tree")}>Linha do Tempo</button>
                     <button type="button" className={section === "knowledge" ? "active" : ""} onClick={() => navigate("knowledge-map")}>Conhecimento</button>
+                    <button type="button" className={section === "trails" ? "active" : ""} onClick={() => navigate("trails")}>Trilhas</button>
                     <button type="button" className={section === "profiles" ? "active" : ""} onClick={() => navigate("profiles")}>Perfis</button>
                     <button type="button" className={section === "map" ? "active" : ""} onClick={() => navigate("map")}>Mapa</button>
                 </nav>
