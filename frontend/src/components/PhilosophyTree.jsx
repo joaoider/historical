@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 
+import TreeProfileModal from "./TreeProfileModal";
+import { formatAdaptivePeriod, periodEndForStart, periodStartForYear } from "../utils/timeBuckets";
 import "./PhilosophyTree.css";
 
 
-const GENERATION_SIZE = 100;
 const TRACK_COLORS = {
     "Filósofos": "#c54832",
     "Cientistas": "#2878a5",
@@ -86,15 +87,12 @@ const EVENT_COLORS = {
 
 
 function generationStart(year) {
-    return Math.floor(year / GENERATION_SIZE) * GENERATION_SIZE;
+    return periodStartForYear(year);
 }
 
 
 function formatPeriod(start) {
-    const end = start + GENERATION_SIZE - 1;
-
-    if (end < 0) return `${Math.abs(start)}–${Math.abs(end)} a.C.`;
-    return `${start === 0 ? 1 : start}–${end} d.C.`;
+    return formatAdaptivePeriod(start);
 }
 
 
@@ -150,7 +148,7 @@ function PhilosophyTree({ entities }) {
             }));
         const announcedMovements = new Set();
         generations.forEach((generation) => {
-            const generationEnd = generation.start + GENERATION_SIZE - 1;
+            const generationEnd = periodEndForStart(generation.start);
             generation.movements = HISTORICAL_MOVEMENTS.filter((movement) => {
                 const overlaps = generationEnd >= movement.start && generation.start <= movement.end;
                 if (!overlaps || announcedMovements.has(movement.name)) return false;
@@ -216,21 +214,7 @@ function PhilosophyTree({ entities }) {
                 </div>
             </header>
 
-            {selectedPerson && (
-                <aside className="philosophy-person-details" aria-live="polite">
-                    {selectedPerson.image_url && <img src={selectedPerson.image_url} alt="" loading="lazy" />}
-                    <div>
-                        <span>{selectedPerson.track}</span>
-                        <h3>{selectedPerson.name}</h3>
-                        <time>{selectedPerson.start_year < 0 ? `${Math.abs(selectedPerson.start_year)} a.C.` : `${selectedPerson.start_year} d.C.`}</time>
-                        {selectedPerson.origin_country && <small>{selectedPerson.origin_country}</small>}
-                        {selectedPerson.description && <p>{selectedPerson.description}</p>}
-                    </div>
-                    <button type="button" onClick={() => setSelectedPerson(null)} aria-label="Fechar detalhes">×</button>
-                </aside>
-            )}
-
-            <div className="philosophy-tree chronological-matrix" aria-label="Matriz cronológica em períodos de 100 anos">
+            <div className="philosophy-tree chronological-matrix" aria-label="Matriz cronológica em períodos de 100 anos até 1800 e 50 anos depois de 1800">
                 <div className="matrix-columns-header" aria-hidden="true">
                     <span className="matrix-period-column">Período</span>
                     {showMovements && <span className="matrix-movement-column">Movimentos</span>}
@@ -280,7 +264,8 @@ function PhilosophyTree({ entities }) {
                                                     type="button"
                                                     className="philosopher-button"
                                                     onClick={() => setSelectedPerson(person)}
-                                                    title={`${person.name} — ${person.track}`}
+                                                    title={`Abrir perfil de ${person.name}`}
+                                                    aria-label={`Abrir perfil de ${person.name}`}
                                                 >
                                                     <span className="philosopher-portrait">
                                                         {person.image_url ? (
@@ -289,8 +274,8 @@ function PhilosophyTree({ entities }) {
                                                             <span aria-hidden="true">{person.name.charAt(0)}</span>
                                                         )}
                                                     </span>
-                                                    <strong>{person.name}</strong>
                                                 </button>
+                                                <strong>{person.name}</strong>
                                             </li>
                                         ))}
                                     </ol>
@@ -312,6 +297,7 @@ function PhilosophyTree({ entities }) {
                     </section>
                 ))}
             </div>
+            {selectedPerson && <TreeProfileModal key={selectedPerson.id} initialPerson={selectedPerson} entities={entities} onClose={() => setSelectedPerson(null)} />}
         </section>
     );
 }

@@ -70,27 +70,6 @@
     color: #fffaf0;
 }
 
-.philosophy-person-details {
-    max-width: 720px;
-    margin: -38px auto 28px;
-    padding: 14px 42px 14px 14px;
-    position: relative;
-    display: flex;
-    gap: 14px;
-    border: 1px solid #d5c09e;
-    border-radius: 14px;
-    background: rgb(255 253 247 / 94%);
-    box-shadow: 0 10px 28px rgb(79 57 31 / 12%);
-}
-
-.philosophy-person-details img { width: 68px; height: 68px; flex: 0 0 68px; border-radius: 50%; object-fit: cover; object-position: top; }
-.philosophy-person-details span { color: #98713c; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.philosophy-person-details h3 { margin: 2px 0; font-family: Georgia, "Times New Roman", serif; font-size: 20px; }
-.philosophy-person-details time,
-.philosophy-person-details small { margin-right: 8px; color: #75644f; font-size: 11px; }
-.philosophy-person-details p { margin: 6px 0 0; color: #574b3f; font-size: 12px; line-height: 1.4; }
-.philosophy-person-details > button { position: absolute; top: 7px; right: 9px; border: 0; background: none; color: #795331; cursor: pointer; font-size: 22px; }
-
 .philosophy-tree {
     display: flex;
     flex-direction: column;
@@ -335,7 +314,8 @@
 }
 
 .philosopher-button {
-    width: 100%;
+    width: 60px;
+    margin: 0 auto;
     padding: 0;
     border: 0;
     background: none;
@@ -375,7 +355,7 @@
     font-size: 23px;
 }
 
-.philosopher strong {
+.philosopher > strong {
     margin-top: 6px;
     display: block;
     color: var(--track-color);
@@ -391,7 +371,6 @@
     .philosophy-tree-view { padding-inline: 10px; }
     .philosophy-tree-intro { margin-bottom: 42px; }
     .philosophy-tree-legend { margin-left: 0; }
-    .philosophy-person-details { margin: -20px 8px 24px; }
     .historical-period { display: block; }
     .historical-period-label { min-height: 0; margin-top: 12px; padding: 10px 12px 10px 20px; position: sticky; left: 0; z-index: 3; background: #f8efdd; }
     .historical-period-label h3 { font-size: 14px; }
