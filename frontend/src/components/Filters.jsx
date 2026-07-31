@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import "../styles/Filters.css";
 
+const TRACK_COLORS = ["#9b3f46", "#b56b24", "#356f9e", "#39805b", "#725c91", "#8d6535", "#317b86", "#9a5364", "#71813d", "#657b9b"];
 
 function Filters({ tracks, selectedTracks, setSelectedTracks }) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -37,6 +38,15 @@ function Filters({ tracks, selectedTracks, setSelectedTracks }) {
                 </button>
             </div>
 
+            {selectedTracks.length > 0 && (
+                <div className="active-filter-chips" aria-label="Filtros ativos">
+                    {selectedTracks.map((track) => {
+                        const index = Math.max(0, tracks.indexOf(track));
+                        return <button type="button" key={track} style={{ "--track-color": TRACK_COLORS[index % TRACK_COLORS.length] }} onClick={() => toggleTrack(track)}>{track} <span aria-hidden="true">×</span></button>;
+                    })}
+                </div>
+            )}
+
             {isExpanded && (
                 <div className="filters-content">
                     <div className="category-actions">
@@ -61,12 +71,14 @@ function Filters({ tracks, selectedTracks, setSelectedTracks }) {
                             <label
                                 key={track}
                                 className={`category-option ${selectedTracks.includes(track) ? "selected" : ""}`}
+                                style={{ "--track-color": TRACK_COLORS[tracks.indexOf(track) % TRACK_COLORS.length] }}
                             >
                                 <input
                                     type="checkbox"
                                     checked={selectedTracks.includes(track)}
                                     onChange={() => toggleTrack(track)}
                                 />
+                                <i aria-hidden="true" />
                                 <span>{track}</span>
                             </label>
                         ))}

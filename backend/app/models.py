@@ -29,6 +29,12 @@ class Entity(Base):
     description = Column(
         Text)
 
+    notable_works = Column(Text)
+
+    key_ideas = Column(Text)
+
+    legacy = Column(Text)
+
     image_url = Column(
         String(500))
 

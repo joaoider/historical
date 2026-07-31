@@ -15,6 +15,14 @@ const AXIS_GAP = 32;
 const MIN_TRACK_HEIGHT = 520;
 const MIN_ZOOM = 0.08;
 const MAX_ZOOM = 1.5;
+const RULER_HEIGHT = 58;
+const HISTORICAL_PERIODS = [
+    { name: "Pré-História", start: -10000, end: -3001, color: "#b89b72" },
+    { name: "Antiguidade", start: -3000, end: 475, color: "#d6b36f" },
+    { name: "Idade Média", start: 476, end: 1452, color: "#8da47e" },
+    { name: "Idade Moderna", start: 1453, end: 1788, color: "#7f9fb5" },
+    { name: "Contemporânea", start: 1789, end: 3000, color: "#b58ba1" },
+];
 
 const TRACK_COLORS = {
     "Filósofos": "#c54832",
@@ -143,24 +151,50 @@ function buildLayout(entities) {
     return {
         tracks,
         markers,
+        minYear,
+        maxYear,
         width,
-        height: tracks.reduce((total, track) => total + track.height, 0)
+        height: RULER_HEIGHT + tracks.reduce((total, track) => total + track.height, 0)
     };
 }
 
 
-function Timeline({ entities }) {
+function Timeline({ entities, onOpenProfile }) {
     const scrollerRef = useRef(null);
     const [zoom, setZoom] = useState(1);
+    const [density, setDensity] = useState("normal");
+    const [scrollProgress, setScrollProgress] = useState(0);
     const layout = useMemo(() => buildLayout(entities || []), [entities]);
 
-    const changeZoom = (nextZoom) => {
-        setZoom(Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, nextZoom)));
+    const adaptiveMarkers = useMemo(() => {
+        if (!layout) return [];
+        const interval = zoom < 0.15 ? 1000 : zoom < 0.35 ? 500 : zoom < 0.75 ? 200 : 100;
+        const markers = [];
+        const first = Math.floor(layout.minYear / interval) * interval;
+        for (let year = first; year <= layout.maxYear; year += interval) {
+            markers.push({ year, x: SIDE_PADDING + (year - layout.minYear) * YEAR_WIDTH });
+        }
+        return markers;
+    }, [layout, zoom]);
+
+    const changeZoom = (nextZoom, preserveCenter = true) => {
+        const boundedZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, nextZoom));
+        const scroller = scrollerRef.current;
+        const centerRatio = scroller && layout
+            ? (scroller.scrollLeft + scroller.clientWidth / 2) / (layout.width * zoom)
+            : 0;
+        setZoom(boundedZoom);
+        if (!preserveCenter) return;
+        requestAnimationFrame(() => {
+            if (scroller && layout) {
+                scroller.scrollLeft = centerRatio * layout.width * boundedZoom - scroller.clientWidth / 2;
+            }
+        });
     };
 
     const fitEntireTimeline = () => {
         const availableWidth = scrollerRef.current?.clientWidth || layout.width;
-        changeZoom(availableWidth / layout.width);
+        changeZoom(availableWidth / layout.width, false);
         if (scrollerRef.current) scrollerRef.current.scrollLeft = 0;
     };
 
@@ -175,6 +209,11 @@ function Timeline({ entities }) {
                     <span>←</span> Arraste a barra inferior para comparar as categorias na mesma escala <span>→</span>
                 </div>
                 <div className="timeline-zoom-controls" aria-label="Controles de zoom">
+                    <select value={density} onChange={(event) => setDensity(event.target.value)} aria-label="Densidade dos cartões">
+                        <option value="compact">Compacto</option>
+                        <option value="normal">Normal</option>
+                        <option value="detailed">Detalhado</option>
+                    </select>
                     <button type="button" onClick={() => changeZoom(zoom - 0.1)} disabled={zoom <= MIN_ZOOM}>
                         −
                     </button>
@@ -187,24 +226,71 @@ function Timeline({ entities }) {
                     </button>
                 </div>
             </div>
+            <div className="timeline-minimap">
+                <span>Visão geral</span>
+                <input
+                    type="range"
+                    min="0"
+                    max="1000"
+                    value={Math.round(scrollProgress * 1000)}
+                    onChange={(event) => {
+                        const scroller = scrollerRef.current;
+                        if (!scroller) return;
+                        const maximum = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+                        scroller.scrollLeft = maximum * (Number(event.target.value) / 1000);
+                    }}
+                    aria-label="Posição na linha do tempo"
+                />
+            </div>
             <div
                 ref={scrollerRef}
                 className="timeline-horizontal-scroll"
                 tabIndex="0"
                 aria-label="Linha do tempo histórica com rolagem horizontal"
+                onScroll={(event) => {
+                    const maximum = Math.max(1, event.currentTarget.scrollWidth - event.currentTarget.clientWidth);
+                    setScrollProgress(event.currentTarget.scrollLeft / maximum);
+                }}
             >
                 <div
                     className="timeline-comparison"
                     style={{ width: layout.width * zoom, height: layout.height * zoom }}
                 >
                     <div
-                        className="timeline-zoom-layer"
+                        className={`timeline-zoom-layer density-${density}`}
                         style={{
                             width: layout.width,
                             height: layout.height,
                             transform: `scale(${zoom})`
                         }}
                     >
+                    {HISTORICAL_PERIODS.map((period) => {
+                        const start = Math.max(period.start, layout.minYear);
+                        const end = Math.min(period.end, layout.maxYear);
+                        if (start > end) return null;
+                        return (
+                            <div
+                                key={period.name}
+                                className="timeline-era-band"
+                                style={{
+                                    left: SIDE_PADDING + (start - layout.minYear) * YEAR_WIDTH,
+                                    width: Math.max(2, (end - start) * YEAR_WIDTH),
+                                    "--era-color": period.color,
+                                }}
+                            >
+                                <span>{period.name}</span>
+                            </div>
+                        );
+                    })}
+                    <div className="timeline-global-ruler" style={{ width: layout.width }}>
+                        <div className="timeline-main-axis" />
+                        {adaptiveMarkers.map(({ year, x }) => (
+                            <div key={year} className={`timeline-year-marker ${year === 0 ? "year-zero" : ""}`} style={{ left: x }}>
+                                <i aria-hidden="true" />
+                                <span>{formatYear(year)}</span>
+                            </div>
+                        ))}
+                    </div>
                     {layout.tracks.map((track) => (
                         <div
                             key={track.name}
@@ -213,17 +299,6 @@ function Timeline({ entities }) {
                         >
                             <h3 className="timeline-track-title">{track.name}</h3>
                             <div className="timeline-main-axis" style={{ top: track.axisY }} />
-
-                            {layout.markers.map(({ year, x }) => (
-                                <div
-                                    key={year}
-                                    className="timeline-year-marker"
-                                    style={{ left: x, top: track.axisY }}
-                                >
-                                    <i aria-hidden="true" />
-                                    <span>{formatYear(year)}</span>
-                                </div>
-                            ))}
 
                             {track.positionedEvents.map((event) => {
                         const isAbove = event.side === "above";
@@ -243,6 +318,12 @@ function Timeline({ entities }) {
                                     "--event-color": event.color
                                 }}
                                 title={event.description || event.name}
+                                role="button"
+                                tabIndex="0"
+                                onClick={() => onOpenProfile?.(event.id)}
+                                onKeyDown={(keyboardEvent) => {
+                                    if (keyboardEvent.key === "Enter" || keyboardEvent.key === " ") onOpenProfile?.(event.id);
+                                }}
                             >
                                 {event.image_url && (
                                     <img src={event.image_url} alt={`Representação de ${event.name}`} />
@@ -253,6 +334,7 @@ function Timeline({ entities }) {
                                         {formatYear(event.start_year)}
                                         {event.origin_country && ` · ${event.origin_country}`}
                                     </time>
+                                    {density === "detailed" && event.description && <small>{event.description}</small>}
                                 </span>
                             </article>
                         );

@@ -1,0 +1,47 @@
+{
+  "Thomas Bayes": {
+    "page": "https://en.wikipedia.org/wiki/Thomas_Bayes",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Thomas_Bayes.gif",
+    "local_path": "/images/scientists/thomas-bayes.gif"
+  },
+  "Charles Babbage": {
+    "page": "https://en.wikipedia.org/wiki/Charles_Babbage",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Charles_Babbage_-_1860.jpg/500px-Charles_Babbage_-_1860.jpg",
+    "local_path": "/images/scientists/charles-babbage.jpg"
+  },
+  "Florence Nightingale": {
+    "page": "https://en.wikipedia.org/wiki/Florence_Nightingale",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Florence_Nightingale_%28H_Hering_NPG_x82368%29.jpg/500px-Florence_Nightingale_%28H_Hering_NPG_x82368%29.jpg",
+    "local_path": "/images/scientists/florence-nightingale.jpg"
+  },
+  "Francis Galton": {
+    "page": "https://en.wikipedia.org/wiki/Francis_Galton",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Francis_Galton_1850s.jpg/500px-Francis_Galton_1850s.jpg",
+    "local_path": "/images/scientists/francis-galton.jpg"
+  },
+  "Karl Pearson": {
+    "page": "https://en.wikipedia.org/wiki/Karl_Pearson",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Karl_Pearson%2C_1910_%28cropped%29.jpg/500px-Karl_Pearson%2C_1910_%28cropped%29.jpg",
+    "local_path": "/images/scientists/karl-pearson.jpg"
+  },
+  "Ronald Fisher": {
+    "page": "https://en.wikipedia.org/wiki/Ronald_Fisher",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Youngronaldfisher2.JPG",
+    "local_path": "/images/scientists/ronald-fisher.jpg"
+  },
+  "John von Neumann": {
+    "page": "https://en.wikipedia.org/wiki/John_von_Neumann",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5e/JohnvonNeumann-LosAlamos.gif",
+    "local_path": "/images/scientists/john-von-neumann.gif"
+  },
+  "Grace Hopper": {
+    "page": "https://en.wikipedia.org/wiki/Grace_Hopper",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Commodore_Grace_M._Hopper%2C_USN_%28covered%29_head_and_shoulders_crop.jpg/500px-Commodore_Grace_M._Hopper%2C_USN_%28covered%29_head_and_shoulders_crop.jpg",
+    "local_path": "/images/scientists/grace-hopper.jpg"
+  },
+  "Claude Shannon": {
+    "page": "https://en.wikipedia.org/wiki/Claude_Shannon",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/C.E._Shannon._Tekniska_museet_43069_%282x3_crop%29.jpg/500px-C.E._Shannon._Tekniska_museet_43069_%282x3_crop%29.jpg",
+    "local_path": "/images/scientists/claude-shannon.jpg"
+  }
+}

@@ -1,166 +1,160 @@
-import {
-    useEffect,
-    useRef,
-    useState
-} from "react";
-
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
 import api from "./services/api";
-
-import Timeline from "./components/Timeline";
-import VerticalTimeline from "./components/VerticalTimeline";
+import iderLogo from "./assets/ider-logo-white.svg";
 import Filters from "./components/Filters";
-import MapView from "./components/MapView";
+import GlobalSearch from "./components/GlobalSearch";
+import SiteFooter from "./components/SiteFooter";
+import { pathForView, routeFromPath } from "./utils/routes";
 
 import "./App.css";
 
+const HomePage = lazy(() => import("./components/HomePage"));
+const Timeline = lazy(() => import("./components/Timeline"));
+const VerticalTimeline = lazy(() => import("./components/VerticalTimeline"));
+const PhilosophyTree = lazy(() => import("./components/PhilosophyTree"));
+const KnowledgeMap = lazy(() => import("./components/KnowledgeMap"));
+const KnowledgeTree = lazy(() => import("./components/KnowledgeTree"));
+const MapView = lazy(() => import("./components/MapView"));
+const ProfileView = lazy(() => import("./components/ProfileView"));
+const AboutPage = lazy(() => import("./components/AboutPage"));
+const AdminPage = lazy(() => import("./components/AdminPage"));
+
+function primarySection(view) {
+    if (["timeline", "vertical", "philosophy-tree"].includes(view)) return "timeline";
+    if (["knowledge-tree", "knowledge-map"].includes(view)) return "knowledge";
+    return view;
+}
 
 function App() {
-
+    const initialRoute = routeFromPath(window.location.pathname);
     const [timeline, setTimeline] = useState([]);
     const [tracks, setTracks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [activeView, setActiveView] = useState("timeline");
-
+    const [activeView, setActiveView] = useState(initialRoute.view);
+    const [profileEntityId, setProfileEntityId] = useState(initialRoute.entityId);
     const [selectedTracks, setSelectedTracks] = useState(null);
     const latestTimelineRequest = useRef(0);
 
-
-    const fetchTimeline = async (tracksToFetch, requestId) => {
-        if (tracksToFetch.length === 0) {
-            setTimeline([]);
-            setError(null);
-            setLoading(false);
-            return;
-        }
-
-        try {
-            setLoading(true);
-            setError(null);
-
-            const responses = await Promise.all(
-                tracksToFetch.map((track) => api.get("/timeline", { params: { track } }))
-            );
-            const combinedTimeline = responses.flatMap((response) => response.data);
-
-            if (requestId === latestTimelineRequest.current) {
-                setTimeline(combinedTimeline);
-            }
-
-        } catch (err) {
-            if (requestId !== latestTimelineRequest.current) return;
-            console.error("Erro ao carregar timeline:", err);
-            setError("Falha ao carregar eventos. Verifique se o servidor está rodando.");
-            setTimeline([]);
-        } finally {
-            if (requestId === latestTimelineRequest.current) {
-                setLoading(false);
-            }
-        }
+    const navigate = (view, entityId = null) => {
+        const path = pathForView(view, entityId);
+        if (window.location.pathname !== path) window.history.pushState(null, "", path);
+        setActiveView(view);
+        if (view === "profiles") setProfileEntityId(entityId);
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
+    const openProfile = (entityId) => navigate("profiles", entityId);
 
-    // Carregar categorias ao abrir a aplicação.
+    useEffect(() => {
+        const syncRoute = () => {
+            const route = routeFromPath(window.location.pathname);
+            setActiveView(route.view);
+            if (route.view === "profiles") setProfileEntityId(route.entityId);
+        };
+        window.addEventListener("popstate", syncRoute);
+        if (window.location.hash.startsWith("#/")) { window.history.replaceState(null, "", window.location.hash.slice(1)); syncRoute(); }
+        else if (window.location.pathname === "/") window.history.replaceState(null, "", "/inicio");
+        return () => window.removeEventListener("popstate", syncRoute);
+    }, []);
+
+    useEffect(() => {
+        const labels = {
+            home: "Início", timeline: "Tempo Horizontal", vertical: "Tempo Vertical",
+            "philosophy-tree": "Árvore Histórica", "knowledge-tree": "Evolução do Conhecimento",
+            "knowledge-map": "Árvore do Conhecimento", profiles: "Perfis", map: "Mapa de Origens", about: "Sobre", admin: "Administração",
+        };
+        document.title = `${labels[activeView]} · IDER`;
+    }, [activeView]);
+
     useEffect(() => {
         api.get("/tracks").then((response) => {
-            const trackNames = response.data.map((track) => track.name);
-
-            if (trackNames.length === 0) {
-                setError("Nenhuma categoria foi encontrada no banco de dados.");
-                setSelectedTracks([]);
-                return;
-            }
-
-            setTracks(trackNames);
-            setSelectedTracks(trackNames);
-        }).catch((err) => {
-            console.error("Erro ao carregar tracks:", err);
-            setError("Falha ao conectar à API. Confirme que o backend está rodando na porta 8000.");
+            const names = response.data.map((track) => track.name);
+            setTracks(names);
+            setSelectedTracks(names);
+            if (!names.length) setError("Nenhuma categoria foi encontrada no banco de dados.");
+        }).catch(() => {
+            setError("Não foi possível conectar à base de dados.");
             setSelectedTracks([]);
             setLoading(false);
         });
     }, []);
 
-
-    // Recarregar timeline quando filtros mudam.
     useEffect(() => {
         if (selectedTracks === null) return;
-
         const requestId = ++latestTimelineRequest.current;
-        fetchTimeline(selectedTracks, requestId);
+        Promise.all(selectedTracks.map((track) => api.get("/timeline", { params: { track } })))
+            .then((responses) => {
+                if (requestId === latestTimelineRequest.current) setTimeline(responses.flatMap((response) => response.data));
+            })
+            .catch(() => {
+                if (requestId === latestTimelineRequest.current) setError("Não foi possível carregar os conteúdos selecionados.");
+            })
+            .finally(() => {
+                if (requestId === latestTimelineRequest.current) setLoading(false);
+            });
     }, [selectedTracks]);
 
+    const section = primarySection(activeView);
+    const usesTimeline = ["timeline", "vertical", "philosophy-tree", "map"].includes(activeView);
+
+    const renderActiveView = () => {
+        if (activeView === "home") return <HomePage onNavigate={navigate} entities={timeline} trackCount={tracks.length} />;
+        if (activeView === "about") return <AboutPage />;
+        if (activeView === "admin") return <AdminPage />;
+        if (activeView === "profiles") return <ProfileView initialEntityId={profileEntityId} onNavigate={navigate} />;
+        if (activeView === "knowledge-tree") return <KnowledgeTree onOpenProfile={openProfile} />;
+        if (activeView === "knowledge-map") return <KnowledgeMap />;
+        if (loading) return <div className="loading-message">Carregando conteúdos...</div>;
+        if (activeView === "timeline") return <Timeline entities={timeline} onOpenProfile={openProfile} />;
+        if (activeView === "vertical") return <VerticalTimeline entities={timeline} onOpenProfile={openProfile} />;
+        if (activeView === "philosophy-tree") return <PhilosophyTree entities={timeline} />;
+        return <MapView entities={timeline} />;
+    };
 
     return (
         <div className="app-container">
-
-            <header className="app-header">
-                <h1>📜 Linha do Tempo Histórica</h1>
-                <p>Explore eventos históricos organizados por categorias</p>
+            <header className={`app-header ${activeView === "home" ? "home" : "compact"}`}>
+                <button type="button" className="app-brand" onClick={() => navigate("home")} aria-label="Ir para o início">
+                    <img src={iderLogo} alt="IDER" />
+                </button>
+                <GlobalSearch onSelect={openProfile} />
             </header>
 
             <div className="app-content">
-                <nav className="view-tabs" aria-label="Visualizações">
-                    <button
-                        type="button"
-                        className={activeView === "timeline" ? "active" : ""}
-                        onClick={() => setActiveView("timeline")}
-                    >
-                        Linha do tempo
-                    </button>
-                    <button
-                        type="button"
-                        className={activeView === "map" ? "active" : ""}
-                        onClick={() => setActiveView("map")}
-                    >
-                        Mapa de origens
-                    </button>
-                    <button
-                        type="button"
-                        className={activeView === "vertical" ? "active" : ""}
-                        onClick={() => setActiveView("vertical")}
-                    >
-                        Linha vertical
-                    </button>
+                <nav className="view-tabs" aria-label="Navegação principal">
+                    <button type="button" className={section === "home" ? "active" : ""} onClick={() => navigate("home")}>Início</button>
+                    <button type="button" className={section === "timeline" ? "active" : ""} onClick={() => navigate("philosophy-tree")}>Linha do Tempo</button>
+                    <button type="button" className={section === "knowledge" ? "active" : ""} onClick={() => navigate("knowledge-map")}>Conhecimento</button>
+                    <button type="button" className={section === "profiles" ? "active" : ""} onClick={() => navigate("profiles")}>Perfis</button>
+                    <button type="button" className={section === "map" ? "active" : ""} onClick={() => navigate("map")}>Mapa</button>
                 </nav>
 
-                <Filters
-                    tracks={tracks}
-                    selectedTracks={selectedTracks || []}
-                    setSelectedTracks={setSelectedTracks}
-                />
+                {section === "timeline" && (
+                    <nav className="subview-tabs" aria-label="Modos da linha do tempo">
+                        <button type="button" className={activeView === "philosophy-tree" ? "active" : ""} onClick={() => navigate("philosophy-tree")}>Árvore histórica</button>
+                        <button type="button" className={activeView === "timeline" ? "active" : ""} onClick={() => navigate("timeline")}>Horizontal</button>
+                        <button type="button" className={activeView === "vertical" ? "active" : ""} onClick={() => navigate("vertical")}>Vertical</button>
+                    </nav>
+                )}
+                {section === "knowledge" && (
+                    <nav className="subview-tabs" aria-label="Modos de conhecimento">
+                        <button type="button" className={activeView === "knowledge-map" ? "active" : ""} onClick={() => navigate("knowledge-map")}>Árvore do conhecimento</button>
+                        <button type="button" className={activeView === "knowledge-tree" ? "active" : ""} onClick={() => navigate("knowledge-tree")}>Evolução das áreas</button>
+                    </nav>
+                )}
+
+                {usesTimeline && <Filters tracks={tracks} selectedTracks={selectedTracks || []} setSelectedTracks={setSelectedTracks} />}
 
                 <div className="timeline-section">
-                    {error && (
-                        <div className="error-message">
-                            ⚠️ {error}
-                        </div>
-                    )}
-
-                    {loading && (
-                        <div className="loading-message">
-                            Carregando eventos...
-                        </div>
-                    )}
-
-                    {!loading && (
-                        <>
-                            {activeView === "timeline" ? (
-                                <Timeline entities={timeline} />
-                            ) : activeView === "map" ? (
-                                <MapView entities={timeline} />
-                            ) : (
-                                <VerticalTimeline entities={timeline} />
-                            )}
-                        </>
-                    )}
+                    {usesTimeline && error && <div className="error-message" role="alert">⚠ {error}</div>}
+                    <Suspense fallback={<div className="loading-message">Carregando página...</div>}>{renderActiveView()}</Suspense>
                 </div>
             </div>
-
+            <SiteFooter />
         </div>
     );
 }
-
 
 export default App;

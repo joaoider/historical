@@ -1,6 +1,13 @@
 :root {
-    --primary-color: #0066cc;
-    --secondary-color: #f5f7fa;
+    --ider-green-900: #1d3329;
+    --ider-green-700: #245c45;
+    --ider-green-500: #557a4f;
+    --ider-gold: #d5a462;
+    --ider-cream: #f8f2e6;
+    --ider-text: #29241e;
+    --ider-border: #d1ddd4;
+    --primary-color: var(--ider-green-700);
+    --secondary-color: #f2f7f3;
     --accent-color: #dc3545;
     --text-primary: #333;
     --text-secondary: #666;
@@ -23,23 +30,20 @@ body {
 }
 
 .app-header {
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 76px;
+    padding: 14px clamp(18px, 4vw, 58px);
+    background: linear-gradient(135deg, #245c45 0%, #557a4f 100%);
     box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
     color: white;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
 }
 
-.app-header h1 {
-    margin: 0 0 10px;
-    font-size: 2.5em;
-}
-
-.app-header p {
-    margin: 0;
-    font-size: 1.1em;
-    opacity: 0.9;
-}
+.app-brand { padding: 0; display: flex; align-items: center; gap: 13px; border: 0; background: transparent; color: white; cursor: pointer; text-align: left; }
+.app-brand img { width: 170px; height: 60px; object-fit: cover; border: 0; background: transparent; }
+.app-brand span { max-width: 230px; opacity: .8; font-size: 9px; letter-spacing: .04em; }
 
 .app-content {
     width: 100%;
@@ -59,8 +63,10 @@ body {
 .view-tabs {
     margin-bottom: 16px;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 8px;
-    border-bottom: 2px solid #d5dce5;
+    border-bottom: 2px solid #d1ddd4;
 }
 
 .view-tabs button {
@@ -68,14 +74,17 @@ body {
     border: 0;
     border-bottom: 3px solid transparent;
     background: transparent;
-    color: #596574;
+    color: #53665a;
     cursor: pointer;
     font-size: 14px;
     font-weight: 700;
 }
 
-.view-tabs button:hover { background: #f0f4f8; }
-.view-tabs button.active { border-bottom-color: #176fc1; color: #174d7e; }
+.view-tabs button:hover { background: #edf5ef; }
+.view-tabs button.active { border-bottom-color: #347354; color: #24583f; }
+.subview-tabs { margin: -7px auto 16px; padding: 5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; border-radius: 999px; background: #edf3ed; }
+.subview-tabs button { padding: 7px 13px; border: 0; border-radius: 999px; background: transparent; color: #617064; cursor: pointer; font-size: 10px; font-weight: 700; }
+.subview-tabs button.active { background: #37684d; color: white; box-shadow: 0 3px 8px rgb(37 82 57 / 16%); }
 
 .loading-message {
     padding: 40px 20px;
@@ -96,22 +105,25 @@ body {
 }
 
 button { font-family: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid rgb(51 116 81 / 35%); outline-offset: 2px; }
 
 button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
 
 @media (max-width: 768px) {
-    .app-header h1 { font-size: 1.8em; }
-    .app-header p { font-size: 1em; }
+    .app-header { align-items: stretch; flex-direction: column; gap: 10px; }
+    .app-brand { justify-content: center; }
     .app-content { padding: 15px; }
 }
 
 @media (max-width: 480px) {
-    .app-header {
-        padding: 25px 15px;
-    }
-
-    .app-header h1 { font-size: 1.5em; }
+    .app-header { padding: 13px; }
+    .app-brand img { width: 150px; height: 53px; }
+    .view-tabs { gap: 0; justify-content: space-between; }
+    .view-tabs button { padding: 9px 7px; font-size: 11px; }
 }

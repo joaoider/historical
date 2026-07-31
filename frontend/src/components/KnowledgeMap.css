@@ -1,0 +1,56 @@
+.knowledge-map-view { min-height: 100%; padding: clamp(32px, 5vw, 70px) 0 100px; overflow: hidden; background: radial-gradient(circle at 50% 0, rgb(181 139 76 / 14%), transparent 32rem), linear-gradient(180deg, #fbf7ed, #eee3cf); color: #382d21; }
+.knowledge-map-intro { max-width: 850px; margin: 0 auto 38px; padding: 0 16px; text-align: center; }
+.knowledge-map-intro p { margin: 0 0 8px; color: #98713c; font-size: 11px; font-weight: 800; letter-spacing: .2em; }
+.knowledge-map-intro h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 5vw, 58px); font-weight: 500; }
+.knowledge-map-intro span { margin-top: 10px; display: block; color: #75685b; font-size: 13px; }
+.knowledge-genealogy-scroll { width: 100%; overflow-x: auto; padding: 0 18px 30px; scrollbar-color: #b99d76 transparent; }
+.knowledge-genealogy { min-width: 1660px; width: max-content; margin: 0 auto; }
+.knowledge-root-lineage { display: grid; justify-items: center; transition: padding-bottom .2s ease; }
+.knowledge-root-lineage.expanded { padding-bottom: 90px; }
+.knowledge-root-node { width: 270px; min-height: 74px; padding: 13px 22px; position: relative; z-index: 2; display: grid; place-content: center; border: 2px solid #8a623a; border-radius: 50%; background: #fffdf7; box-shadow: 0 7px 17px rgb(61 44 27 / 10%); text-align: center; }
+.knowledge-root-node h3 { margin: 0; font: 600 25px Georgia, serif; }
+.knowledge-root-node p { margin: 4px 0 0; color: #776554; font-size: 9px; line-height: 1.3; }
+.knowledge-root-subareas { width: 650px; position: absolute; top: 50%; left: calc(100% + 48px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 12px; transform: translateY(-50%); }
+.knowledge-root-subareas::before { width: 49px; height: 2px; position: absolute; top: 50%; right: 100%; background: #aa8b66; content: ""; }
+.knowledge-root-subarea { min-width: 0; position: relative; display: grid; grid-template-columns: 112px 1fr; align-items: center; }
+.knowledge-root-subarea::before { width: 10px; height: 1px; position: absolute; top: 50%; right: 100%; background: #aa8b66; content: ""; }
+.knowledge-root-subarea h4 { margin: 0; padding: 5px 6px; border: 1px solid #bda580; border-radius: 6px; background: #fffaf0; color: #59452f; font-size: 8px; line-height: 1.15; text-align: center; }
+.knowledge-root-subarea > div { padding-left: 10px; position: relative; display: flex; flex-wrap: wrap; gap: 3px; }
+.knowledge-root-subarea > div::before { width: 10px; height: 1px; position: absolute; top: 50%; left: 0; background: #c2aa87; content: ""; }
+.knowledge-root-subarea span { padding: 3px 5px; border: 1px solid #ded0ba; border-radius: 4px; background: #fffdf8; color: #756451; font-size: 6px; line-height: 1.1; }
+.knowledge-philosophy .knowledge-root-subareas { right: calc(100% + 48px); left: auto; justify-content: flex-end; }
+.knowledge-philosophy .knowledge-root-subareas::before { right: auto; left: 100%; }
+.knowledge-philosophy .knowledge-root-subarea { grid-template-columns: 1fr 112px; }
+.knowledge-philosophy .knowledge-root-subarea::before { right: auto; left: 100%; }
+.knowledge-philosophy .knowledge-root-subarea h4 { grid-column: 2; }
+.knowledge-philosophy .knowledge-root-subarea > div { grid-column: 1; grid-row: 1; padding-right: 10px; padding-left: 0; justify-content: flex-end; }
+.knowledge-philosophy .knowledge-root-subarea > div::before { right: 0; left: auto; }
+.knowledge-theology { margin-bottom: 58px; }
+.knowledge-theology::after { width: 3px; height: 60px; position: absolute; top: 100%; left: 50%; background: #866e51; content: ""; transform: translateX(-50%); }
+.knowledge-philosophy { border-color: #4f785f; }
+.knowledge-philosophy::after { width: 3px; height: 58px; position: absolute; top: 100%; left: 50%; background: #866e51; content: ""; transform: translateX(-50%); }
+.knowledge-map-actions { margin: 24px auto -35px; position: relative; z-index: 4; display: flex; justify-content: center; gap: 5px; }
+.knowledge-map-actions button { padding: 6px 9px; border: 1px solid #98ad9d; border-radius: 999px; background: #fffdf8; color: #396249; cursor: pointer; font-size: 8px; font-weight: 800; }
+.knowledge-map-actions button.active { border-color: #356649; background: #356649; color: white; }
+.knowledge-domain-generation { margin-top: 58px; padding-top: 34px; position: relative; display: grid; grid-template-columns: repeat(5, max-content); gap: 20px; align-items: start; }
+.knowledge-domain-generation::before { height: 2px; position: absolute; top: 0; right: 47px; left: 94px; background: #866e51; content: ""; }
+.knowledge-group { position: relative; display: grid; justify-items: center; }
+.knowledge-group::before { width: 2px; height: 35px; position: absolute; bottom: 100%; left: 50%; background: #866e51; content: ""; }
+.knowledge-group > h2 { min-width: 116px; min-height: 42px; margin: 0; padding: 7px 10px; position: relative; z-index: 2; display: grid; place-content: center; border: 2px solid var(--group-color); border-radius: 50%; background: #fffdf8; color: var(--group-color); font: 600 12px/1.05 Georgia, serif; text-align: center; }
+.knowledge-group > h2::after { width: 2px; height: 27px; position: absolute; top: 100%; left: 50%; background: color-mix(in srgb, var(--group-color) 65%, #9d886c); content: ""; transform: translateX(-50%); }
+.knowledge-group-domains { padding-top: 27px; position: relative; display: grid; grid-template-columns: repeat(var(--domain-count), 94px); gap: 6px; align-items: start; }
+.knowledge-group-domains::before { height: 2px; position: absolute; top: 26px; right: 47px; left: 47px; background: color-mix(in srgb, var(--group-color) 65%, #9d886c); content: ""; }
+.knowledge-family { position: relative; display: grid; justify-items: center; }
+.knowledge-family::before { width: 2px; height: 10px; position: absolute; bottom: 100%; left: 50%; background: color-mix(in srgb, var(--group-color) 65%, #9d886c); content: ""; }
+.knowledge-family > h3 { width: 90px; min-height: 46px; margin: 0; padding: 6px 4px; display: grid; place-content: center; border: 2px solid var(--domain-color); border-radius: 50%; background: #fffdf8; color: var(--domain-color); font: 600 11px Georgia, serif; line-height: 1.05; text-align: center; }
+.knowledge-family > h3 button { padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; }
+.knowledge-family > h3 button span { margin-top: 1px; display: block; font: 700 10px sans-serif; }
+.knowledge-branch-generation { width: 100%; margin-top: 29px; position: relative; display: grid; gap: 11px; }
+.knowledge-branch-generation::before { width: 2px; position: absolute; top: -29px; bottom: 24px; left: 7px; background: color-mix(in srgb, var(--domain-color) 55%, #bda98c); content: ""; }
+.knowledge-branch-generation section { min-width: 0; padding-left: 15px; position: relative; }
+.knowledge-branch-generation section::before { width: 10px; height: 2px; position: absolute; top: 13px; left: 7px; background: var(--domain-color); content: ""; }
+.knowledge-branch-generation h4 { min-height: 25px; margin: 0 0 5px; padding: 4px 3px; display: grid; place-content: center; border: 1px solid color-mix(in srgb, var(--domain-color) 52%, #d4c4aa); border-radius: 6px; background: #fffaf1; color: #493a2c; font-size: 7px; line-height: 1.1; text-align: center; }
+.knowledge-branch-generation ul { margin: 0 0 0 5px; padding: 0 0 0 8px; display: grid; gap: 4px; border-left: 1px solid color-mix(in srgb, var(--domain-color) 42%, #d6c8b3); list-style: none; }
+.knowledge-branch-generation li { min-height: 21px; padding: 3px 2px; position: relative; display: grid; place-content: center; border: 1px solid color-mix(in srgb, var(--domain-color) 20%, #ddd1bf); border-radius: 5px; background: color-mix(in srgb, var(--domain-color) 4%, #fffdf8); color: #67594b; font-size: 6px; line-height: 1.1; text-align: center; }
+.knowledge-branch-generation li::before { width: 8px; height: 1px; position: absolute; top: 50%; right: 100%; background: color-mix(in srgb, var(--domain-color) 42%, #d6c8b3); content: ""; }
+@media (max-width: 700px) { .knowledge-map-intro { margin-bottom: 28px; } .knowledge-genealogy-scroll { padding-inline: 8px; } .knowledge-root-node { width: 230px; } }

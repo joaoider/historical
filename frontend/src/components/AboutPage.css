@@ -1,0 +1,18 @@
+.about-page { min-height: 100%; padding: 70px clamp(18px, 6vw, 90px) 100px; background: linear-gradient(145deg, #f8f2e6, #e8eee8); color: #29241e; }
+.about-page > header { max-width: 900px; margin: 0 auto 60px; text-align: center; }
+.about-page > header p, .about-contact > p { margin: 0 0 10px; color: #347052; font-size: 9px; font-weight: 800; letter-spacing: .22em; }
+.about-page > header h2 { margin: 0; font: 500 clamp(38px, 5vw, 64px)/1.05 Georgia, serif; }
+.about-page > header span { margin-top: 12px; display: block; color: #766a5d; }
+.about-lead { max-width: 800px; margin: 0 auto 45px; text-align: center; }
+.about-lead h3 { margin: 0 0 10px; font: 600 25px Georgia, serif; }
+.about-lead p { color: #655d53; font: 14px/1.7 Georgia, serif; }
+.about-grid { max-width: 1250px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.about-grid section { min-height: 210px; padding: 24px; border: 1px solid #cad7cc; border-radius: 12px; background: rgb(255 253 248 / 78%); }
+.about-grid section > span { color: #71a07e; font: 13px Georgia, serif; }
+.about-grid h3 { margin: 20px 0 9px; font: 600 19px Georgia, serif; }
+.about-grid p { margin: 0; color: #6d6357; font: 11px/1.55 Georgia, serif; }
+.about-contact { max-width: 900px; margin: 50px auto 0; padding: 40px; border-radius: 14px; background: #294b3b; color: white; text-align: center; }
+.about-contact > p { color: #d5a462; }
+.about-contact h3 { margin: 0 0 10px; font: 500 27px Georgia, serif; }
+.about-contact span { color: #c6d1ca; font-size: 11px; }
+@media(max-width:850px){.about-grid{grid-template-columns:1fr 1fr}} @media(max-width:560px){.about-grid{grid-template-columns:1fr}}

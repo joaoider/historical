@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 130" role="img" aria-labelledby="title">
+  <title id="title">IDER</title>
+  <g fill="none" stroke="#245c45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M75 111V92C74 75 67 66 56 52C46 39 45 25 51 15C57 5 67 1 79 1C92 1 102 6 108 16C114 27 111 41 101 53C90 66 84 75 82 88"/>
+  </g>
+  <text x="132" y="91" fill="#245c45" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="600" letter-spacing="7">IDER</text>
+</svg>
