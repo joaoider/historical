@@ -1,0 +1,33 @@
+.my-ider-profile {
+    grid-template-columns: 190px 1fr;
+}
+
+.my-ider-avatar img.my-ider-character-avatar {
+    width: 155px;
+    height: 245px;
+    border-radius: 0;
+    background: transparent;
+    object-fit: contain;
+    object-position: center bottom;
+    filter: drop-shadow(0 12px 12px rgb(46 57 48 / 16%));
+    transform-origin: center bottom;
+    transition: transform .25s ease, filter .25s ease;
+    cursor: zoom-in;
+}
+
+.my-ider-avatar img.my-ider-character-avatar:hover,
+.my-ider-avatar img.my-ider-character-avatar:focus-visible {
+    position: relative;
+    z-index: 5;
+    outline: none;
+    transform: scale(1.45);
+    filter: drop-shadow(0 22px 19px rgb(45 55 47 / 30%));
+}
+
+@media (max-width: 800px) {
+    .my-ider-profile { grid-template-columns: 1fr; }
+}
+
+@media (hover: none) {
+    .my-ider-avatar img.my-ider-character-avatar:hover { transform: none; }
+}

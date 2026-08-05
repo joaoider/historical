@@ -1,9 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, Query, Response, status
+import json
+
 from sqlalchemy.orm import Session
 
 from .database import get_db
-from .models import Entity, Relationship
-from .schemas import StatsResponse
+from .models import Entity, Relationship, UserProgress
+from .schemas import ProgressResponse, ProgressUpdate, StatsResponse
 
 from .schemas import (
     EntityResponse,
@@ -16,6 +18,56 @@ from .schemas import (
 
 
 router = APIRouter()
+
+
+@router.get("/progress/{scope}", response_model=ProgressResponse)
+def get_progress(scope: str, user_id: str = "mvp-user", db: Session = Depends(get_db)):
+    progress = db.query(UserProgress).filter(
+        UserProgress.user_id == user_id,
+        UserProgress.scope == scope,
+    ).first()
+    if progress is None:
+        return {"user_id": user_id, "scope": scope, "data": {}, "updated_at": None}
+    try:
+        data = json.loads(progress.data)
+    except json.JSONDecodeError:
+        data = {}
+    return {
+        "user_id": progress.user_id,
+        "scope": progress.scope,
+        "data": data,
+        "updated_at": progress.updated_at.isoformat() if progress.updated_at else None,
+    }
+
+
+@router.put("/progress/{scope}", response_model=ProgressResponse)
+def save_progress(scope: str, payload: ProgressUpdate, db: Session = Depends(get_db)):
+    progress = db.query(UserProgress).filter(
+        UserProgress.user_id == payload.user_id,
+        UserProgress.scope == scope,
+    ).first()
+    if progress is None:
+        progress = UserProgress(user_id=payload.user_id, scope=scope)
+        db.add(progress)
+    progress.data = json.dumps(payload.data, ensure_ascii=False)
+    db.commit()
+    db.refresh(progress)
+    return {
+        "user_id": progress.user_id,
+        "scope": progress.scope,
+        "data": payload.data,
+        "updated_at": progress.updated_at.isoformat() if progress.updated_at else None,
+    }
+
+
+@router.delete("/progress/{scope}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_progress(scope: str, user_id: str = "mvp-user", db: Session = Depends(get_db)):
+    db.query(UserProgress).filter(
+        UserProgress.user_id == user_id,
+        UserProgress.scope == scope,
+    ).delete(synchronize_session=False)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 @router.get(

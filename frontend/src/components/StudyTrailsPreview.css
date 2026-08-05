@@ -1,0 +1,44 @@
+.trail-thumb {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    display: block;
+}
+
+.trail-image-preview {
+    position: fixed;
+    top: 50%;
+    right: clamp(24px, 4vw, 64px);
+    z-index: 50;
+    width: min(360px, 34vw);
+    aspect-ratio: 4 / 5;
+    border: 8px solid #fffdf8;
+    border-radius: 18px;
+    background-color: #ebe8dc;
+    background-image: var(--preview-image);
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow: 0 24px 70px rgb(25 48 34 / 32%);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-46%) scale(.94);
+    transition: opacity 160ms ease, transform 200ms ease;
+}
+
+.trail-content li > button:hover .trail-image-preview,
+.trail-content li > button:focus-visible .trail-image-preview {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+@media (max-width: 760px), (hover: none) {
+    .trail-thumb {
+        width: 54px;
+        height: 54px;
+    }
+
+    .trail-image-preview {
+        display: none;
+    }
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { appendKnowledgePath, knowledgeSlug } from "../utils/knowledgePaths";
+import iderLamp from "../assets/ider-lamp-green.svg";
 import "./KnowledgeMap.css";
 
 
@@ -315,7 +316,85 @@ function KnowledgeMap({ onOpenArea }) {
 }
 
 void KnowledgeMapLegacy;
+void KnowledgeMap;
+
+const polar = (radius, angle) => ({ x: 400 + radius * Math.cos((angle - 90) * Math.PI / 180), y: 400 + radius * Math.sin((angle - 90) * Math.PI / 180) });
+
+function arcPath(inner, outer, start, end) {
+    const a = start + .7; const b = end - .7;
+    const p1 = polar(outer, a); const p2 = polar(outer, b); const p3 = polar(inner, b); const p4 = polar(inner, a);
+    const large = b - a > 180 ? 1 : 0;
+    return `M ${p1.x} ${p1.y} A ${outer} ${outer} 0 ${large} 1 ${p2.x} ${p2.y} L ${p3.x} ${p3.y} A ${inner} ${inner} 0 ${large} 0 ${p4.x} ${p4.y} Z`;
+}
+
+const foundationDomain = (foundation) => ({
+    name: foundation.name,
+    color: foundation.name === "Teologia" ? "#9a7044" : "#5e668f",
+    path: knowledgeSlug(foundation.name),
+    branches: foundation.areas.map((name) => ({ name, children: FOUNDATION_DETAILS[name] || [] })),
+});
+
+const WHEEL_GROUPS = KNOWLEDGE_GROUPS.map((group) => ({
+    ...group,
+    domains: [
+        ...group.domains.map((name) => DOMAINS.find((domain) => domain.name === name)).filter(Boolean).map((domain) => ({ ...domain, path: appendKnowledgePath(knowledgeSlug(group.name), domain.name) })),
+        ...(group.name === "Humanidades" ? FOUNDATIONS.map(foundationDomain) : []),
+    ],
+}));
+
+function ArcLabel({ item, inner, outer, start, end, onClick, selected = false }) {
+    const middle = (start + end) / 2;
+    const point = polar((inner + outer) / 2, middle);
+    const rotation = middle > 180 ? middle + 90 : middle - 90;
+    return <g className={`knowledge-wheel-segment knowledge-wheel-ring-${inner}${selected ? " selected" : ""}`} role="button" tabIndex="0" aria-label={item.name} onClick={onClick} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); onClick(); } }}>
+        <path d={arcPath(inner, outer, start, end)} fill={item.color} />
+        <text x={point.x} y={point.y} transform={`rotate(${rotation} ${point.x} ${point.y})`}>{item.name}</text>
+    </g>;
+}
+
+const WHEEL_LAYOUT = (() => {
+    const totalBranches = WHEEL_GROUPS.reduce((total, group) => total + group.domains.reduce((sum, domain) => sum + domain.branches.length, 0), 0);
+    let angle = 0;
+    return WHEEL_GROUPS.map((group) => {
+        const branchCount = group.domains.reduce((sum, domain) => sum + domain.branches.length, 0);
+        const start = angle;
+        const end = start + (branchCount / totalBranches) * 360;
+        let domainAngle = start;
+        const domains = group.domains.map((domain) => {
+            const domainStart = domainAngle;
+            const domainEnd = domainStart + (domain.branches.length / branchCount) * (end - start);
+            const branchSize = (domainEnd - domainStart) / domain.branches.length;
+            const branches = domain.branches.map((branch, index) => ({ ...branch, start: domainStart + index * branchSize, end: domainStart + (index + 1) * branchSize }));
+            domainAngle = domainEnd;
+            return { ...domain, start: domainStart, end: domainEnd, branches };
+        });
+        angle = end;
+        return { ...group, start, end, domains };
+    });
+})();
+
+function KnowledgeWheel({ onOpenArea }) {
+    return <section className="knowledge-map-view" aria-labelledby="knowledge-map-title">
+        <header className="knowledge-map-intro">
+            <p>UMA CARTOGRAFIA DAS DISCIPLINAS</p>
+            <h2 id="knowledge-map-title">Roda do conhecimento</h2>
+            <span>Disciplinas e subdivisões do saber, organizadas pelas cores de suas grandes áreas.</span>
+        </header>
+        <div className="knowledge-wheel-shell">
+            <svg className="knowledge-wheel" viewBox="0 0 800 800" role="img" aria-label="Roda interativa das áreas do conhecimento">
+                <circle cx="400" cy="400" r="101" className="knowledge-wheel-center" />
+                <image href={iderLamp} x="364" y="355" width="72" height="90" className="knowledge-wheel-center-logo" aria-label="Símbolo da IDER" />
+                {WHEEL_LAYOUT.flatMap((group) => group.domains.map((domain) => <ArcLabel key={`${group.name}-${domain.name}`} item={{ ...domain, color: group.color }} inner={106} outer={235} start={domain.start} end={domain.end} onClick={() => onOpenArea(domain.path)} />))}
+                {WHEEL_LAYOUT.flatMap((group) => group.domains.flatMap((domain) => domain.branches.map((branch) => <ArcLabel key={`${group.name}-${domain.name}-${branch.name}`} item={{ ...branch, color: group.color }} inner={240} outer={397} start={branch.start} end={branch.end} onClick={() => onOpenArea(appendKnowledgePath(domain.path, branch.name))} />)))}
+            </svg>
+        </div>
+        <aside className="knowledge-wheel-caption" aria-live="polite">
+            <strong>As disciplinas em primeiro plano</strong>
+            <span>Centro → disciplinas → subdivisões. As cores identificam Humanidades, Ciências Formais, Naturais, Aplicadas e Sociais.</span>
+        </aside>
+    </section>;
+}
 
 export { DOMAINS, FOUNDATIONS, FOUNDATION_DETAILS, KNOWLEDGE_GROUPS };
 
-export default KnowledgeMap;
+export default KnowledgeWheel;

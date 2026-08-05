@@ -1,0 +1,10 @@
+.badge-level small {
+    margin-top: 5px;
+    display: block;
+    color: #c8d5cc;
+    font-size: 7px;
+}
+
+.badge-level > div:nth-child(2) > small {
+    text-align: right;
+}

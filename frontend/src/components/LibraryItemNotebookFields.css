@@ -1,0 +1,63 @@
+.library-study-fields {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 150px;
+    gap: 10px;
+}
+
+.library-study-fields label,
+.library-highlight-field {
+    color: #796a5b;
+    font-size: 7px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.library-study-fields input {
+    width: 100%;
+    margin-top: 5px;
+    padding: 9px;
+    border: 1px solid #ddd1bf;
+    border-radius: 8px;
+    background: #fbf7ef;
+    color: #44372c;
+    font-size: 9px;
+}
+
+.library-highlight-field {
+    margin-top: 12px;
+    display: block;
+}
+
+.library-notes-panel .library-highlight-field textarea {
+    min-height: 85px;
+    margin: 5px 0 0;
+    background: #f3edf5;
+    font-style: italic;
+}
+
+.library-notes-panel textarea.library-main-notes {
+    min-height: 260px;
+}
+
+.library-comment-list article footer {
+    margin-top: 9px;
+    display: flex;
+    gap: 10px;
+}
+
+.library-comment-list article footer button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #6a557e;
+    cursor: pointer;
+    font-size: 7px;
+    font-weight: 800;
+}
+
+@media (max-width: 700px) {
+    .library-study-fields { grid-template-columns: 1fr; }
+    .library-notes-panel .library-highlight-field textarea { min-height: 100px; }
+    .library-notes-panel textarea.library-main-notes { min-height: 230px; }
+}

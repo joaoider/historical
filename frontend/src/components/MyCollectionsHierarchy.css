@@ -1,0 +1,14 @@
+.my-collection-card small {
+    color: #3c3127;
+    font: 600 19px Georgia, serif;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.my-collection-card strong {
+    margin: 5px 0;
+    color: #725887;
+    font: 800 7px sans-serif;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}

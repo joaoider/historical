@@ -84,3 +84,13 @@ class TimelineResponse(BaseModel):
 class StatsResponse(BaseModel):
     total_entities: int
     types: dict[str, int]
+
+
+class ProgressUpdate(BaseModel):
+    user_id: str = "mvp-user"
+    data: dict | list
+
+
+class ProgressResponse(ProgressUpdate):
+    scope: str
+    updated_at: str | None = None
