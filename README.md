@@ -61,6 +61,11 @@ Um aplicativo web moderno para visualizar, explorar e gerenciar eventos históri
 
 ## 🚀 Primeiros Passos
 
+### Publicação HTTPS no Render
+
+O projeto inclui um Blueprint para publicar frontend, API e PostgreSQL. Veja
+o passo a passo em [`docs/RENDER_DEPLOY.md`](docs/RENDER_DEPLOY.md).
+
 ### Pré-requisitos
 
 - Python 3.8+

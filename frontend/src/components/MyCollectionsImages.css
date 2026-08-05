@@ -1,0 +1,40 @@
+.my-collection-card {
+    min-height: 158px;
+    padding: 12px;
+    grid-template-columns: 128px 1fr;
+    align-items: stretch;
+}
+
+.my-collection-card > img {
+    width: 128px;
+    height: 100%;
+    min-height: 132px;
+    display: block;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform .25s ease, filter .25s ease;
+}
+
+.my-collection-card > span {
+    align-self: center;
+}
+
+.my-collection-card:hover > img,
+.my-collection-card:focus-visible > img {
+    filter: brightness(1.08) saturate(1.08);
+    transform: scale(1.035);
+}
+
+.my-collection-card.filmLibrary {
+    grid-column: auto;
+    grid-template-columns: 128px 1fr;
+}
+
+.my-collection-card.filmLibrary > img { width: 128px; }
+
+@media (max-width: 560px) {
+    .my-collection-card,
+    .my-collection-card.filmLibrary { grid-template-columns: 92px 1fr; }
+    .my-collection-card > img,
+    .my-collection-card.filmLibrary > img { width: 92px; min-height: 120px; }
+}

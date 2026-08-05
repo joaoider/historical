@@ -1,0 +1,58 @@
+.library-detail-workspace.has-pdf-reader {
+    grid-template-columns: minmax(520px, 1.35fr) minmax(310px, .65fr);
+    grid-template-areas:
+        "reader notes"
+        "reader comments";
+}
+
+.has-pdf-reader .book-pdf-reader { grid-area: reader; }
+.has-pdf-reader .library-notes-panel { grid-area: notes; }
+.has-pdf-reader .library-comments-panel { grid-area: comments; }
+
+.book-pdf-reader {
+    min-height: 820px;
+    position: sticky;
+    top: 18px;
+    overflow: hidden;
+    border: 1px solid #c9bba8;
+    border-radius: 18px;
+    background: #3c403d;
+    box-shadow: 0 18px 40px rgb(40 35 29 / 18%);
+}
+
+.book-pdf-reader > header {
+    min-height: 64px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    background: #28352d;
+    color: white;
+}
+
+.book-pdf-reader > header p { margin: 0 0 4px; color: #d8be91; font-size: 7px; font-weight: 800; letter-spacing: .15em; }
+.book-pdf-reader > header strong { max-width: 420px; display: block; overflow: hidden; font: 600 13px Georgia, serif; text-overflow: ellipsis; white-space: nowrap; }
+.pdf-reader-controls { display: flex; align-items: center; gap: 6px; }
+.pdf-reader-controls button { width: 25px; height: 25px; padding: 0; border: 1px solid #77857b; border-radius: 6px; background: #415148; color: white; cursor: pointer; }
+.pdf-reader-controls span,.pdf-reader-controls i { color: #d8dfda; font-size: 7px; font-style: normal; white-space: nowrap; }
+.pdf-reader-controls i { margin-left: 8px; padding-left: 12px; border-left: 1px solid #68746c; }
+.pdf-reader-viewport { height: 700px; padding: 35px; overflow: auto; display: grid; place-items: start center; background: radial-gradient(circle at 50% 10%,#707570,#464b47 55%,#343835); }
+.pdf-reader-viewport iframe { width: 100%; height: 100%; border: 0; background: white; }
+.pdf-placeholder-page { width: min(440px,90%); min-height: 620px; padding: 60px 48px; position: relative; display: flex; align-items: center; flex-direction: column; background: linear-gradient(90deg,#f6f1e6,#fffdf7 8%,#fffdf9 92%,#e9e1d3); color:#3b3026; box-shadow: 0 15px 35px rgb(17 18 17 / 40%); text-align:center; transform:scale(var(--reader-zoom)); transform-origin:top center; transition:transform .15s ease; }
+.pdf-placeholder-page::before { width: 65px; height: 1px; margin: 30px 0 55px; background: #b69a6a; content:""; }
+.pdf-placeholder-page>small { color:#806847; font-size:7px; font-weight:800; letter-spacing:.22em; }
+.pdf-placeholder-page h2 { max-width:330px; margin:0; font:500 35px/1.1 Georgia,serif; }
+.pdf-placeholder-page h3 { margin:14px 0 0; color:#796957; font:italic 15px Georgia,serif; }
+.pdf-placeholder-page>span { margin-top:20px; color:#8c775e; font-size:8px; font-weight:700; text-transform:uppercase; }
+.pdf-placeholder-page>div { width:100%; margin-top:auto; padding-top:25px; border-top:1px solid #ded2c1; }
+.pdf-placeholder-page>div b { width:38px;height:38px;margin:auto;display:grid;place-items:center;border-radius:50%;background:#526f5b;color:white;font-size:7px; }
+.pdf-placeholder-page>div p { max-width:260px;margin:12px auto 0;color:#8b7b69;font:italic 9px/1.5 Georgia,serif; }
+.book-pdf-reader>footer { min-height:52px;padding:10px 15px;display:flex;justify-content:space-between;align-items:center;background:#28352d;color:#cbd3cd; }
+.book-pdf-reader>footer span { font-size:7px; }
+.book-pdf-reader>footer button { padding:7px 10px;border:1px solid #849188;border-radius:999px;background:#405047;color:white;font-size:7px;font-weight:800; }
+.book-pdf-reader>footer button:disabled { opacity:.45;cursor:not-allowed; }
+.has-pdf-reader .library-notes-panel textarea.library-main-notes { min-height:220px; }
+
+@media(max-width:1000px){.library-detail-workspace.has-pdf-reader{grid-template-columns:1fr;grid-template-areas:"reader" "notes" "comments"}.book-pdf-reader{min-height:700px;position:relative;top:auto}.pdf-reader-viewport{height:580px}.pdf-placeholder-page{min-height:510px}}
+@media(max-width:560px){.book-pdf-reader>header{align-items:flex-start;flex-direction:column}.pdf-reader-viewport{height:500px;padding:20px 8px}.pdf-placeholder-page{min-height:450px;padding:40px 25px}.pdf-placeholder-page h2{font-size:28px}.pdf-reader-controls i{display:none}}

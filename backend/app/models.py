@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Float, Integer, String, Text, ForeignKey
+from sqlalchemy import Column, DateTime, Float, Integer, String, Text, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 
 from .database import Base
 
@@ -101,3 +102,19 @@ class Relationship(Base):
     target_entity = relationship(
         "Entity",
         foreign_keys=[target_entity_id])
+
+
+class UserProgress(Base):
+    """Estado persistente do MVP, separado por usuário e domínio do produto."""
+
+    __tablename__ = "user_progress"
+    __table_args__ = (
+        UniqueConstraint("user_id", "scope", name="uq_user_progress_user_scope"),
+        {"schema": "history"},
+    )
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(String(120), nullable=False, index=True)
+    scope = Column(String(120), nullable=False, index=True)
+    data = Column(Text, nullable=False, default="{}")
+    updated_at = Column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())

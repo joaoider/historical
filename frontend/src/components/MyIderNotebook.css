@@ -1,0 +1,47 @@
+.my-ider-notebook-callout {
+    max-width: 1200px;
+    margin: 22px auto 0;
+    padding: 25px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    border-radius: 18px;
+    background: linear-gradient(125deg, #4e6756, #314f3c);
+    color: white;
+    box-shadow: 0 14px 35px rgb(42 71 51 / 18%);
+}
+
+.my-ider-notebook-callout p {
+    margin: 0;
+    color: #dfc99e;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .17em;
+}
+
+.my-ider-notebook-callout h2 {
+    margin: 5px 0;
+    font: 600 29px Georgia, serif;
+}
+
+.my-ider-notebook-callout span {
+    color: #e5ece6;
+    font-size: 10px;
+}
+
+.my-ider-notebook-callout button {
+    padding: 11px 16px;
+    border: 1px solid #f2e6d0;
+    border-radius: 999px;
+    background: #f4ead7;
+    color: #35513e;
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+@media (max-width: 650px) {
+    .my-ider-notebook-callout { align-items: flex-start; flex-direction: column; }
+}

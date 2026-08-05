@@ -1,0 +1,103 @@
+.my-ider-page { padding-top: 22px; }
+
+.my-ider-identity-hero {
+    max-width: 1200px;
+    min-height: 210px;
+    margin: 0 auto;
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: minmax(300px, 1.15fr) minmax(280px, .9fr) auto;
+    gap: clamp(24px, 4vw, 58px);
+    align-items: center;
+    overflow: visible;
+    border: 1px solid #dbcebb;
+    border-radius: 20px;
+    background: #fffaf2;
+}
+
+.my-ider-identity-hero > header p,
+.my-ider-identity-hero form p,
+.my-ider-authenticated-name p {
+    margin: 0;
+    color: #6a557e;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .18em;
+}
+
+.my-ider-authenticated-name h2 {
+    margin: 6px 0;
+    font: 600 clamp(25px, 3vw, 34px) Georgia, serif;
+}
+
+.my-ider-authenticated-name > span {
+    color: #857566;
+    font-size: 9px;
+}
+
+.my-ider-identity-hero > header h1 {
+    margin: 5px 0 7px;
+    font: 500 clamp(43px, 5vw, 66px) Georgia, serif;
+}
+
+.my-ider-identity-hero > header span {
+    color: #76695b;
+    font-size: 10px;
+}
+
+.my-ider-identity-hero form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: end;
+}
+
+.my-ider-identity-hero form > div { grid-column: 1 / -1; }
+.my-ider-identity-hero form h2 { margin: 5px 0 3px; font: 600 25px Georgia, serif; }
+.my-ider-identity-hero form label { color: #796a5b; font-size: 8px; font-weight: 800; }
+.my-ider-identity-hero form input { width: 100%; margin-top: 5px; padding: 10px; border: 1px solid #d9ccb9; border-radius: 8px; background: #fffdf8; color: #40352b; font-size: 10px; }
+.my-ider-identity-hero form button { padding: 10px 14px; border: 1px solid #5e4c70; border-radius: 999px; background: #5e4c70; color: white; cursor: pointer; font-size: 8px; font-weight: 800; white-space: nowrap; }
+
+.my-ider-identity-side {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 18px;
+}
+
+.my-ider-identity-side .my-ider-summary {
+    min-width: 125px;
+    padding: 12px 15px;
+}
+
+.my-ider-identity-side .my-ider-avatar {
+    width: 118px;
+    position: relative;
+    align-self: stretch;
+}
+
+.my-ider-identity-side .my-ider-avatar img.my-ider-character-avatar {
+    width: 112px;
+    height: 165px;
+}
+
+.my-ider-identity-side .my-ider-avatar label {
+    margin-top: -3px;
+    position: relative;
+    z-index: 6;
+}
+
+.my-ider-identity-hero + .my-ider-notebook-callout { margin-top: 18px; }
+
+@media (max-width: 950px) {
+    .my-ider-identity-hero { grid-template-columns: 1fr 1fr; }
+    .my-ider-identity-side { grid-column: 1 / -1; justify-content: flex-end; }
+}
+
+@media (max-width: 650px) {
+    .my-ider-page { padding-top: 14px; }
+    .my-ider-identity-hero { padding: 20px; grid-template-columns: 1fr; gap: 20px; }
+    .my-ider-identity-side { grid-column: auto; justify-content: space-between; }
+    .my-ider-identity-hero form { grid-template-columns: 1fr; }
+    .my-ider-identity-hero form > div { grid-column: auto; }
+}

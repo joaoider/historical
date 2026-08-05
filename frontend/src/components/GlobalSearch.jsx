@@ -8,10 +8,12 @@ function GlobalSearch({ onSelect }) {
     const [query, setQuery] = useState("");
     const [open, setOpen] = useState(false);
     const rootRef = useRef(null);
-
-    useEffect(() => {
-        api.get("/entities").then((response) => setEntities(response.data)).catch(() => setEntities([]));
-    }, []);
+    const entitiesRequested = useRef(false);
+    const loadEntities = () => {
+        if (entitiesRequested.current) return;
+        entitiesRequested.current = true;
+        api.get("/entities").then((response) => setEntities(response.data)).catch(() => { entitiesRequested.current = false; setEntities([]); });
+    };
 
     useEffect(() => {
         const close = (event) => {
@@ -36,8 +38,8 @@ function GlobalSearch({ onSelect }) {
                 type="search"
                 value={query}
                 placeholder="Buscar pessoa, livro, obra ou ideia..."
-                onFocus={() => setOpen(true)}
-                onChange={(event) => { setQuery(event.target.value); setOpen(true); }}
+                onFocus={() => { loadEntities(); setOpen(true); }}
+                onChange={(event) => { loadEntities(); setQuery(event.target.value); setOpen(true); }}
                 onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); }}
             />
             <span aria-hidden="true">⌕</span>

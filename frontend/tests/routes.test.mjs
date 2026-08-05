@@ -21,6 +21,19 @@ test("áreas do conhecimento preservam todo o caminho hierárquico", () => {
     assert.deepEqual(routeFromPath(path), { view: "knowledge-area", entityId: null, areaPath: "ciencias-formais/matematica/fundamentos" });
 });
 
+test("categorias de indicações preservam a área e a categoria", () => {
+    const path = "/conhecimento/area/filosofia/metafisica/indicacoes/livros";
+    assert.equal(pathForView("knowledge-recommendations", { areaPath: "filosofia/metafisica", category: "livros" }), path);
+    assert.deepEqual(routeFromPath(path), { view: "knowledge-recommendations", entityId: null, areaPath: "filosofia/metafisica", recommendationCategory: "livros" });
+});
+
+test("itens da biblioteca preservam categoria, área e título", () => {
+    const item = { category: "books", areaPath: "filosofia/metafisica", title: "Metafísica: uma introdução" };
+    const path = pathForView("library-item", item);
+    assert.equal(path, "/meu-ider/acervo/books/filosofia%2Fmetafisica%3AMetaf%C3%ADsica%3A%20uma%20introdu%C3%A7%C3%A3o");
+    assert.deepEqual(routeFromPath(path), { view: "library-item", entityId: null, libraryItem: item });
+});
+
 test("raiz, barra final e rota desconhecida têm fallback previsível", () => {
     assert.deepEqual(routeFromPath("/"), { view: "home", entityId: null });
     assert.deepEqual(routeFromPath("/sobre/"), { view: "about", entityId: null });

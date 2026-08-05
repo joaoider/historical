@@ -1,4 +1,20 @@
-# React + Vite
+# Ider — frontend e PWA
+
+## Instalar no iPhone
+
+A PWA precisa ser publicada por HTTPS (endereços `localhost` são aceitos apenas
+durante o desenvolvimento). Depois da publicação:
+
+1. Abra a URL no Safari do iPhone.
+2. Toque no botão **Compartilhar**.
+3. Escolha **Adicionar à Tela de Início**.
+4. Confirme em **Adicionar**.
+
+O frontend usa `/api` por padrão. Em produção, configure o servidor para servir
+o frontend e encaminhar `/api` ao backend, ou defina `VITE_API_URL` durante o
+build com a URL HTTPS pública da API.
+
+## Desenvolvimento
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
